@@ -17,7 +17,7 @@ export const FAQS = [
   {
     question: "How flexible is the scheduling?",
     answer:
-      "Scheduling is flexible 24/7. You pick your preferred days and timings, and you can change or reschedule classes to coordinate with busy school, work, or family schedules — including Gulf and Australian time zones.",
+      "Scheduling is flexible 24/7. You pick your preferred days and timings, and you can change or reschedule classes to coordinate with busy school, work, or family schedules — including US, Gulf and Australian time zones.",
   },
   {
     question: "What does the free trial include?",

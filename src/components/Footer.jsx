@@ -30,7 +30,7 @@ export default function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-3">
-              <img src={logo} alt={SITE.name} className="h-12 w-12 rounded-xl object-cover" />
+              <img src={logo} alt={SITE.name} className="h-12 w-12 rounded-xl object-cover" width="48" height="48" loading="lazy" />
               <div className="leading-tight">
                 <p className="font-extrabold text-ivory">Syed Foundation</p>
                 <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-gold-400">Academy</p>
@@ -38,7 +38,7 @@ export default function Footer() {
             </div>
             <p className="mt-4 text-sm leading-relaxed text-brand-100/80">
               An international online Quran academy providing personalized 1-on-1 certified live instruction for
-              children and adults. Helping families across the Gulf and Australia master Tajweed and Quran memorization
+              children and adults. Helping families across the US, Gulf and Australia master Tajweed and Quran memorization
               at home.
             </p>
             <p className="mt-4 text-xs text-brand-100/60">

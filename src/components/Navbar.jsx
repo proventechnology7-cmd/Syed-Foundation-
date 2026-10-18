@@ -34,7 +34,7 @@ export default function Navbar() {
     >
       <div className="container-x flex h-16 sm:h-20 items-center justify-between gap-4">
         <Link to="/" className="flex shrink-0 items-center gap-2.5" aria-label={`${SITE.name} home`}>
-          <img src={logo} alt={SITE.name} className="h-10 w-10 rounded-xl object-cover shadow-card sm:h-12 sm:w-12" />
+          <img src={logo} alt={SITE.name} className="h-10 w-10 rounded-xl object-cover shadow-card sm:h-12 sm:w-12" width="48" height="48" />
           <span className="leading-tight">
             <span className="block text-base font-extrabold text-brand-950 sm:text-lg">Syed Foundation</span>
             <span className="block text-[10px] font-bold uppercase tracking-[0.22em] text-gold-600 sm:text-[11px]">
