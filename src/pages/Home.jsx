@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import gsap from "gsap";
 import {
   BadgeCheck, Clock, Globe2, Star, MessageCircle, BookOpen, BookMarked, Sparkles, Heart,
   Target, HeartHandshake, ChevronRight, GraduationCap, Users, CalendarClock, UserCheck,
@@ -151,20 +150,7 @@ export default function Home() {
     }
   }, [openPopup]);
 
-  // Hero entrance: staggered GSAP timeline (useLayoutEffect so it starts before first paint — no flash)
-  React.useLayoutEffect(() => {
-    try {
-      document.title = "DEBUG: hero effect ran";
-    } catch {}
-    const tween = gsap.fromTo(
-      ".hero-anim",
-      { opacity: 0, y: 80 },
-      { opacity: 1, y: 0, duration: 1.6, stagger: 0.22, ease: "power3.out" }
-    );
-    return () => {
-      tween.kill();
-    };
-  }, []);
+  // Note: hero entrance uses pure CSS (.hero-anim in index.css) — reliable on first paint.
 
   return (
     <main>
@@ -173,24 +159,24 @@ export default function Home() {
         <GeometricPattern className="text-brand-800" opacity={0.06} />
         <div className="container-x relative py-14 sm:py-20 lg:py-24">
           <div className="mx-auto max-w-4xl text-center">
-            <p className="hero-anim font-arabic text-3xl leading-[1.9] text-brand-800 sm:text-4xl" dir="rtl" lang="ar">
+            <p className="hero-anim font-arabic text-3xl leading-[1.9] text-brand-800 sm:text-4xl" style={{ "--hero-delay": "0s" }} dir="rtl" lang="ar">
               بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
             </p>
-            <p className="hero-anim mt-4 text-xs font-semibold uppercase tracking-[0.25em] text-gold-600">
+            <p className="hero-anim mt-4 text-xs font-semibold uppercase tracking-[0.25em] text-gold-600" style={{ "--hero-delay": "0.1s" }}>
               In the name of Allah, the Most Gracious, the Most Merciful
             </p>
-            <h1 className="hero-anim mt-6 text-4xl font-extrabold leading-[1.15] tracking-tight text-brand-950 sm:text-5xl lg:text-6xl">
+            <h1 className="hero-anim mt-6 text-4xl font-extrabold leading-[1.15] tracking-tight text-brand-950 sm:text-5xl lg:text-6xl" style={{ "--hero-delay": "0.22s" }}>
               Learn Quran Online with{" "}
               <span className="text-brand-700 sm:whitespace-nowrap">
                 Syed Foundation Academy
               </span>{" "}
               and Master Tajweed
             </h1>
-            <p className="hero-anim mx-auto mt-6 max-w-2xl text-base leading-relaxed text-stone-600 sm:text-lg">
+            <p className="hero-anim mx-auto mt-6 max-w-2xl text-base leading-relaxed text-stone-600 sm:text-lg" style={{ "--hero-delay": "0.34s" }}>
               Connect live with highly learned tutors. Experience personalized, safe, 1-on-1 sessions designed with
               expert care for kids and adults — across the US, Gulf and Australia.
             </p>
-            <div className="hero-anim mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="hero-anim mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" style={{ "--hero-delay": "0.46s" }}>
               <EnrollButton size="lg" className="w-full sm:w-auto" />
               <a
                 href={SITE.whatsapp}
@@ -205,7 +191,7 @@ export default function Home() {
           </div>
 
           {/* Trust badges */}
-          <div className="hero-anim mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="hero-anim mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" style={{ "--hero-delay": "0.6s" }}>
             {TRUST_BADGES.map((b) => (
               <div key={b.title} className="flex items-center gap-3 rounded-2xl border border-brand-100 bg-white/80 p-4 shadow-card backdrop-blur">
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-700 text-gold-400">
