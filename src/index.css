@@ -85,11 +85,11 @@
 
 /* Card hover lift */
 .card-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
 }
 .card-lift:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px -16px rgb(0 0 0 / 0.18);
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 24px 48px -12px rgb(0 0 0 / 0.22);
 }
 
 /* Hero entrance — pure CSS staggered rise (runs on first paint, no JS timing issues) */
@@ -125,11 +125,11 @@
 }
 
 .heading-hover {
-  transition: transform 0.35s ease, color 0.35s ease, letter-spacing 0.35s ease;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.35s ease;
 }
 .heading-hover:hover {
-  transform: translateY(-2px);
-  letter-spacing: 0.01em;
+  transform: translateY(-4px) scale(1.02);
+  color: #0d5c3f;
 }
 
 /* Image hover zoom (for blog/category art, cards) */
