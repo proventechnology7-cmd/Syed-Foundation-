@@ -153,6 +153,9 @@ export default function Home() {
 
   // Hero entrance: staggered GSAP timeline (useLayoutEffect so it starts before first paint — no flash)
   React.useLayoutEffect(() => {
+    try {
+      document.title = "DEBUG: hero effect ran";
+    } catch {}
     const tween = gsap.fromTo(
       ".hero-anim",
       { opacity: 0, y: 80 },
