@@ -70,6 +70,28 @@ export default function EnrollmentForm() {
 
   const submit = (e) => {
     e.preventDefault();
+    // Send the lead to the Google Sheet via the Apps Script web app.
+    // Fire-and-forget: the success screen shows regardless, so a slow or
+    // blocked request never stops the user's flow.
+    if (SITE.leadSheetUrl) {
+      const payload = {
+        name: form.name,
+        phone: `+${form.dial} ${form.phone}`,
+        email: form.email,
+        country: form.country,
+        course: form.course,
+        requirements: form.requirements,
+        plan: `${planLabel(selectedPlan)} (${selectedRegion.currency}${selectedPrice}/month)`,
+      };
+      try {
+        fetch(SITE.leadSheetUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify(payload),
+        }).catch(() => {});
+      } catch (_) {}
+    }
     setDone(true);
     document.getElementById("enroll-success")?.scrollIntoView({ behavior: "smooth", block: "center" });
   };

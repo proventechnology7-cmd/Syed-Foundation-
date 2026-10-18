@@ -15,6 +15,10 @@ export const SITE = {
   email: "Contact@quranrise.com",
   hours: "24/7 (Flexible Custom Hours)",
   regions: ["UAE", "Saudi Arabia", "Qatar", "Kuwait", "Oman", "Bahrain", "Australia"],
+  // Google Apps Script Web App URL that receives enrollment leads into the
+  // "lead sheet" Google Sheet. Empty = leads are not sent anywhere.
+  // Set this to the deployed web app URL (Deploy > Web app > Anyone).
+  leadSheetUrl: "",
 };
 
 export const NAV_LINKS = [
