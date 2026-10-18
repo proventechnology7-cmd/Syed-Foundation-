@@ -242,7 +242,7 @@ export function DirectChannels() {
         </span>
         <span className="min-w-0">
           <span className="block text-xs font-semibold uppercase tracking-wide text-stone-500">Direct Helpdesk Email</span>
-          <span className="mt-1 block break-words text-[15px] font-bold leading-snug text-brand-950 group-hover:text-brand-700">{SITE.email}</span>
+          <span className="mt-1 block whitespace-nowrap text-xs font-bold tracking-tight text-brand-950 group-hover:text-brand-700 sm:text-[13px]">{SITE.email}</span>
         </span>
       </a>
     </div>
