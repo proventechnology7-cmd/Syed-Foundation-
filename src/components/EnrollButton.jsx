@@ -11,11 +11,13 @@ export default function EnrollButton({ className, variant = "default", size = "d
 
   const go = () => {
     let planLabel = "";
+    let planId = "";
     if (plan) {
       const region = REGIONS.find((r) => r.id === (regionId || "gulf")) || REGIONS[0];
       planLabel = `${plan.name} — ${region.label}: ${region.currency}${getPrice(plan.id, region.id)}/mo`;
+      planId = String(plan.id);
     }
-    openPopup({ planLabel, course, source: "cta-button" });
+    openPopup({ planLabel, planId, course, source: "cta-button" });
   };
 
   return (

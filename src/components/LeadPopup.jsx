@@ -4,28 +4,43 @@ import gsap from "gsap";
 import { X, CheckCircle2, Loader2, CalendarCheck, Sparkles } from "lucide-react";
 import { SITE } from "../data/site";
 import { COURSES } from "../data/courses";
+import { PLANS, planLabel } from "../data/pricing";
 
 const inputCls =
   "w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-800 outline-none transition-all duration-200 focus:border-brand-500 focus:ring-4 focus:ring-brand-100";
 
 /**
- * Lead capture popup. Opens from any "Book Free Trial" button via useLeadPopup(),
+ * Lead capture popup — mirrors ALL Google Sheet columns:
+ *   Name | WhatsApp Number | Email | Country | Course | Requirements | Plan
+ * Opens from any "Book Free Trial" button via useLeadPopup(),
  * or automatically 3s after the homepage loads (once per 7 days).
- * Submits straight to the Google Sheet endpoint — same as the enrollment form.
+ * Course/Plan auto-fill when opened from a course/pricing button.
  */
 export default function LeadPopup({ open, context = {}, onClose }) {
-  const [form, setForm] = React.useState({ name: "", phone: "", email: "", country: "", course: "" });
+  const [form, setForm] = React.useState({
+    name: "",
+    phone: "",
+    email: "",
+    country: "",
+    course: "",
+    requirements: "",
+    planId: "",
+  });
   const [status, setStatus] = React.useState("idle"); // idle | sending | done
   const backdropRef = React.useRef(null);
   const cardRef = React.useRef(null);
 
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  // Entrance animation + lock body scroll
+  // Entrance animation + lock body scroll + auto-fill from context
   React.useEffect(() => {
     if (!open) return;
     setStatus("idle");
-    setForm((f) => ({ ...f, course: context.course || f.course || "" }));
+    setForm((f) => ({
+      ...f,
+      course: context.course || f.course || "",
+      planId: context.planId ? String(context.planId) : f.planId || "",
+    }));
     document.body.style.overflow = "hidden";
     gsap.fromTo(backdropRef.current, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" });
     gsap.fromTo(
@@ -36,7 +51,7 @@ export default function LeadPopup({ open, context = {}, onClose }) {
     gsap.fromTo(
       ".lead-popup-field",
       { opacity: 0, x: -14 },
-      { opacity: 1, x: 0, duration: 0.4, stagger: 0.06, delay: 0.25, ease: "power2.out", overwrite: true }
+      { opacity: 1, x: 0, duration: 0.4, stagger: 0.05, delay: 0.25, ease: "power2.out", overwrite: true }
     );
     return () => {
       document.body.style.overflow = "";
@@ -55,14 +70,16 @@ export default function LeadPopup({ open, context = {}, onClose }) {
     e.preventDefault();
     if (status !== "idle") return;
     setStatus("sending");
+    const chosenPlan = PLANS.find((p) => String(p.id) === String(form.planId));
+    // Payload keys match the Apps Script + sheet columns exactly.
     const payload = {
       name: form.name.trim(),
       phone: form.phone.trim(),
       email: form.email.trim(),
       country: form.country.trim(),
       course: form.course,
-      requirements: context.source ? `Source: ${context.source}` : "",
-      plan: context.planLabel || "",
+      requirements: form.requirements.trim() || (context.source ? `Source: ${context.source}` : ""),
+      plan: chosenPlan ? `${planLabel(chosenPlan)}${chosenPlan.popular ? " (Most Popular)" : ""}` : "",
     };
     try {
       await fetch(SITE.leadSheetUrl, {
@@ -113,7 +130,7 @@ export default function LeadPopup({ open, context = {}, onClose }) {
             <button
               type="button"
               onClick={closeAnimated}
-              className="btn-cta mt-6 rounded-xl bg-brand-700 px-8 py-3 text-sm font-bold text-white shadow-card hover:bg-brand-800"
+              className="mt-6 rounded-xl bg-brand-700 px-8 py-3 text-sm font-bold text-white shadow-card transition-all duration-200 hover:-translate-y-[2px] hover:bg-brand-800 hover:shadow-lg active:translate-y-0 active:scale-[0.97]"
             >
               Done
             </button>
@@ -143,11 +160,11 @@ export default function LeadPopup({ open, context = {}, onClose }) {
                   inputMode="tel"
                 />
               </div>
-              <div className="lead-popup-field">
+              <div className="lead-popup-field grid grid-cols-2 gap-3">
                 <input type="email" value={form.email} onChange={set("email")} placeholder="Email address" className={inputCls} autoComplete="email" />
+                <input value={form.country} onChange={set("country")} placeholder="Country" className={inputCls} autoComplete="country-name" />
               </div>
               <div className="lead-popup-field grid grid-cols-2 gap-3">
-                <input value={form.country} onChange={set("country")} placeholder="Country" className={inputCls} autoComplete="country-name" />
                 <select value={form.course} onChange={set("course")} className={inputCls} aria-label="Course">
                   <option value="">Course…</option>
                   {COURSES.map((c) => (
@@ -156,11 +173,28 @@ export default function LeadPopup({ open, context = {}, onClose }) {
                     </option>
                   ))}
                 </select>
+                <select value={form.planId} onChange={set("planId")} className={inputCls} aria-label="Plan">
+                  <option value="">Plan…</option>
+                  {PLANS.map((p) => (
+                    <option key={p.id} value={p.id}>
+                      {planLabel(p)}{p.popular ? " ★" : ""}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="lead-popup-field">
+                <textarea
+                  value={form.requirements}
+                  onChange={set("requirements")}
+                  placeholder="Your requirements (e.g. kids' ages, preferred timings…)"
+                  rows={2}
+                  className={`${inputCls} resize-none`}
+                />
               </div>
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="btn-cta lead-popup-field flex w-full items-center justify-center gap-2 rounded-xl bg-brand-700 px-6 py-3.5 text-sm font-bold text-white shadow-card hover:bg-brand-800 disabled:opacity-70"
+                className="lead-popup-field flex w-full items-center justify-center gap-2 rounded-xl bg-brand-700 px-6 py-3.5 text-sm font-bold text-white shadow-card transition-all duration-200 hover:-translate-y-[2px] hover:bg-brand-800 hover:shadow-lg active:translate-y-0 active:scale-[0.97] disabled:opacity-70"
               >
                 {status === "sending" ? (
                   <>

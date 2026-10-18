@@ -6,6 +6,7 @@ import { Card, CardContent } from "../components/ui/card";
 import SectionHeading from "../components/SectionHeading";
 import GeometricPattern from "../components/GeometricPattern";
 import EnrollButton from "../components/EnrollButton";
+import Reveal from "../components/Reveal";
 
 function CategoryArt({ seed, className }) {
   // Original decorative SVG art per post (no copied assets)
@@ -36,11 +37,13 @@ export default function Blog() {
       <section className="relative overflow-hidden bg-gradient-to-b from-brand-50 via-ivory to-ivory py-14 sm:py-20">
         <GeometricPattern className="text-brand-800" opacity={0.06} />
         <div className="container-x relative">
-          <SectionHeading
+          <Reveal>
+            <SectionHeading
             eyebrow="Quranic Blog Archives"
             title="Quranic Insights"
             subtitle="Verified, authentic content on Tajweed, Hifz, phonetics and digital parenting — from our academy scholars."
-          />
+            />
+          </Reveal>
 
           {/* Featured post */}
           <Link
@@ -77,11 +80,11 @@ export default function Blog() {
 
           {/* Archive grid */}
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
-            {archive.map((post) => (
+            {archive.map((post, i) => (
+              <Reveal key={post.slug} delay={Math.min(i * 0.08, 0.32)}>
               <Link
-                key={post.slug}
                 to={`/blog/${post.slug}`}
-                className="group flex flex-col overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-card transition hover:-translate-y-1 hover:shadow-soft"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-soft"
               >
                 <CategoryArt seed={post.slug} className="h-44" />
                 <CardContent className="flex flex-1 flex-col p-6">
@@ -106,6 +109,7 @@ export default function Blog() {
                   </div>
                 </CardContent>
               </Link>
+              </Reveal>
             ))}
           </div>
 

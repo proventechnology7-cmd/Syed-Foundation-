@@ -50,8 +50,10 @@ export default function Navbar() {
               to={l.to}
               className={({ isActive }) =>
                 cn(
-                  "rounded-xl px-4 py-2 text-sm font-semibold transition-colors",
-                  isActive ? "bg-brand-100 text-brand-900" : "text-brand-900/70 hover:bg-brand-50 hover:text-brand-900"
+                  "rounded-xl px-4 py-2 text-sm font-semibold transition-all duration-200",
+                  isActive
+                    ? "scale-[1.04] bg-brand-700 text-white shadow-card"
+                    : "text-brand-900/70 hover:scale-[1.02] hover:bg-brand-50 hover:text-brand-900"
                 )
               }
             >
@@ -90,8 +92,10 @@ export default function Navbar() {
                 to={l.to}
                 className={({ isActive }) =>
                   cn(
-                    "rounded-xl px-4 py-3 text-base font-semibold",
-                    isActive ? "bg-brand-100 text-brand-900" : "text-brand-900/75 hover:bg-brand-50"
+                    "rounded-xl px-4 py-3 text-base font-semibold transition-all duration-200",
+                    isActive
+                      ? "scale-[1.02] bg-brand-700 text-white shadow-card"
+                      : "text-brand-900/75 hover:bg-brand-50 hover:text-brand-900"
                   )
                 }
               >

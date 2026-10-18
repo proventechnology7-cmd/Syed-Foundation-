@@ -3,16 +3,16 @@ import { cva } from "class-variance-authority";
 import { cn } from "../../lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-xl text-center text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 rounded-xl text-center text-sm font-semibold transition-all duration-200 hover:-translate-y-[3px] hover:scale-[1.02] hover:shadow-lg active:translate-y-0 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-brand-700 text-white shadow hover:bg-brand-800 active:scale-[0.98]",
-        gold: "bg-gold-400 text-brand-950 shadow hover:bg-gold-500 active:scale-[0.98]",
-        secondary: "bg-brand-100 text-brand-900 hover:bg-brand-200 active:scale-[0.98]",
+        default: "bg-brand-700 text-white shadow hover:bg-brand-800",
+        gold: "bg-gold-400 text-brand-950 shadow hover:bg-gold-500",
+        secondary: "bg-brand-100 text-brand-900 hover:bg-brand-200",
         outline: "border border-brand-300 bg-transparent text-brand-800 hover:bg-brand-50",
         ghost: "text-brand-800 hover:bg-brand-100",
-        whatsapp: "bg-[#25D366] text-white shadow hover:brightness-95 active:scale-[0.98]",
+        whatsapp: "bg-[#25D366] text-white shadow hover:brightness-95",
       },
       size: {
         default: "h-11 px-6 py-2",

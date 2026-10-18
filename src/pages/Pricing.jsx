@@ -9,6 +9,7 @@ import SectionHeading from "../components/SectionHeading";
 import GeometricPattern from "../components/GeometricPattern";
 import EnrollButton from "../components/EnrollButton";
 import { cn } from "../lib/utils";
+import Reveal from "../components/Reveal";
 
 function PlanCard({ plan, region }) {
   const price = getPrice(plan.id, region.id);
@@ -84,11 +85,13 @@ export default function Pricing() {
       <section className="relative overflow-hidden bg-gradient-to-b from-brand-50 via-ivory to-ivory py-14 sm:py-20">
         <GeometricPattern className="text-brand-800" opacity={0.06} />
         <div className="container-x relative">
-          <SectionHeading
+          <Reveal>
+            <SectionHeading
             eyebrow="Pricing & Plans"
             title="Empowered Tuition Packages"
             subtitle="Choose the perfect Quran learning plan that fits your schedule and learning goals. All plans include a free trial class, live 1-on-1 instruction, and flexible US, Gulf & Australian time-zone scheduling."
-          />
+            />
+          </Reveal>
 
           <Tabs value={regionId} onValueChange={setRegionId} className="mt-10">
             <div className="flex justify-center">
@@ -108,8 +111,10 @@ export default function Pricing() {
             )}
             <TabsContent value={regionId} className="mt-8">
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {PLANS.map((p) => (
-                  <PlanCard key={p.id} plan={p} region={region} />
+                {PLANS.map((p, i) => (
+                  <Reveal key={p.id} delay={Math.min(i * 0.08, 0.4)}>
+                    <PlanCard plan={p} region={region} />
+                  </Reveal>
                 ))}
               </div>
             </TabsContent>

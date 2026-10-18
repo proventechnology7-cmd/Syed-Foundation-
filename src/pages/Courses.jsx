@@ -7,6 +7,7 @@ import SectionHeading from "../components/SectionHeading";
 import GeometricPattern from "../components/GeometricPattern";
 import EnrollButton from "../components/EnrollButton";
 import { cn } from "../lib/utils";
+import Reveal from "../components/Reveal";
 
 const COURSE_ICONS = { BookOpen, BookMarked, Sparkles, Heart };
 
@@ -16,18 +17,21 @@ export default function Courses() {
       <section className="relative overflow-hidden bg-gradient-to-b from-brand-50 via-ivory to-ivory py-14 sm:py-20">
         <GeometricPattern className="text-brand-800" opacity={0.06} />
         <div className="container-x relative">
-          <SectionHeading
+          <Reveal>
+            <SectionHeading
             eyebrow="Our Programs"
             title="Quran Courses for Every Age & Level"
             subtitle="Four carefully structured programs — from a child's first Arabic letter to advanced Tajweed mastery and complete Hifz. Every course is taught live, 1-on-1, by a certified tutor."
-          />
+            />
+          </Reveal>
 
           <div className="mt-12 space-y-8">
             {COURSES.map((course, idx) => {
               const Icon = COURSE_ICONS[course.icon] || BookOpen;
               const flip = idx % 2 === 1;
               return (
-                <Card key={course.slug} className="overflow-hidden">
+                <Reveal key={course.slug}>
+                <Card className="overflow-hidden card-lift">
                   <div className={cn("grid lg:grid-cols-5")}>
                     {/* Summary panel */}
                     <div
@@ -88,6 +92,7 @@ export default function Courses() {
                     </div>
                   </div>
                 </Card>
+                </Reveal>
               );
             })}
           </div>

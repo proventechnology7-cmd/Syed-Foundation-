@@ -6,6 +6,7 @@ import { Card, CardContent } from "../components/ui/card";
 import SectionHeading from "../components/SectionHeading";
 import GeometricPattern from "../components/GeometricPattern";
 import EnrollButton from "../components/EnrollButton";
+import Reveal from "../components/Reveal";
 
 function Block({ block }) {
   if (block.type === "heading") {
