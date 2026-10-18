@@ -10,14 +10,16 @@ import EnrollButton from "../components/EnrollButton";
 import { cn } from "../lib/utils";
 import Reveal from "../components/Reveal";
 
-function PlanCard({ plan, region }) {
+function PlanCard({ plan, region, selected, onSelect }) {
   const price = getPrice(plan.id, region.id);
   const was = getWasPrice(plan.id, region.id);
   return (
     <Card
+      onClick={onSelect}
       className={cn(
-        "relative flex flex-col overflow-hidden smooth-card",
-        plan.popular && "border-2 border-gold-400 shadow-soft"
+        "relative flex flex-col overflow-hidden smooth-card cursor-pointer",
+        (plan.popular || selected) && "border-2 border-gold-400 shadow-soft",
+        selected && "ring-4 ring-gold-400/40 scale-[1.02]"
       )}
     >
       {plan.popular && (
@@ -77,6 +79,7 @@ function PlanCard({ plan, region }) {
 
 export default function Pricing() {
   const [regionId, setRegionId] = React.useState("gulf");
+  const [selectedPlan, setSelectedPlan] = React.useState(null);
   const region = REGIONS.find((r) => r.id === regionId) || REGIONS[0];
 
   return (
@@ -111,7 +114,7 @@ export default function Pricing() {
               <div key={regionId} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {PLANS.map((p, i) => (
                   <Reveal key={p.id} delay={Math.min(i * 0.07, 0.35)} replay={false}>
-                    <PlanCard plan={p} region={region} />
+                    <PlanCard plan={p} region={region} selected={selectedPlan === p.id} onSelect={() => setSelectedPlan(p.id)} />
                   </Reveal>
                 ))}
               </div>

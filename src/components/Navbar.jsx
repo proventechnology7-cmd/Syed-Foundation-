@@ -10,6 +10,7 @@ export default function Navbar() {
   const [open, setOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
   const location = useLocation();
+  const isHome = location.pathname === "/";
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -23,13 +24,16 @@ export default function Navbar() {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, [location.pathname]);
 
+  // Transparent only on home hero; solid dark elsewhere for readability
+  const transparent = isHome && !scrolled;
+
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 border-b transition-all",
-        scrolled
-          ? "border-brand-100 bg-ivory/85 shadow-card backdrop-blur-xl"
-          : "border-transparent bg-ivory/60 backdrop-blur-md"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        transparent
+          ? "bg-transparent border-b border-transparent"
+          : "bg-brand-950/92 shadow-lg backdrop-blur-xl border-b border-gold-400/20"
       )}
     >
       <div className="container-x flex h-16 sm:h-20 items-center justify-between gap-4">
@@ -51,8 +55,8 @@ export default function Navbar() {
             <span className="absolute -inset-1 -z-10 rounded-2xl bg-gold-400/20 blur-md transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
           </span>
           <span className="leading-tight">
-            <span className="block font-display text-base font-normal text-brand-950 sm:text-lg">Syed Foundation</span>
-            <span className="block text-[10px] font-bold uppercase tracking-[0.22em] text-gold-600 sm:text-[11px]">
+            <span className="block font-display text-base font-normal text-white sm:text-lg">Syed Foundation</span>
+            <span className="block text-[10px] font-bold uppercase tracking-[0.22em] text-gold-400 sm:text-[11px]">
               Academy
             </span>
           </span>
@@ -67,8 +71,8 @@ export default function Navbar() {
                 cn(
                   "rounded-xl px-4 py-2 text-sm font-semibold transition-all duration-200",
                   isActive
-                    ? "scale-[1.04] bg-brand-700 text-white shadow-card"
-                    : "text-brand-900/70 hover:scale-[1.02] hover:bg-brand-50 hover:text-brand-900"
+                    ? "scale-[1.04] bg-gold-400 text-brand-950 shadow-lg"
+                    : "text-white/85 hover:scale-[1.02] hover:bg-white/10 hover:text-white"
                 )
               }
             >
@@ -83,7 +87,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-xl text-brand-900 hover:bg-brand-100 lg:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-xl text-white hover:bg-white/10 lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
@@ -95,7 +99,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div
         className={cn(
-          "grid overflow-hidden border-b border-brand-100 bg-ivory/95 backdrop-blur-xl transition-all duration-300 lg:hidden",
+          "grid overflow-hidden border-b border-gold-400/20 bg-brand-950/95 backdrop-blur-xl transition-all duration-300 lg:hidden",
           open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0 border-b-0"
         )}
       >
@@ -109,8 +113,8 @@ export default function Navbar() {
                   cn(
                     "rounded-xl px-4 py-3 text-base font-semibold transition-all duration-200",
                     isActive
-                      ? "scale-[1.02] bg-brand-700 text-white shadow-card"
-                      : "text-brand-900/75 hover:bg-brand-50 hover:text-brand-900"
+                      ? "scale-[1.02] bg-gold-400 text-brand-950 shadow-lg"
+                      : "text-white/85 hover:bg-white/10 hover:text-white"
                   )
                 }
               >
