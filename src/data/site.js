@@ -17,7 +17,7 @@ export const SITE = {
   regions: ["UAE", "Saudi Arabia", "Qatar", "Kuwait", "Oman", "Bahrain", "Australia"],
   // Google Apps Script Web App URL that receives enrollment leads into the
   // "lead sheet" Google Sheet. Empty = leads are not sent anywhere.
-  leadSheetUrl: "https://script.google.com/macros/s/AKfycbyNUjFm2LxuTLxMnBcbNtH2H1K-wBs_qQsKUdOsF0AZRlvqfRpwpvEia22mplDbiZLZzA/exec",
+  leadSheetUrl: "https://script.google.com/macros/s/AKfycbylaO4oeHlLI9eKJlPasnljWyku_WIasGnLsVkVvaF42aoZno4SbNVkjCjrIGm7rZlKPA/exec",
 };
 
 export const NAV_LINKS = [
