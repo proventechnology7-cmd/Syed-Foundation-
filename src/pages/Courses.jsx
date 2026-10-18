@@ -110,7 +110,7 @@ export default function Courses() {
               </Link>
             </div>
             <p className="mt-4 text-xs text-stone-500">
-              <ChevronRight className="inline h-3 w-3" /> All courses: live 1-on-1 · male &amp; female tutors · flexible 24/7 scheduling
+              <ChevronRight className="inline h-3 w-3" /> All courses: live 1-on-1 · certified tutors · flexible 24/7 scheduling
             </p>
           </div>
         </div>

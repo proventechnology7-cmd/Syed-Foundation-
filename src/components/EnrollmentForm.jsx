@@ -195,7 +195,7 @@ export default function EnrollmentForm() {
             <label htmlFor="ef-req" className={labelCls}>Your Requirements / Student's Age and Level</label>
             <Textarea
               id="ef-req"
-              placeholder="e.g. My 7-year-old daughter is a complete beginner; we prefer a female tutor in the evenings (GST)."
+              placeholder="e.g. My 7-year-old son is a complete beginner; we prefer evening slots (GST)."
               value={form.requirements}
               onChange={set("requirements")}
             />

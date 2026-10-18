@@ -19,7 +19,7 @@ export const TESTIMONIALS = [
   },
   {
     quote:
-      "This academy has transformed our homeschooling routine. My daughter is doing Quran Memorization (Hifz) with a qualified female tutor. The teacher utilizes highly engaging techniques, breaking verses down into memorable rhythmic blocks.",
+      "This academy has transformed our homeschooling routine. My daughter is doing Quran Memorization (Hifz) with a qualified tutor. The teacher utilizes highly engaging techniques, breaking verses down into memorable rhythmic blocks.",
     name: "Amina Al-Farsi",
     role: "Parent",
     location: "Toronto, Canada",

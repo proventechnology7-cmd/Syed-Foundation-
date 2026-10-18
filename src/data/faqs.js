@@ -10,11 +10,6 @@ export const FAQS = [
       "Yes. Every session is a private 1-on-1 lesson with a dedicated certified tutor — never a group class. This gives the student the tutor's full attention, instant correction of Makharij and Tajweed, and a pace tailored to their level.",
   },
   {
-    question: "Can I choose a male or female teacher?",
-    answer:
-      "Absolutely. We prioritize comfort by offering children and adults the choice between dedicated male tutors and experienced, certified female Quran teachers — highly valued by young kids and sisters.",
-  },
-  {
     question: "How flexible is the scheduling?",
     answer:
       "Scheduling is flexible 24/7. You pick your preferred days and timings, and you can change or reschedule classes to coordinate with busy school, work, or family schedules — including US, Gulf and Australian time zones.",

@@ -293,39 +293,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ WHO IS THIS FOR ============ */}
-      <section className="py-10 sm:py-14">
-        <div className="container-x">
-          <Reveal>
-            <SectionHeading
-            eyebrow="Made For You"
-            title="Who Are These Classes For?"
-            subtitle="Whether you're 4 or 74, a complete beginner or polishing your Tajweed — there's a path designed around your life."
-            />
-          </Reveal>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              { icon: Baby, title: "Kids Ages 4+", text: "Noorani Qaida through fun, interactive lessons that keep young minds engaged and loving the Quran." },
-              { icon: UserCheck, title: "Adult Beginners", text: "Start Tajweed from absolute zero. No Arabic background needed — we build your foundation step by step." },
-              { icon: Briefcase, title: "Busy Professionals", text: "24/7 flexible slots that fit around work, school runs, and family life — across US, Gulf & Australian time zones." },
-              { icon: Heart, title: "Sisters", text: "Learn comfortably with qualified, patient female Quran teachers in a safe one-on-one setting." },
-              { icon: BookMarked, title: "Hifz Students", text: "Structured memorization with daily revision cycles (Sabaq, Sabqi, Manzil) guided by certified Huffaz." },
-              { icon: Sparkles, title: "New Muslims", text: "A warm, judgment-free start: Salah, essential Duas, and Quran reading foundations at your own pace." },
-            ].map((a, i) => (
-              <Reveal key={a.title} delay={Math.min(i * 0.08, 0.4)}>
-              <Card className="p-6 h-full card-lift">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold-400/20 text-gold-600">
-                  <a.icon className="h-6 w-6" />
-                </span>
-                <h3 className="mt-4 font-bold text-brand-950">{a.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-stone-600">{a.text}</p>
-              </Card>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ============ ABOUT ============ */}
       <section id="about" className="relative scroll-mt-24 overflow-hidden bg-brand-950 py-14 text-white sm:py-20">
         <div className="container-x relative grid items-center gap-10 lg:grid-cols-2">
@@ -348,7 +315,7 @@ export default function Home() {
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
             {[
               { icon: Target, title: "Perfect Makharij Accuracy", text: "Focusing closely on native tongue and throat positions so children learn correct letter origins." },
-              { icon: HeartHandshake, title: "Patient Female Specialists", text: "Gentle and loving certified female Sheikhahs, highly protective of young kids and sisters." },
+              { icon: HeartHandshake, title: "Patient & Caring Tutors", text: "Gentle, encouraging certified teachers who make every student feel comfortable and confident." },
               { icon: Users, title: "1-on-1 Live Personalized Space", text: "A dedicated interactive atmosphere where every lesson revolves around one student." },
               { icon: ShieldCheck, title: "Verified & Certified Tutors", text: "Every teaching credential is audited, verified and certified annually for authenticity." },
             ].map((f) => (
@@ -409,7 +376,7 @@ export default function Home() {
               { icon: GraduationCap, title: "Certified Expert Tutors", text: "Learn from highly qualified, certified educators who graduated from prestigious Islamic institutions and hold verified academic credentials." },
               { icon: Video, title: "Live 1-on-1 Sessions", text: "Get focused attention with personal classes customized around your learning speed, unique strengths, and continuous educational goals." },
               { icon: Clock, title: "Flexible Scheduling 24/7", text: "Pick your preferred days and timings. Change or reschedule classes to coordinate elegantly with busy school, work, or family schedules." },
-              { icon: Users, title: "Male & Female Teachers", text: "We prioritize comfort and ease by offering children and adults the choice between dedicated male and experienced female Quran tutors." },
+              { icon: Users, title: "Certified Quran Teachers", text: "Learn from experienced, verified Quran tutors dedicated to your progress and comfort." },
               { icon: Wallet, title: "Affordable & High Quality", text: "No hidden registration fees or long commitments. Transparent, competitive packages structured to keep online Quran studies accessible to everyone." },
               { icon: ClipboardList, title: "Personalized Study Plans", text: "We craft structured, customized learning pathways designed for individual student goals, ensuring comfort, optimal progress, and deep retention." },
             ].map((f) => (
@@ -439,10 +406,9 @@ export default function Home() {
             subtitle="Every tutor is hand-picked, background-verified, and certified — so your family learns from teachers you can trust completely."
             />
           </Reveal>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { icon: Mic, role: "Qari", focus: "Tajweed & Qira'at Specialist", points: ["Ijazah-certified in Hafs recitation", "10+ years teaching experience", "Makharij & Sifaat mastery"] },
-              { icon: HeartHandshake, role: "Qaria", focus: "Kids & Sisters Specialist", points: ["Certified female Quran teacher", "Patient, child-friendly approach", "Ideal for daughters & sisters"] },
               { icon: BookMarked, role: "Hafiz", focus: "Hifz Program Lead", points: ["Completed Quran memorization", "Structured Sabaq revision system", "Tracks every student's progress"] },
               { icon: Languages, role: "Mentor", focus: "Islamic Foundations Guide", points: ["Salah, Duas & Seerah for kids", "Fluent English, Urdu & Arabic", "New-Muslim friendly teaching"] },
             ].map((t, i) => (
@@ -467,7 +433,7 @@ export default function Home() {
           </div>
           <p className="mx-auto mt-8 flex max-w-2xl items-start justify-center gap-2 text-center text-sm text-stone-600">
             <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />
-            Male or female teacher? You choose. Switch anytime — your comfort comes first.
+            Every teacher is background-verified and certified — your family's safety and comfort come first.
           </p>
         </div>
       </section>
