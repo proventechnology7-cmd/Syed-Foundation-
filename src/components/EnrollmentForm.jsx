@@ -223,26 +223,26 @@ export function DirectChannels() {
         href={SITE.whatsapp}
         target="_blank"
         rel="noreferrer"
-        className="group flex items-center gap-4 rounded-2xl border border-brand-100 bg-white p-5 shadow-card transition hover:-translate-y-0.5 hover:shadow-soft"
+        className="card-lift group flex flex-col gap-3 rounded-2xl border border-brand-100 bg-white p-5 shadow-card"
       >
-        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#25D366]/10 text-[#1da851]">
+        <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#25D366]/10 text-[#1da851]">
           <Zap className="h-6 w-6" />
         </span>
-        <span className="min-w-0 flex-1">
+        <span className="min-w-0">
           <span className="block text-xs font-semibold uppercase tracking-wide text-stone-500">Fast Coordinator WhatsApp</span>
-          <span className="mt-0.5 block whitespace-nowrap font-bold text-brand-950 group-hover:text-brand-700">{SITE.whatsappDisplay}</span>
+          <span className="mt-1 block whitespace-nowrap text-lg font-bold text-brand-950 group-hover:text-brand-700">{SITE.whatsappDisplay}</span>
         </span>
       </a>
       <a
         href={`mailto:${SITE.email}`}
-        className="group flex items-center gap-4 rounded-2xl border border-brand-100 bg-white p-5 shadow-card transition hover:-translate-y-0.5 hover:shadow-soft"
+        className="card-lift group flex flex-col gap-3 rounded-2xl border border-brand-100 bg-white p-5 shadow-card"
       >
-        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand-100 text-brand-700">
+        <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-100 text-brand-700">
           <MessageCircle className="h-6 w-6" />
         </span>
-        <span className="min-w-0 flex-1">
+        <span className="min-w-0">
           <span className="block text-xs font-semibold uppercase tracking-wide text-stone-500">Direct Helpdesk Email</span>
-          <span className="mt-0.5 block break-all text-sm font-bold text-brand-950 group-hover:text-brand-700">{SITE.email}</span>
+          <span className="mt-1 block break-words text-[15px] font-bold leading-snug text-brand-950 group-hover:text-brand-700">{SITE.email}</span>
         </span>
       </a>
     </div>
