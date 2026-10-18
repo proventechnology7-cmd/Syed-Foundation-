@@ -60,14 +60,6 @@ function Counter({ target, suffix = "", duration = 1600 }) {
   );
 }
 
-/* ---------------- Hero trust badges ---------------- */
-const TRUST_BADGES = [
-  { icon: BadgeCheck, title: "Qualified Quran Teachers", sub: "Experienced & Verified Instructors" },
-  { icon: Clock, title: "Flexible 24/7 Hours", sub: "To fit your timeline" },
-  { icon: Globe2, title: "Trusted by Families Worldwide", sub: "Across the US, Gulf & Australia" },
-  { icon: Star, title: "4.9/5 Rating", sub: "Loved by parents & students" },
-];
-
 /* ---------------- Course card (preview) ---------------- */
 function CourseArt({ slug }) {
   // Unique art per course, matched to content
@@ -269,20 +261,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Trust badges */}
-          <div className="hero-anim mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" style={{ "--hero-delay": "0.6s" }}>
-            {TRUST_BADGES.map((b) => (
-              <div key={b.title} className="premium-card flex items-center gap-3 rounded-2xl p-4 backdrop-blur-md">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-700 text-gold-400">
-                  <b.icon className="h-5 w-5" />
-                </span>
-                <span>
-                  <span className="block text-sm font-bold text-brand-950">{b.title}</span>
-                  <span className="block text-xs text-stone-500">{b.sub}</span>
-                </span>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 

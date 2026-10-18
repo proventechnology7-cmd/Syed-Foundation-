@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import gsap from "gsap";
 import { X, CheckCircle2, Loader2, CalendarCheck, Sparkles } from "lucide-react";
 import { SITE } from "../data/site";
+import { cn } from "../lib/utils";
 import { COURSES } from "../data/courses";
 import { PLANS, planLabel } from "../data/pricing";
 
@@ -32,10 +33,14 @@ export default function LeadPopup({ open, context = {}, onClose }) {
 
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
+  const [planLocked, setPlanLocked] = React.useState(false);
+
   // Entrance animation + lock body scroll + auto-fill from context
   React.useEffect(() => {
     if (!open) return;
     setStatus("idle");
+    // If plan came from a card click, lock the dropdown to that plan
+    setPlanLocked(!!context.planId);
     setForm((f) => ({
       ...f,
       course: context.course || f.course || "",
@@ -173,7 +178,10 @@ export default function LeadPopup({ open, context = {}, onClose }) {
                     </option>
                   ))}
                 </select>
-                <select value={form.planId} onChange={set("planId")} className={inputCls} aria-label="Plan">
+                {planLocked && (
+                  <p className="mb-1.5 text-xs font-semibold text-gold-600">✓ Plan selected from pricing — locked</p>
+                )}
+                <select value={form.planId} onChange={set("planId")} className={cn(inputCls, planLocked && "opacity-75 bg-brand-50")} aria-label="Plan" disabled={planLocked}>
                   <option value="">Plan…</option>
                   {PLANS.map((p) => (
                     <option key={p.id} value={p.id}>
