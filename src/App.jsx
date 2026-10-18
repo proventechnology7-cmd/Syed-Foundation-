@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import WhatsAppFloat from "./components/WhatsAppFloat";
 import StickyMobileCTA from "./components/StickyMobileCTA";
+import { LeadPopupProvider } from "./components/LeadPopupContext";
 
 // Route-based code splitting: each page loads on demand,
 // shrinking the initial bundle for faster first paint.
@@ -34,6 +35,7 @@ export default function App() {
   return (
     <HashRouter>
       <ScrollManager />
+      <LeadPopupProvider>
       <div className="flex min-h-screen flex-col">
         <Navbar />
         <div className="flex-1">
@@ -52,6 +54,7 @@ export default function App() {
         <WhatsAppFloat />
         <StickyMobileCTA />
       </div>
+      </LeadPopupProvider>
     </HashRouter>
   );
 }

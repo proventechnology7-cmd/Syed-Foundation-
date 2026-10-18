@@ -1,7 +1,7 @@
 import * as React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 import { CalendarCheck } from "lucide-react";
 import { cn } from "../lib/utils";
+import { useLeadPopup } from "./LeadPopupContext";
 
 /**
  * Sticky bottom CTA bar — mobile only. Appears after scrolling past the hero,
@@ -9,8 +9,7 @@ import { cn } from "../lib/utils";
  */
 export default function StickyMobileCTA() {
   const [visible, setVisible] = React.useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
+  const { openPopup } = useLeadPopup();
 
   React.useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 600);
@@ -18,20 +17,6 @@ export default function StickyMobileCTA() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const go = () => {
-    const scroll = () =>
-      setTimeout(
-        () => document.getElementById("enroll")?.scrollIntoView({ behavior: "smooth", block: "start" }),
-        100
-      );
-    if (location.pathname !== "/") {
-      navigate("/");
-      scroll();
-    } else {
-      document.getElementById("enroll")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
 
   return (
     <div
@@ -43,9 +28,9 @@ export default function StickyMobileCTA() {
     >
       <button
         type="button"
-        onClick={go}
+        onClick={() => openPopup({ source: "sticky-mobile" })}
         tabIndex={visible ? 0 : -1}
-        className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-brand-700 text-sm font-bold text-white shadow transition active:scale-[0.98]"
+        className="btn-cta flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-brand-700 text-sm font-bold text-white shadow"
       >
         <CalendarCheck className="h-4 w-4" />
         Book Your Free Trial Class
