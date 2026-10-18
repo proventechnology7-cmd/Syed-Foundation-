@@ -4,7 +4,6 @@ import { POSTS } from "../data/blog";
 import { Badge } from "../components/ui/badge";
 import { Card, CardContent } from "../components/ui/card";
 import SectionHeading from "../components/SectionHeading";
-import GeometricPattern from "../components/GeometricPattern";
 import EnrollButton from "../components/EnrollButton";
 import Reveal from "../components/Reveal";
 
@@ -34,8 +33,7 @@ export default function Blog() {
 
   return (
     <main>
-      <section className="relative overflow-hidden bg-gradient-to-b from-brand-50 via-ivory to-ivory py-14 sm:py-20">
-        <GeometricPattern className="text-brand-800" opacity={0.06} />
+      <section className="relative overflow-hidden bg-gradient-to-b from-brand-50 via-ivory to-ivory py-10 sm:py-14">
         <div className="container-x relative">
           <Reveal>
             <SectionHeading
@@ -115,7 +113,6 @@ export default function Blog() {
 
           {/* Engagement CTA */}
           <Card className="relative mt-12 overflow-hidden bg-brand-950 text-white">
-            <GeometricPattern className="text-gold-400" opacity={0.07} />
             <CardContent className="relative flex flex-col items-center gap-4 p-8 text-center sm:p-10">
               <h3 className="max-w-xl text-2xl font-extrabold">Experience the 1-on-1 Advantage — For Free</h3>
               <p className="max-w-2xl text-sm leading-relaxed text-brand-100/85">

@@ -6,7 +6,6 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "../components/ui/tabs"
 import { Card, CardContent } from "../components/ui/card";
 import { Badge } from "../components/ui/badge";
 import SectionHeading from "../components/SectionHeading";
-import GeometricPattern from "../components/GeometricPattern";
 import EnrollButton from "../components/EnrollButton";
 import { cn } from "../lib/utils";
 import Reveal from "../components/Reveal";
@@ -82,8 +81,7 @@ export default function Pricing() {
 
   return (
     <main>
-      <section className="relative overflow-hidden bg-gradient-to-b from-brand-50 via-ivory to-ivory py-14 sm:py-20">
-        <GeometricPattern className="text-brand-800" opacity={0.06} />
+      <section className="relative overflow-hidden bg-gradient-to-b from-brand-50 via-ivory to-ivory py-10 sm:py-14">
         <div className="container-x relative">
           <Reveal>
             <SectionHeading

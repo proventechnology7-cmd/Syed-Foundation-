@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
 import { Compass, Home, MessageCircle } from "lucide-react";
 import { SITE } from "../data/site";
-import GeometricPattern from "../components/GeometricPattern";
 
 export default function NotFound() {
   return (
     <main className="relative overflow-hidden py-20 sm:py-28">
-      <GeometricPattern className="text-brand-800" opacity={0.05} />
       <div className="container-x relative text-center">
         <span className="hero-anim mx-auto flex h-20 w-20 items-center justify-center rounded-3xl bg-brand-100 text-brand-700" style={{ "--hero-delay": "0s" }}>
           <Compass className="h-10 w-10" />

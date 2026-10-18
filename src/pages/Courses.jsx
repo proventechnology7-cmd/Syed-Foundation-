@@ -4,7 +4,6 @@ import { COURSES } from "../data/courses";
 import { Badge } from "../components/ui/badge";
 import { Card } from "../components/ui/card";
 import SectionHeading from "../components/SectionHeading";
-import GeometricPattern from "../components/GeometricPattern";
 import EnrollButton from "../components/EnrollButton";
 import { cn } from "../lib/utils";
 import Reveal from "../components/Reveal";
@@ -14,8 +13,7 @@ const COURSE_ICONS = { BookOpen, BookMarked, Sparkles, Heart };
 export default function Courses() {
   return (
     <main>
-      <section className="relative overflow-hidden bg-gradient-to-b from-brand-50 via-ivory to-ivory py-14 sm:py-20">
-        <GeometricPattern className="text-brand-800" opacity={0.06} />
+      <section className="relative overflow-hidden bg-gradient-to-b from-brand-50 via-ivory to-ivory py-10 sm:py-14">
         <div className="container-x relative">
           <Reveal>
             <SectionHeading
@@ -40,7 +38,6 @@ export default function Courses() {
                         flip && "lg:order-2"
                       )}
                     >
-                      <GeometricPattern className="text-gold-400" opacity={0.06} />
                       <span className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-gold-400">
                         <Icon className="h-7 w-7" />
                       </span>

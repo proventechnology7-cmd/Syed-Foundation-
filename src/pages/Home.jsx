@@ -15,7 +15,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
 import { Accordion, AccordionItem } from "../components/ui/accordion";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../components/ui/tabs";
 import SectionHeading from "../components/SectionHeading";
-import GeometricPattern from "../components/GeometricPattern";
 import EnrollButton from "../components/EnrollButton";
 import EnrollmentForm, { DirectChannels } from "../components/EnrollmentForm";
 import Reveal from "../components/Reveal";
@@ -135,26 +134,6 @@ export default function Home() {
   const filtered = TESTIMONIALS.filter((t) => tab === "all" || t.category === tab);
   const { openPopup } = useLeadPopup();
 
-  // Cinematic floating particles in hero (GSAP-driven)
-  React.useEffect(() => {
-    const container = document.getElementById("hero-particles");
-    if (!container || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const N = 24;
-    for (let i = 0; i < N; i++) {
-      const p = document.createElement("span");
-      p.className = "particle";
-      const size = 3 + Math.random() * 7;
-      p.style.width = `${size}px`;
-      p.style.height = `${size}px`;
-      p.style.left = `${Math.random() * 100}%`;
-      p.style.bottom = `-20px`;
-      p.style.animationDuration = `${9 + Math.random() * 14}s`;
-      p.style.animationDelay = `${Math.random() * 14}s`;
-      container.appendChild(p);
-    }
-    return () => { container.innerHTML = ""; };
-  }, []);
-
   // Auto-popup: 3s after homepage load, at most once per 7 days
   React.useEffect(() => {
     const KEY = "sf-popup-last-shown";
@@ -174,32 +153,22 @@ export default function Home() {
 
   return (
     <main>
-      {/* ============ HERO with cinematic animated background ============ */}
+      {/* ============ HERO with video background ============ */}
       <section className="relative overflow-hidden bg-brand-950">
-        {/* Animated aurora background */}
-        <div className="absolute inset-0" aria-hidden="true">
-          <div className="aurora-blob aurora-1" />
-          <div className="aurora-blob aurora-2" />
-          <div className="aurora-blob aurora-3" />
-          {/* Islamic geometric pattern overlay */}
-          <svg className="absolute inset-0 h-full w-full opacity-[0.07]" aria-hidden="true">
-            <defs>
-              <pattern id="hero-pattern" width="72" height="72" patternUnits="userSpaceOnUse">
-                <g fill="none" stroke="#f0c44c" strokeWidth="1">
-                  <rect x="22" y="22" width="28" height="28" />
-                  <rect x="22" y="22" width="28" height="28" transform="rotate(45 36 36)" />
-                  <circle cx="36" cy="36" r="6" />
-                </g>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#hero-pattern)" />
-          </svg>
-          {/* Floating particles */}
-          <div className="particles" id="hero-particles" />
-        </div>
+        {/* Background video */}
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src="https://assets.mixkit.co/videos/34208/34208-720.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+        />
         {/* Dark gradient overlays for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-950/70 via-transparent to-brand-950/90" />
-        <div className="container-x relative py-16 sm:py-24 lg:py-28">
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-950/85 via-brand-950/60 to-brand-950/90" />
+        <div className="container-x relative py-12 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-4xl text-center">
             <p className="hero-anim font-arabic text-3xl leading-[1.9] text-gold-300 sm:text-4xl" style={{ "--hero-delay": "0s" }} dir="rtl" lang="ar">
               بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
@@ -253,7 +222,6 @@ export default function Home() {
       <section className="relative -mt-2 pb-4">
         <div className="container-x">
           <Card className="relative overflow-hidden border-brand-200 bg-gradient-to-r from-brand-900 via-brand-800 to-brand-900 text-white shadow-soft">
-            <GeometricPattern className="text-gold-400" opacity={0.07} />
             <CardContent className="relative flex flex-col gap-5 p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
               <div className="flex items-center gap-4">
                 <span className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/10">
@@ -295,7 +263,7 @@ export default function Home() {
       </section>
 
       {/* ============ COURSES PREVIEW ============ */}
-      <section id="courses" className="scroll-mt-24 py-14 sm:py-20">
+      <section id="courses" className="scroll-mt-24 py-10 sm:py-14">
         <div className="container-x">
           <Reveal>
             <SectionHeading
@@ -326,7 +294,7 @@ export default function Home() {
       </section>
 
       {/* ============ WHO IS THIS FOR ============ */}
-      <section className="py-14 sm:py-20">
+      <section className="py-10 sm:py-14">
         <div className="container-x">
           <Reveal>
             <SectionHeading
@@ -360,7 +328,6 @@ export default function Home() {
 
       {/* ============ ABOUT ============ */}
       <section id="about" className="relative scroll-mt-24 overflow-hidden bg-brand-950 py-14 text-white sm:py-20">
-        <GeometricPattern className="text-gold-400" opacity={0.07} />
         <div className="container-x relative grid items-center gap-10 lg:grid-cols-2">
           <div>
             <Badge variant="gold" className="mb-4">About the Academy</Badge>
@@ -396,7 +363,7 @@ export default function Home() {
       </section>
 
       {/* ============ 3-STEP PROCESS ============ */}
-      <section className="py-14 sm:py-20">
+      <section className="py-10 sm:py-14">
         <div className="container-x">
           <Reveal>
             <SectionHeading
@@ -428,8 +395,7 @@ export default function Home() {
       </section>
 
       {/* ============ WHY US ============ */}
-      <section id="why-us" className="relative scroll-mt-24 overflow-hidden bg-brand-50/60 py-14 sm:py-20">
-        <GeometricPattern className="text-brand-800" opacity={0.05} />
+      <section id="why-us" className="relative scroll-mt-24 overflow-hidden bg-brand-50/60 py-10 sm:py-14">
         <div className="container-x relative">
           <Reveal>
             <SectionHeading
@@ -464,7 +430,7 @@ export default function Home() {
       </section>
 
       {/* ============ MEET OUR TEACHERS ============ */}
-      <section className="py-14 sm:py-20">
+      <section className="py-10 sm:py-14">
         <div className="container-x">
           <Reveal>
             <SectionHeading
@@ -507,8 +473,7 @@ export default function Home() {
       </section>
 
       {/* ============ STATS ============ */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-brand-900 via-brand-800 to-brand-900 py-12 sm:py-16">
-        <GeometricPattern className="text-gold-400" opacity={0.07} />
+      <section className="relative overflow-hidden bg-gradient-to-r from-brand-900 via-brand-800 to-brand-900 py-8 sm:py-12">
         <div className="container-x relative">
           <p className="text-center text-sm font-bold uppercase tracking-[0.25em] text-gold-400">
             Credibility &amp; Experience
@@ -541,7 +506,7 @@ export default function Home() {
       </section>
 
       {/* ============ TESTIMONIALS ============ */}
-      <section className="py-14 sm:py-20">
+      <section className="py-10 sm:py-14">
         <div className="container-x">
           <Reveal>
             <SectionHeading
@@ -587,8 +552,7 @@ export default function Home() {
       </section>
 
       {/* ============ ENROLLMENT ============ */}
-      <section id="enroll" className="relative scroll-mt-24 overflow-hidden bg-brand-50/60 py-14 sm:py-20">
-        <GeometricPattern className="text-brand-800" opacity={0.05} />
+      <section id="enroll" className="relative scroll-mt-24 overflow-hidden bg-brand-50/60 py-10 sm:py-14">
         <div className="container-x relative">
           <Reveal>
             <SectionHeading
@@ -643,7 +607,7 @@ export default function Home() {
       </section>
 
       {/* ============ FAQ ============ */}
-      <section id="faqs" className="scroll-mt-24 py-14 sm:py-20">
+      <section id="faqs" className="scroll-mt-24 py-10 sm:py-14">
         <div className="container-x">
           <div className="mx-auto max-w-3xl">
             <Reveal>

@@ -4,7 +4,6 @@ import { POSTS } from "../data/blog";
 import { Badge } from "../components/ui/badge";
 import { Card, CardContent } from "../components/ui/card";
 import SectionHeading from "../components/SectionHeading";
-import GeometricPattern from "../components/GeometricPattern";
 import EnrollButton from "../components/EnrollButton";
 import Reveal from "../components/Reveal";
 
@@ -32,8 +31,7 @@ export default function BlogDetail() {
 
   return (
     <main>
-      <article className="relative overflow-hidden bg-gradient-to-b from-brand-50 via-ivory to-ivory py-12 sm:py-16">
-        <GeometricPattern className="text-brand-800" opacity={0.05} />
+      <article className="relative overflow-hidden bg-gradient-to-b from-brand-50 via-ivory to-ivory py-8 sm:py-12">
         <div className="container-x relative">
           <div className="mx-auto max-w-3xl">
             <Link to="/blog" className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 hover:text-brand-900">
@@ -87,7 +85,7 @@ export default function BlogDetail() {
       </article>
 
       {/* Related posts */}
-      <section className="py-12 sm:py-16">
+      <section className="py-8 sm:py-12">
         <div className="container-x">
           <SectionHeading eyebrow="Keep Reading" title="More Quranic Insights" align="left" className="mx-0" />
           <div className="mt-8 grid gap-6 md:grid-cols-3">

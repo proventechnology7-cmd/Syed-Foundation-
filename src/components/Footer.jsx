@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { MessageCircle, Mail, Clock, ChevronRight } from "lucide-react";
 import { SITE } from "../data/site";
-import GeometricPattern from "./GeometricPattern";
 import SectionLink from "./SectionLink";
 import logo from "../assets/logo.jpg";
 
@@ -25,7 +24,6 @@ const PROGRAMS = [
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-brand-950 text-brand-100">
-      <GeometricPattern className="text-gold-400" opacity={0.06} />
       <div className="container-x relative py-14 sm:py-16">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
