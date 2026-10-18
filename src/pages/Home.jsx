@@ -155,8 +155,8 @@ export default function Home() {
   React.useLayoutEffect(() => {
     const tween = gsap.fromTo(
       ".hero-anim",
-      { opacity: 0, y: 36 },
-      { opacity: 1, y: 0, duration: 1, stagger: 0.13, ease: "power3.out" }
+      { opacity: 0, y: 80 },
+      { opacity: 1, y: 0, duration: 1.6, stagger: 0.22, ease: "power3.out" }
     );
     return () => {
       tween.kill();
