@@ -142,7 +142,7 @@ export default function Home() {
             <p className="font-arabic text-3xl leading-[1.9] text-brand-800 sm:text-4xl" dir="rtl" lang="ar">
               بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
             </p>
-            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.25em] text-gold-600">
+            <p className="mt-8 text-xs font-semibold uppercase tracking-[0.25em] text-gold-600">
               In the name of Allah, the Most Gracious, the Most Merciful
             </p>
             <h1 className="mt-6 text-4xl font-extrabold leading-[1.15] tracking-tight text-brand-950 sm:text-5xl lg:text-6xl">
