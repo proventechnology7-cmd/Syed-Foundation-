@@ -5,6 +5,7 @@ import { Badge } from "../components/ui/badge";
 import { Card } from "../components/ui/card";
 import SectionHeading from "../components/SectionHeading";
 import EnrollButton from "../components/EnrollButton";
+import CourseArt from "../components/CourseArt";
 import { cn } from "../lib/utils";
 import Reveal from "../components/Reveal";
 
@@ -38,6 +39,9 @@ export default function Courses() {
                         flip && "lg:order-2"
                       )}
                     >
+                      <div className="absolute inset-0 opacity-40">
+                        <CourseArt slug={course.slug} className="h-full w-full" />
+                      </div>
                       <span className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-gold-400">
                         <Icon className="h-7 w-7" />
                       </span>
