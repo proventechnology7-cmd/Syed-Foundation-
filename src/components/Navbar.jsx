@@ -24,7 +24,7 @@ export default function Navbar() {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, [location.pathname]);
 
-  // Transparent only on home hero; solid dark elsewhere for readability
+  // Transparent only on home hero; light solid elsewhere for readability
   const transparent = isHome && !scrolled;
 
   return (
@@ -33,7 +33,7 @@ export default function Navbar() {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         transparent
           ? "bg-transparent border-b border-transparent"
-          : "bg-brand-950/92 shadow-lg backdrop-blur-xl border-b border-gold-400/20"
+          : "bg-ivory/95 shadow-card backdrop-blur-xl border-b border-brand-100"
       )}
     >
       <div className="container-x flex h-16 sm:h-20 items-center justify-between gap-4">
@@ -55,8 +55,8 @@ export default function Navbar() {
             <span className="absolute -inset-1 -z-10 rounded-2xl bg-gold-400/20 blur-md transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
           </span>
           <span className="leading-tight">
-            <span className="block font-display text-base font-normal text-white sm:text-lg">Syed Foundation</span>
-            <span className="block text-[10px] font-bold uppercase tracking-[0.22em] text-gold-400 sm:text-[11px]">
+            <span className={cn("block font-display text-base font-normal sm:text-lg", transparent ? "text-white" : "text-brand-950")}>Syed Foundation</span>
+            <span className={cn("block text-[10px] font-bold uppercase tracking-[0.22em] sm:text-[11px]", transparent ? "text-gold-400" : "text-gold-600")}>
               Academy
             </span>
           </span>
@@ -71,8 +71,12 @@ export default function Navbar() {
                 cn(
                   "rounded-xl px-4 py-2 text-sm font-semibold transition-all duration-200",
                   isActive
-                    ? "scale-[1.04] bg-gold-400 text-brand-950 shadow-lg"
-                    : "text-white/85 hover:scale-[1.02] hover:bg-white/10 hover:text-white"
+                    ? transparent
+                      ? "scale-[1.04] bg-gold-400 text-brand-950 shadow-lg"
+                      : "scale-[1.04] bg-brand-700 text-white shadow-card"
+                    : transparent
+                      ? "text-white/85 hover:scale-[1.02] hover:bg-white/10 hover:text-white"
+                      : "text-brand-950 hover:scale-[1.02] hover:bg-brand-50 hover:text-brand-900"
                 )
               }
             >
@@ -87,7 +91,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-xl text-white hover:bg-white/10 lg:hidden"
+          className={cn("flex h-10 w-10 items-center justify-center rounded-xl lg:hidden", transparent ? "text-white hover:bg-white/10" : "text-brand-950 hover:bg-brand-100")}
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
@@ -99,7 +103,8 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div
         className={cn(
-          "grid overflow-hidden border-b border-gold-400/20 bg-brand-950/95 backdrop-blur-xl transition-all duration-300 lg:hidden",
+          "grid overflow-hidden transition-all duration-300 lg:hidden",
+          transparent ? "border-b border-gold-400/20 bg-brand-950/95 backdrop-blur-xl" : "border-b border-brand-100 bg-ivory/95 backdrop-blur-xl",
           open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0 border-b-0"
         )}
       >
@@ -113,8 +118,12 @@ export default function Navbar() {
                   cn(
                     "rounded-xl px-4 py-3 text-base font-semibold transition-all duration-200",
                     isActive
-                      ? "scale-[1.02] bg-gold-400 text-brand-950 shadow-lg"
-                      : "text-white/85 hover:bg-white/10 hover:text-white"
+                      ? transparent
+                        ? "scale-[1.02] bg-gold-400 text-brand-950 shadow-lg"
+                        : "scale-[1.02] bg-brand-700 text-white shadow-card"
+                      : transparent
+                        ? "text-white/85 hover:bg-white/10 hover:text-white"
+                        : "text-brand-950 hover:bg-brand-50 hover:text-brand-900"
                   )
                 }
               >

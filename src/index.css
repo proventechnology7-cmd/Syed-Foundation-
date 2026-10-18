@@ -285,16 +285,6 @@ a, button {
 
 /* ===== PREMIUM LUXURY DETAILS ===== */
 
-/* Gold top border for the entire site */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #b8860b 0%, #f0c44c 25%, #fff3c4 50%, #f0c44c 75%, #b8860b 100%);
-  z-index: 9999;
-}
-
 /* Premium gold gradient button */
 .btn-gold {
   background: linear-gradient(135deg, #d4a017 0%, #f0c44c 40%, #e8b923 70%, #c9930a 100%);
