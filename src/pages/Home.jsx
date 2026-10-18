@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
+import gsap from "gsap";
 import {
   BadgeCheck, Clock, Globe2, Star, MessageCircle, BookOpen, BookMarked, Sparkles, Heart,
   Target, HeartHandshake, ChevronRight, GraduationCap, Users, CalendarClock, UserCheck,
@@ -18,6 +19,8 @@ import SectionHeading from "../components/SectionHeading";
 import GeometricPattern from "../components/GeometricPattern";
 import EnrollButton from "../components/EnrollButton";
 import EnrollmentForm, { DirectChannels } from "../components/EnrollmentForm";
+import Reveal from "../components/Reveal";
+import { useLeadPopup } from "../components/LeadPopupContext";
 import { cn } from "../lib/utils";
 
 const COURSE_ICONS = { BookOpen, BookMarked, Sparkles, Heart };
@@ -131,6 +134,34 @@ function CourseCard({ course }) {
 export default function Home() {
   const [tab, setTab] = React.useState("all");
   const filtered = TESTIMONIALS.filter((t) => tab === "all" || t.category === tab);
+  const { openPopup } = useLeadPopup();
+
+  // Auto-popup: 3s after homepage load, at most once per 7 days
+  React.useEffect(() => {
+    const KEY = "sf-popup-last-shown";
+    const last = parseInt(localStorage.getItem(KEY) || "0", 10);
+    if (Date.now() - last > 7 * 24 * 60 * 60 * 1000) {
+      const t = setTimeout(() => {
+        openPopup({ source: "auto-popup" });
+        try {
+          localStorage.setItem(KEY, Date.now().toString());
+        } catch {}
+      }, 3000);
+      return () => clearTimeout(t);
+    }
+  }, [openPopup]);
+
+  // Hero entrance: staggered GSAP timeline
+  React.useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".hero-anim",
+        { opacity: 0, y: 36 },
+        { opacity: 1, y: 0, duration: 0.9, stagger: 0.12, ease: "power3.out" }
+      );
+    });
+    return () => ctx.revert();
+  }, []);
 
   return (
     <main>
@@ -139,30 +170,30 @@ export default function Home() {
         <GeometricPattern className="text-brand-800" opacity={0.06} />
         <div className="container-x relative py-14 sm:py-20 lg:py-24">
           <div className="mx-auto max-w-4xl text-center">
-            <p className="font-arabic text-3xl leading-[1.9] text-brand-800 sm:text-4xl" dir="rtl" lang="ar">
+            <p className="hero-anim font-arabic text-3xl leading-[1.9] text-brand-800 sm:text-4xl" dir="rtl" lang="ar">
               بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
             </p>
-            <p className="mt-8 text-xs font-semibold uppercase tracking-[0.25em] text-gold-600">
+            <p className="hero-anim mt-4 text-xs font-semibold uppercase tracking-[0.25em] text-gold-600">
               In the name of Allah, the Most Gracious, the Most Merciful
             </p>
-            <h1 className="mt-6 text-4xl font-extrabold leading-[1.15] tracking-tight text-brand-950 sm:text-5xl lg:text-6xl">
+            <h1 className="hero-anim mt-6 text-4xl font-extrabold leading-[1.15] tracking-tight text-brand-950 sm:text-5xl lg:text-6xl">
               Learn Quran Online with{" "}
               <span className="text-brand-700 sm:whitespace-nowrap">
                 Syed Foundation Academy
               </span>{" "}
               and Master Tajweed
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-stone-600 sm:text-lg">
+            <p className="hero-anim mx-auto mt-6 max-w-2xl text-base leading-relaxed text-stone-600 sm:text-lg">
               Connect live with highly learned tutors. Experience personalized, safe, 1-on-1 sessions designed with
               expert care for kids and adults — across the US, Gulf and Australia.
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="hero-anim mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <EnrollButton size="lg" className="w-full sm:w-auto" />
               <a
                 href={SITE.whatsapp}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-8 text-base font-semibold text-white shadow transition hover:brightness-95 active:scale-[0.98] sm:w-auto"
+                className="btn-cta inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-8 text-base font-semibold text-white shadow transition hover:brightness-95 sm:w-auto"
               >
                 <MessageCircle className="h-5 w-5" />
                 Chat on WhatsApp
@@ -171,7 +202,7 @@ export default function Home() {
           </div>
 
           {/* Trust badges */}
-          <div className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="hero-anim mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {TRUST_BADGES.map((b) => (
               <div key={b.title} className="flex items-center gap-3 rounded-2xl border border-brand-100 bg-white/80 p-4 shadow-card backdrop-blur">
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-700 text-gold-400">
@@ -235,11 +266,13 @@ export default function Home() {
       {/* ============ COURSES PREVIEW ============ */}
       <section id="courses" className="scroll-mt-24 py-14 sm:py-20">
         <div className="container-x">
-          <SectionHeading
+          <Reveal>
+            <SectionHeading
             eyebrow="Our Programs"
             title="Our Elite Online Quran Academy Programs"
             subtitle="Each course syllabus is masterfully optimized for youngsters, school children, and remote beginners — ensuring beautiful Arabic recitation with expert live focus."
-          />
+            />
+          </Reveal>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
             {COURSES.map((c) => <CourseCard key={c.slug} course={c} />)}
           </div>
@@ -264,11 +297,13 @@ export default function Home() {
       {/* ============ WHO IS THIS FOR ============ */}
       <section className="py-14 sm:py-20">
         <div className="container-x">
-          <SectionHeading
+          <Reveal>
+            <SectionHeading
             eyebrow="Made For You"
             title="Who Are These Classes For?"
             subtitle="Whether you're 4 or 74, a complete beginner or polishing your Tajweed — there's a path designed around your life."
-          />
+            />
+          </Reveal>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { icon: Baby, title: "Kids Ages 4+", text: "Noorani Qaida through fun, interactive lessons that keep young minds engaged and loving the Quran." },
@@ -330,10 +365,12 @@ export default function Home() {
       {/* ============ 3-STEP PROCESS ============ */}
       <section className="py-14 sm:py-20">
         <div className="container-x">
-          <SectionHeading
+          <Reveal>
+            <SectionHeading
             eyebrow="The Simplest Process"
             title="Begin Your Path in 3 Elegant Steps"
-          />
+            />
+          </Reveal>
           <div className="relative mt-12 grid gap-6 md:grid-cols-3">
             <div className="absolute left-0 right-0 top-10 hidden h-0.5 bg-gradient-to-r from-transparent via-brand-200 to-transparent md:block" aria-hidden="true" />
             {[
@@ -361,11 +398,13 @@ export default function Home() {
       <section id="why-us" className="relative scroll-mt-24 overflow-hidden bg-brand-50/60 py-14 sm:py-20">
         <GeometricPattern className="text-brand-800" opacity={0.05} />
         <div className="container-x relative">
-          <SectionHeading
+          <Reveal>
+            <SectionHeading
             eyebrow="Academy Advancements"
             title="Why Hundreds of Worldwide Families Empower Their Kids via Syed Foundation Academy"
             subtitle="Our academy prioritizes professional teacher evaluations, scheduling convenience, verified certifications, and interactive spaces designed for success."
-          />
+            />
+          </Reveal>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { icon: GraduationCap, title: "Certified Expert Tutors", text: "Learn from highly qualified, certified educators who graduated from prestigious Islamic institutions and hold verified academic credentials." },
@@ -394,11 +433,13 @@ export default function Home() {
       {/* ============ MEET OUR TEACHERS ============ */}
       <section className="py-14 sm:py-20">
         <div className="container-x">
-          <SectionHeading
+          <Reveal>
+            <SectionHeading
             eyebrow="Learn From The Best"
             title="Meet Your Quran Teachers"
             subtitle="Every tutor is hand-picked, background-verified, and certified — so your family learns from teachers you can trust completely."
-          />
+            />
+          </Reveal>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { icon: Mic, role: "Qari", focus: "Tajweed & Qira'at Specialist", points: ["Ijazah-certified in Hafs recitation", "10+ years teaching experience", "Makharij & Sifaat mastery"] },
@@ -467,11 +508,13 @@ export default function Home() {
       {/* ============ TESTIMONIALS ============ */}
       <section className="py-14 sm:py-20">
         <div className="container-x">
-          <SectionHeading
+          <Reveal>
+            <SectionHeading
             eyebrow="Success Stories"
             title="Hear From Our Quran Learners"
             subtitle="Discover how school children and adults are improving Arabic letter articulation and Tajweed rules at home."
-          />
+            />
+          </Reveal>
           <Tabs value={tab} onValueChange={setTab} className="mt-8">
             <div className="flex justify-center">
               <TabsList>
@@ -510,11 +553,13 @@ export default function Home() {
       <section id="enroll" className="relative scroll-mt-24 overflow-hidden bg-brand-50/60 py-14 sm:py-20">
         <GeometricPattern className="text-brand-800" opacity={0.05} />
         <div className="container-x relative">
-          <SectionHeading
+          <Reveal>
+            <SectionHeading
             eyebrow="Secure Enrollment Hub"
             title="Schedule Your Free Trial Lesson"
             subtitle="Join risk-free. No credit card required. Our coordinator sets up direct class coordination on WhatsApp within 12 hours."
-          />
+            />
+          </Reveal>
 
           <div className="mx-auto mt-8 grid max-w-4xl gap-4 md:grid-cols-3">
             {[
@@ -564,11 +609,13 @@ export default function Home() {
       <section id="faqs" className="scroll-mt-24 py-14 sm:py-20">
         <div className="container-x">
           <div className="mx-auto max-w-3xl">
+            <Reveal>
             <SectionHeading
               eyebrow="Got Questions?"
               title="Frequently Asked Questions"
               subtitle="Find immediate answers regarding lesson formats, teacher gender options, scheduling flexibility, and billing."
-            />
+              />
+          </Reveal>
             <Accordion className="mt-8">
               {FAQS.map((f, i) => (
                 <AccordionItem key={f.question} question={f.question} defaultOpen={i === 0}>
