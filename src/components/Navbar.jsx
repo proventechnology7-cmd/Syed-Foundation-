@@ -33,7 +33,19 @@ export default function Navbar() {
       )}
     >
       <div className="container-x flex h-16 sm:h-20 items-center justify-between gap-4">
-        <Link to="/" className="group flex shrink-0 items-center gap-2.5" aria-label={`${SITE.name} home`}>
+        <a
+          href="/"
+          className="group flex shrink-0 items-center gap-2.5"
+          aria-label={`${SITE.name} home`}
+          onClick={(e) => {
+            // Full refresh + scroll to top on logo click
+            if (window.location.pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              window.location.reload();
+            }
+          }}
+        >
           <span className="relative">
             <img src={logo} alt={SITE.name} className="h-10 w-10 rounded-xl object-cover shadow-card ring-2 ring-gold-400/60 transition-all duration-300 group-hover:scale-105 group-hover:ring-gold-400 sm:h-12 sm:w-12" width="48" height="48" />
             <span className="absolute -inset-1 -z-10 rounded-2xl bg-gold-400/20 blur-md transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
@@ -44,7 +56,7 @@ export default function Navbar() {
               Academy
             </span>
           </span>
-        </Link>
+        </a>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
           {NAV_LINKS.map((l) => (

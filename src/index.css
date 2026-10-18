@@ -282,3 +282,75 @@ a, button {
 @media (prefers-reduced-motion: reduce) {
   .aurora-blob, .particle { animation: none; }
 }
+
+/* ===== PREMIUM LUXURY DETAILS ===== */
+
+/* Gold top border for the entire site */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #b8860b 0%, #f0c44c 25%, #fff3c4 50%, #f0c44c 75%, #b8860b 100%);
+  z-index: 9999;
+}
+
+/* Premium gold gradient button */
+.btn-gold {
+  background: linear-gradient(135deg, #d4a017 0%, #f0c44c 40%, #e8b923 70%, #c9930a 100%);
+  color: #1a1a1a;
+  font-weight: 700;
+  box-shadow: 0 8px 24px -6px rgba(212, 160, 23, 0.5), inset 0 1px 0 rgba(255,255,255,0.4);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.btn-gold:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 16px 36px -8px rgba(212, 160, 23, 0.65), inset 0 1px 0 rgba(255,255,255,0.5);
+}
+.btn-gold:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+/* Dramatic section eyebrow */
+.eyebrow-lux {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.1rem;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, rgba(240,196,76,0.14) 0%, rgba(240,196,76,0.06) 100%);
+  border: 1px solid rgba(240,196,76,0.35);
+  color: #b8860b;
+}
+
+/* Premium card with layered depth */
+.card-premium {
+  background: #ffffff;
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 16px -4px rgba(6, 42, 28, 0.08), 0 12px 32px -12px rgba(6, 42, 28, 0.12);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+.card-premium::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(240,196,76,0.7), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.card-premium:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px -6px rgba(6, 42, 28, 0.14), 0 24px 48px -16px rgba(6, 42, 28, 0.18);
+  border-color: rgba(212, 175, 55, 0.45);
+}
+.card-premium:hover::after {
+  opacity: 1;
+}
