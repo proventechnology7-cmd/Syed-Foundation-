@@ -91,11 +91,11 @@ export default function BlogDetail() {
         <div className="container-x">
           <SectionHeading eyebrow="Keep Reading" title="More Quranic Insights" align="left" className="mx-0" />
           <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {related.map((r) => (
+            {related.map((r, i) => (
+              <Reveal key={r.slug} delay={Math.min(i * 0.08, 0.24)}>
               <Link
-                key={r.slug}
                 to={`/blog/${r.slug}`}
-                className="group rounded-2xl border border-brand-100 bg-white p-6 shadow-card transition hover:-translate-y-1 hover:shadow-soft"
+                className="group block h-full rounded-2xl border border-brand-100 bg-white p-6 shadow-card smooth-card"
               >
                 <Badge variant="secondary">{r.category}</Badge>
                 <h3 className="mt-3 font-extrabold leading-snug text-brand-950 group-hover:text-brand-700">{r.title}</h3>
@@ -104,6 +104,7 @@ export default function BlogDetail() {
                   Read <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </span>
               </Link>
+              </Reveal>
             ))}
           </div>
         </div>

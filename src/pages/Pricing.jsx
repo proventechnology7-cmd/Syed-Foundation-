@@ -17,7 +17,7 @@ function PlanCard({ plan, region }) {
   return (
     <Card
       className={cn(
-        "relative flex flex-col overflow-hidden transition-all hover:-translate-y-1 hover:shadow-soft",
+        "relative flex flex-col overflow-hidden smooth-card",
         plan.popular && "border-2 border-gold-400 shadow-soft"
       )}
     >

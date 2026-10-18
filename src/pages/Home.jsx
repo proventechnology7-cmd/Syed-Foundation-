@@ -301,14 +301,16 @@ export default function Home() {
               { icon: Heart, title: "Sisters", text: "Learn comfortably with qualified, patient female Quran teachers in a safe one-on-one setting." },
               { icon: BookMarked, title: "Hifz Students", text: "Structured memorization with daily revision cycles (Sabaq, Sabqi, Manzil) guided by certified Huffaz." },
               { icon: Sparkles, title: "New Muslims", text: "A warm, judgment-free start: Salah, essential Duas, and Quran reading foundations at your own pace." },
-            ].map((a) => (
-              <Card key={a.title} className="p-6 transition hover:-translate-y-1 hover:shadow-soft">
+            ].map((a, i) => (
+              <Reveal key={a.title} delay={Math.min(i * 0.08, 0.4)}>
+              <Card className="p-6 h-full card-lift">
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold-400/20 text-gold-600">
                   <a.icon className="h-6 w-6" />
                 </span>
                 <h3 className="mt-4 font-bold text-brand-950">{a.title}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-stone-600">{a.text}</p>
               </Card>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -435,8 +437,9 @@ export default function Home() {
               { icon: HeartHandshake, role: "Qaria", focus: "Kids & Sisters Specialist", points: ["Certified female Quran teacher", "Patient, child-friendly approach", "Ideal for daughters & sisters"] },
               { icon: BookMarked, role: "Hafiz", focus: "Hifz Program Lead", points: ["Completed Quran memorization", "Structured Sabaq revision system", "Tracks every student's progress"] },
               { icon: Languages, role: "Mentor", focus: "Islamic Foundations Guide", points: ["Salah, Duas & Seerah for kids", "Fluent English, Urdu & Arabic", "New-Muslim friendly teaching"] },
-            ].map((t) => (
-              <Card key={t.role} className="flex flex-col p-6 text-center transition hover:-translate-y-1 hover:shadow-soft">
+            ].map((t, i) => (
+              <Reveal key={t.role} delay={Math.min(i * 0.08, 0.32)}>
+              <Card className="flex h-full flex-col p-6 text-center card-lift">
                 <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brand-700 text-gold-400">
                   <t.icon className="h-8 w-8" />
                 </span>
@@ -451,6 +454,7 @@ export default function Home() {
                   ))}
                 </ul>
               </Card>
+              </Reveal>
             ))}
           </div>
           <p className="mx-auto mt-8 flex max-w-2xl items-start justify-center gap-2 text-center text-sm text-stone-600">
@@ -514,8 +518,9 @@ export default function Home() {
             </div>
             <TabsContent value={tab} className="mt-8">
               <div className="grid gap-6 md:grid-cols-2">
-                {filtered.map((t) => (
-                  <Card key={t.name} className="flex flex-col p-6 sm:p-7">
+                {filtered.map((t, i) => (
+                  <Reveal key={t.name} delay={Math.min(i * 0.08, 0.24)}>
+                  <Card className="flex h-full flex-col p-6 sm:p-7 card-lift">
                     <Quote className="h-8 w-8 text-gold-400" />
                     <p className="mt-3 flex-1 text-sm leading-relaxed text-stone-600 sm:text-[15px]">"{t.quote}"</p>
                     <div className="mt-5 flex items-center gap-3 border-t border-brand-100 pt-5">
@@ -531,6 +536,7 @@ export default function Home() {
                       </span>
                     </div>
                   </Card>
+                  </Reveal>
                 ))}
               </div>
             </TabsContent>
