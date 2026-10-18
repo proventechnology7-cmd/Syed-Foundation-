@@ -1,17 +1,17 @@
 import * as React from "react";
 import { cn } from "../../lib/utils";
 
+const TabsContext = React.createContext(null);
+
 function Tabs({ value, onValueChange, children, className }) {
   return (
-    <div className={className}>
-      {React.Children.map(children, (child) =>
-        React.isValidElement(child) ? React.cloneElement(child, { value, onValueChange }) : child
-      )}
-    </div>
+    <TabsContext.Provider value={{ value, onValueChange }}>
+      <div className={className}>{children}</div>
+    </TabsContext.Provider>
   );
 }
 
-function TabsList({ value, onValueChange, children, className }) {
+function TabsList({ children, className }) {
   return (
     <div
       role="tablist"
@@ -20,21 +20,20 @@ function TabsList({ value, onValueChange, children, className }) {
         className
       )}
     >
-      {React.Children.map(children, (child) =>
-        React.isValidElement(child) ? React.cloneElement(child, { value, onValueChange }) : child
-      )}
+      {children}
     </div>
   );
 }
 
-function TabsTrigger({ value: triggerValue, value, onValueChange, children, className }) {
-  const active = triggerValue === value;
+function TabsTrigger({ value: triggerValue, children, className }) {
+  const ctx = React.useContext(TabsContext);
+  const active = ctx ? ctx.value === triggerValue : false;
   return (
     <button
       type="button"
       role="tab"
       aria-selected={active}
-      onClick={() => onValueChange?.(triggerValue)}
+      onClick={() => ctx?.onValueChange?.(triggerValue)}
       className={cn(
         "rounded-xl px-4 py-2 text-sm font-semibold transition-all sm:px-5",
         active ? "bg-white text-brand-900 shadow-card" : "text-brand-700/70 hover:text-brand-900",
@@ -46,8 +45,9 @@ function TabsTrigger({ value: triggerValue, value, onValueChange, children, clas
   );
 }
 
-function TabsContent({ value: contentValue, value, children, className }) {
-  if (contentValue !== value) return null;
+function TabsContent({ value: contentValue, children, className }) {
+  const ctx = React.useContext(TabsContext);
+  if (ctx && contentValue !== undefined && contentValue !== ctx.value) return null;
   return <div className={cn("animate-rise-in", className)}>{children}</div>;
 }
 
