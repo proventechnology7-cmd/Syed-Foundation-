@@ -320,27 +320,30 @@ a, button {
 /* Premium card with layered depth */
 .card-premium {
   background: #ffffff;
-  border: 1px solid rgba(212, 175, 55, 0.22);
-  border-radius: 1.25rem;
-  box-shadow: 0 4px 16px -4px rgba(6, 42, 28, 0.08), 0 12px 32px -12px rgba(6, 42, 28, 0.12);
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  border: 1px solid rgba(6, 42, 28, 0.08);
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 8px -2px rgba(6, 42, 28, 0.06), 0 16px 40px -16px rgba(6, 42, 28, 0.12);
+  transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   position: relative;
-  overflow: hidden;
 }
-.card-premium::after {
+.card-premium::before {
   content: "";
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, rgba(240,196,76,0.7), transparent);
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(135deg, rgba(240,196,76,0.6), rgba(240,196,76,0.05) 40%, rgba(240,196,76,0.05) 60%, rgba(240,196,76,0.6));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
 }
 .card-premium:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 28px -6px rgba(6, 42, 28, 0.14), 0 24px 48px -16px rgba(6, 42, 28, 0.18);
-  border-color: rgba(212, 175, 55, 0.45);
+  transform: translateY(-10px) scale(1.015);
+  box-shadow: 0 8px 20px -6px rgba(6, 42, 28, 0.1), 0 32px 64px -20px rgba(6, 42, 28, 0.2);
 }
-.card-premium:hover::after {
+.card-premium:hover::before {
   opacity: 1;
 }

@@ -228,7 +228,7 @@ export default function Home() {
         />
         {/* Dark gradient overlays for text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-brand-950/85 via-brand-950/60 to-brand-950/90" />
-        <div className="container-x relative py-12 sm:py-16 lg:py-20">
+        <div className="container-x relative flex min-h-screen flex-col justify-center py-24 sm:py-28">
           <div className="mx-auto max-w-4xl text-center">
             <p className="hero-anim font-arabic text-3xl leading-[1.9] text-gold-300 sm:text-4xl" style={{ "--hero-delay": "0s" }} dir="rtl" lang="ar">
               بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
