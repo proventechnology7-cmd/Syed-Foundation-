@@ -145,13 +145,10 @@ export default function Home() {
             <p className="mt-2 text-xs font-semibold uppercase tracking-[0.25em] text-gold-600">
               In the name of Allah, the Most Gracious, the Most Merciful
             </p>
-            <h1 className="mt-6 text-4xl font-extrabold leading-[1.12] tracking-tight text-brand-950 sm:text-5xl lg:text-6xl">
+            <h1 className="mt-6 text-4xl font-extrabold leading-[1.15] tracking-tight text-brand-950 sm:text-5xl lg:text-6xl">
               Learn Quran Online with{" "}
-              <span className="relative text-brand-700 sm:whitespace-nowrap">
+              <span className="text-brand-700 sm:whitespace-nowrap">
                 Syed Foundation Academy
-                <svg viewBox="0 0 320 12" preserveAspectRatio="none" className="absolute -bottom-2 left-0 h-3 w-full text-gold-400" aria-hidden="true">
-                  <path d="M4 8 C 80 2, 240 2, 316 8" stroke="currentColor" strokeWidth="5" fill="none" strokeLinecap="round" />
-                </svg>
               </span>{" "}
               and Master Tajweed
             </h1>
