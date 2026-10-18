@@ -110,9 +110,9 @@ export default function Pricing() {
               </p>
             )}
             <TabsContent value={regionId} className="mt-8">
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <div key={regionId} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {PLANS.map((p, i) => (
-                  <Reveal key={p.id} delay={Math.min(i * 0.08, 0.4)}>
+                  <Reveal key={p.id} delay={Math.min(i * 0.07, 0.35)} replay={false}>
                     <PlanCard plan={p} region={region} />
                   </Reveal>
                 ))}

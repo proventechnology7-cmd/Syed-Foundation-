@@ -33,10 +33,13 @@ export default function Navbar() {
       )}
     >
       <div className="container-x flex h-16 sm:h-20 items-center justify-between gap-4">
-        <Link to="/" className="flex shrink-0 items-center gap-2.5" aria-label={`${SITE.name} home`}>
-          <img src={logo} alt={SITE.name} className="h-10 w-10 rounded-xl object-cover shadow-card sm:h-12 sm:w-12" width="48" height="48" />
+        <Link to="/" className="group flex shrink-0 items-center gap-2.5" aria-label={`${SITE.name} home`}>
+          <span className="relative">
+            <img src={logo} alt={SITE.name} className="h-10 w-10 rounded-xl object-cover shadow-card ring-2 ring-gold-400/60 transition-all duration-300 group-hover:scale-105 group-hover:ring-gold-400 sm:h-12 sm:w-12" width="48" height="48" />
+            <span className="absolute -inset-1 -z-10 rounded-2xl bg-gold-400/20 blur-md transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
+          </span>
           <span className="leading-tight">
-            <span className="block text-base font-extrabold text-brand-950 sm:text-lg">Syed Foundation</span>
+            <span className="block font-display text-base font-normal text-brand-950 sm:text-lg">Syed Foundation</span>
             <span className="block text-[10px] font-bold uppercase tracking-[0.22em] text-gold-600 sm:text-[11px]">
               Academy
             </span>

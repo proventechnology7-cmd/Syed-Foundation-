@@ -29,6 +29,8 @@ export default {
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
         arabic: ['"Amiri"', "serif"],
+        display: ['"Marcellus"', '"Cormorant Garamond"', "serif"],
+        elegant: ['"Cormorant Garamond"', "serif"],
       },
       boxShadow: {
         soft: "0 10px 40px -12px rgba(6, 42, 28, 0.18)",

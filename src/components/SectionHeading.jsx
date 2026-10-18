@@ -27,7 +27,7 @@ export default function SectionHeading({
       )}
       <h2
         className={cn(
-          "heading-hover text-3xl font-extrabold tracking-tight sm:text-4xl",
+          "heading-hover font-display text-3xl font-normal tracking-tight sm:text-4xl",
           dark ? "text-white" : "text-brand-950"
         )}
       >

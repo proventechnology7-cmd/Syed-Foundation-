@@ -154,25 +154,33 @@ export default function Home() {
 
   return (
     <main>
-      {/* ============ HERO ============ */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-brand-50 via-ivory to-ivory">
-        <GeometricPattern className="text-brand-800" opacity={0.06} />
-        <div className="container-x relative py-14 sm:py-20 lg:py-24">
+      {/* ============ HERO with cinematic Ken Burns background ============ */}
+      <section className="relative overflow-hidden bg-brand-950">
+        {/* Cinematic crossfading background (video-like motion) */}
+        <div className="kenburns-wrap absolute inset-0" aria-hidden="true">
+          <div className="kenburns-slide" style={{ animationDelay: "0s" }} />
+          <div className="kenburns-slide" style={{ animationDelay: "8s" }} />
+          <div className="kenburns-slide" style={{ animationDelay: "16s" }} />
+        </div>
+        {/* Dark gradient overlays for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-950/80 via-brand-950/55 to-brand-950/85" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(6,42,28,0.45)_100%)]" />
+        <div className="container-x relative py-16 sm:py-24 lg:py-28">
           <div className="mx-auto max-w-4xl text-center">
-            <p className="hero-anim font-arabic text-3xl leading-[1.9] text-brand-800 sm:text-4xl" style={{ "--hero-delay": "0s" }} dir="rtl" lang="ar">
+            <p className="hero-anim font-arabic text-3xl leading-[1.9] text-gold-300 sm:text-4xl" style={{ "--hero-delay": "0s" }} dir="rtl" lang="ar">
               بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
             </p>
-            <p className="hero-anim mt-4 text-xs font-semibold uppercase tracking-[0.25em] text-gold-600" style={{ "--hero-delay": "0.1s" }}>
+            <p className="hero-anim mt-4 text-xs font-semibold uppercase tracking-[0.25em] text-gold-400" style={{ "--hero-delay": "0.1s" }}>
               In the name of Allah, the Most Gracious, the Most Merciful
             </p>
-            <h1 className="hero-anim mt-6 text-4xl font-extrabold leading-[1.15] tracking-tight text-brand-950 sm:text-5xl lg:text-6xl" style={{ "--hero-delay": "0.22s" }}>
+            <h1 className="hero-anim font-display mt-6 text-4xl font-normal leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl" style={{ "--hero-delay": "0.22s" }}>
               Learn Quran Online with{" "}
-              <span className="text-brand-700 sm:whitespace-nowrap">
+              <span className="text-gold-gradient sm:whitespace-nowrap">
                 Syed Foundation Academy
               </span>{" "}
               and Master Tajweed
             </h1>
-            <p className="hero-anim mx-auto mt-6 max-w-2xl text-base leading-relaxed text-stone-600 sm:text-lg" style={{ "--hero-delay": "0.34s" }}>
+            <p className="hero-anim mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg" style={{ "--hero-delay": "0.34s" }}>
               Connect live with highly learned tutors. Experience personalized, safe, 1-on-1 sessions designed with
               expert care for kids and adults — across the US, Gulf and Australia.
             </p>
@@ -193,7 +201,7 @@ export default function Home() {
           {/* Trust badges */}
           <div className="hero-anim mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" style={{ "--hero-delay": "0.6s" }}>
             {TRUST_BADGES.map((b) => (
-              <div key={b.title} className="flex items-center gap-3 rounded-2xl border border-brand-100 bg-white/80 p-4 shadow-card backdrop-blur">
+              <div key={b.title} className="premium-card flex items-center gap-3 rounded-2xl p-4 backdrop-blur-md">
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-700 text-gold-400">
                   <b.icon className="h-5 w-5" />
                 </span>
