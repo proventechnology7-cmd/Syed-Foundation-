@@ -228,9 +228,9 @@ export function DirectChannels() {
         <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#25D366]/10 text-[#1da851]">
           <Zap className="h-6 w-6" />
         </span>
-        <span>
+        <span className="min-w-0 flex-1">
           <span className="block text-xs font-semibold uppercase tracking-wide text-stone-500">Fast Coordinator WhatsApp</span>
-          <span className="mt-0.5 block font-bold text-brand-950 group-hover:text-brand-700">{SITE.whatsappDisplay}</span>
+          <span className="mt-0.5 block whitespace-nowrap font-bold text-brand-950 group-hover:text-brand-700">{SITE.whatsappDisplay}</span>
         </span>
       </a>
       <a
@@ -240,9 +240,9 @@ export function DirectChannels() {
         <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand-100 text-brand-700">
           <MessageCircle className="h-6 w-6" />
         </span>
-        <span>
+        <span className="min-w-0 flex-1">
           <span className="block text-xs font-semibold uppercase tracking-wide text-stone-500">Direct Helpdesk Email</span>
-          <span className="mt-0.5 block font-bold text-brand-950 group-hover:text-brand-700">{SITE.email}</span>
+          <span className="mt-0.5 block break-all text-sm font-bold text-brand-950 group-hover:text-brand-700">{SITE.email}</span>
         </span>
       </a>
     </div>
