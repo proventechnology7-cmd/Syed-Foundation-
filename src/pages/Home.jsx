@@ -135,6 +135,26 @@ export default function Home() {
   const filtered = TESTIMONIALS.filter((t) => tab === "all" || t.category === tab);
   const { openPopup } = useLeadPopup();
 
+  // Cinematic floating particles in hero (GSAP-driven)
+  React.useEffect(() => {
+    const container = document.getElementById("hero-particles");
+    if (!container || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const N = 24;
+    for (let i = 0; i < N; i++) {
+      const p = document.createElement("span");
+      p.className = "particle";
+      const size = 3 + Math.random() * 7;
+      p.style.width = `${size}px`;
+      p.style.height = `${size}px`;
+      p.style.left = `${Math.random() * 100}%`;
+      p.style.bottom = `-20px`;
+      p.style.animationDuration = `${9 + Math.random() * 14}s`;
+      p.style.animationDelay = `${Math.random() * 14}s`;
+      container.appendChild(p);
+    }
+    return () => { container.innerHTML = ""; };
+  }, []);
+
   // Auto-popup: 3s after homepage load, at most once per 7 days
   React.useEffect(() => {
     const KEY = "sf-popup-last-shown";
@@ -154,17 +174,31 @@ export default function Home() {
 
   return (
     <main>
-      {/* ============ HERO with cinematic Ken Burns background ============ */}
+      {/* ============ HERO with cinematic animated background ============ */}
       <section className="relative overflow-hidden bg-brand-950">
-        {/* Cinematic crossfading background (video-like motion) */}
-        <div className="kenburns-wrap absolute inset-0" aria-hidden="true">
-          <div className="kenburns-slide" style={{ animationDelay: "0s" }} />
-          <div className="kenburns-slide" style={{ animationDelay: "8s" }} />
-          <div className="kenburns-slide" style={{ animationDelay: "16s" }} />
+        {/* Animated aurora background */}
+        <div className="absolute inset-0" aria-hidden="true">
+          <div className="aurora-blob aurora-1" />
+          <div className="aurora-blob aurora-2" />
+          <div className="aurora-blob aurora-3" />
+          {/* Islamic geometric pattern overlay */}
+          <svg className="absolute inset-0 h-full w-full opacity-[0.07]" aria-hidden="true">
+            <defs>
+              <pattern id="hero-pattern" width="72" height="72" patternUnits="userSpaceOnUse">
+                <g fill="none" stroke="#f0c44c" strokeWidth="1">
+                  <rect x="22" y="22" width="28" height="28" />
+                  <rect x="22" y="22" width="28" height="28" transform="rotate(45 36 36)" />
+                  <circle cx="36" cy="36" r="6" />
+                </g>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#hero-pattern)" />
+          </svg>
+          {/* Floating particles */}
+          <div className="particles" id="hero-particles" />
         </div>
         {/* Dark gradient overlays for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-950/80 via-brand-950/55 to-brand-950/85" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(6,42,28,0.45)_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-950/70 via-transparent to-brand-950/90" />
         <div className="container-x relative py-16 sm:py-24 lg:py-28">
           <div className="mx-auto max-w-4xl text-center">
             <p className="hero-anim font-arabic text-3xl leading-[1.9] text-gold-300 sm:text-4xl" style={{ "--hero-delay": "0s" }} dir="rtl" lang="ar">

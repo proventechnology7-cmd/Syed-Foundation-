@@ -167,3 +167,118 @@ a, button {
   transform: translateY(-8px) scale(1.01);
   box-shadow: 0 24px 48px -16px rgb(0 0 0 / 0.18);
 }
+
+/* Premium card treatment — gold hairline, deep shadow, sheen sweep */
+.premium-card {
+  position: relative;
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  background: linear-gradient(160deg, #ffffff 0%, #fdfbf5 60%, #faf6ec 100%);
+  box-shadow: 0 10px 30px -12px rgb(6 42 28 / 0.14), inset 0 1px 0 rgb(255 255 255 / 0.9);
+  overflow: hidden;
+}
+.premium-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgb(212 175 55 / 0.10) 50%, transparent 60%);
+  transform: translateX(-120%);
+  transition: transform 0.9s ease;
+  pointer-events: none;
+}
+.premium-card:hover::before {
+  transform: translateX(120%);
+}
+
+/* Gold gradient text for premium accents */
+.text-gold-gradient {
+  background: linear-gradient(120deg, #b8860b 0%, #f0c44c 40%, #b8860b 70%, #e8b923 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Elegant italic quote styling */
+.font-quote {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+}
+
+/* Cinematic Ken Burns hero background — video-like motion */
+.kenburns-wrap {
+  overflow: hidden;
+}
+.kenburns-slide {
+  position: absolute;
+  inset: -5%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: kenburns 24s infinite;
+  will-change: transform, opacity;
+}
+@keyframes kenburns {
+  0% { opacity: 0; transform: scale(1) translate(0, 0); }
+  4% { opacity: 1; }
+  33% { opacity: 1; }
+  38% { opacity: 0; transform: scale(1.12) translate(-1.5%, 1%); }
+  100% { opacity: 0; transform: scale(1.12) translate(-1.5%, 1%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kenburns-slide { animation: none; opacity: 1; }
+  .kenburns-slide:not(:first-child) { display: none; }
+}
+
+/* Cinematic aurora hero background */
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.5;
+  will-change: transform;
+}
+.aurora-1 {
+  width: 55vw; height: 55vw; left: -12vw; top: -18vw;
+  background: radial-gradient(circle, rgba(16,122,87,0.65) 0%, transparent 70%);
+  animation: drift-1 22s ease-in-out infinite alternate;
+}
+.aurora-2 {
+  width: 44vw; height: 44vw; right: -10vw; top: 8vh;
+  background: radial-gradient(circle, rgba(240,196,76,0.28) 0%, transparent 70%);
+  animation: drift-2 26s ease-in-out infinite alternate;
+}
+.aurora-3 {
+  width: 50vw; height: 50vw; left: 22vw; bottom: -24vw;
+  background: radial-gradient(circle, rgba(13,92,63,0.6) 0%, transparent 70%);
+  animation: drift-3 30s ease-in-out infinite alternate;
+}
+@keyframes drift-1 {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(9vw, 7vh) scale(1.18); }
+}
+@keyframes drift-2 {
+  from { transform: translate(0, 0) scale(1.1); }
+  to { transform: translate(-8vw, 9vh) scale(0.94); }
+}
+@keyframes drift-3 {
+  from { transform: translate(0, 0) scale(0.95); }
+  to { transform: translate(6vw, -8vh) scale(1.12); }
+}
+/* Floating gold particles */
+.particles {
+  position: absolute; inset: 0; overflow: hidden;
+}
+.particle {
+  position: absolute; border-radius: 9999px;
+  background: radial-gradient(circle, rgba(240,196,76,0.9) 0%, rgba(240,196,76,0) 70%);
+  animation: float-up linear infinite;
+  will-change: transform, opacity;
+}
+@keyframes float-up {
+  from { transform: translateY(20vh); opacity: 0; }
+  15% { opacity: 0.85; }
+  85% { opacity: 0.5; }
+  to { transform: translateY(-110vh); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob, .particle { animation: none; }
+}
