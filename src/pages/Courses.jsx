@@ -51,7 +51,7 @@ export default function Courses() {
                         <p className="mt-3 text-sm leading-relaxed text-brand-100/85">{course.description}</p>
                       </div>
                       <div className="relative mt-2">
-                        <EnrollButton variant="gold" className="w-full sm:w-auto">Book Class</EnrollButton>
+                        <EnrollButton variant="gold" className="w-full sm:w-auto" course={course.title}>Book Class</EnrollButton>
                       </div>
                     </div>
 

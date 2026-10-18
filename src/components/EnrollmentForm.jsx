@@ -1,7 +1,9 @@
 import * as React from "react";
+import { useLocation } from "react-router-dom";
 import { CheckCircle2, MessageCircle, Send, RotateCcw, ShieldCheck, Zap } from "lucide-react";
 import { SITE, whatsappLink } from "../data/site";
 import { COURSES } from "../data/courses";
+import { PLANS, REGIONS, getPrice, planLabel } from "../data/pricing";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Select } from "./ui/select";
@@ -32,15 +34,39 @@ const COUNTRIES = [
 const labelCls = "mb-1.5 block text-sm font-semibold text-brand-950";
 
 export default function EnrollmentForm() {
+  const location = useLocation();
+  // Plan/course pre-selected when arriving from Pricing or Courses CTA buttons.
+  const incomingPlan = location.state?.plan;
+  const incomingRegionId = location.state?.regionId || "gulf";
+  const incomingCourse = location.state?.course;
+
   const [form, setForm] = React.useState({
     name: "", email: "", dial: "971", phone: "", country: "United Arab Emirates",
-    course: COURSES[0].title, requirements: "",
+    course: incomingCourse || COURSES[0].title, requirements: "",
+    planId: incomingPlan?.id || PLANS[1].id, regionId: incomingRegionId,
   });
   const [done, setDone] = React.useState(false);
 
+  // If the user picks another plan/course and returns, sync it.
+  React.useEffect(() => {
+    if (incomingPlan || incomingCourse) {
+      setForm((f) => ({
+        ...f,
+        planId: incomingPlan?.id || f.planId,
+        regionId: incomingRegionId,
+        course: incomingCourse || f.course,
+      }));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [incomingPlan?.id, incomingCourse, incomingRegionId]);
+
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  const waMessage = `Assalamu Alaikum! I am ${form.name || "[Name]"}. I would like to book a free trial class at Syed Foundation Academy.\nCourse: ${form.course}\nWhatsApp: +${form.dial} ${form.phone}\nCountry: ${form.country}\nRequirements: ${form.requirements || "—"}`;
+  const selectedPlan = PLANS.find((p) => p.id === Number(form.planId)) || PLANS[1];
+  const selectedRegion = REGIONS.find((r) => r.id === form.regionId) || REGIONS[0];
+  const selectedPrice = getPrice(selectedPlan.id, selectedRegion.id);
+
+  const waMessage = `Assalamu Alaikum! I am ${form.name || "[Name]"}. I would like to book a free trial class at Syed Foundation Academy.\nCourse: ${form.course}\nPlan: ${planLabel(selectedPlan)} (${selectedRegion.currency}${selectedPrice}/month)\nWhatsApp: +${form.dial} ${form.phone}\nCountry: ${form.country}\nRequirements: ${form.requirements || "—"}`;
 
   const submit = (e) => {
     e.preventDefault();
@@ -55,7 +81,8 @@ export default function EnrollmentForm() {
         <h3 className="mt-4 text-2xl font-extrabold text-brand-950">Request Received!</h3>
         <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-stone-600">
           JazakAllah Khair, <strong>{form.name}</strong>. Your free-trial request for{" "}
-          <strong>{form.course}</strong> has been noted. Our coordinator will contact you on WhatsApp within 12
+          <strong>{form.course}</strong> ({planLabel(selectedPlan)} — {selectedRegion.currency}{selectedPrice}/month)
+          has been noted. Our coordinator will contact you on WhatsApp within 12
           hours. For an instant response, tap below — your details are prefilled.
         </p>
         <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -70,7 +97,7 @@ export default function EnrollmentForm() {
           </a>
           <Button
             variant="outline"
-            onClick={() => { setDone(false); setForm({ name: "", email: "", dial: "971", phone: "", country: "United Arab Emirates", course: COURSES[0].title, requirements: "" }); }}
+            onClick={() => { setDone(false); setForm({ name: "", email: "", dial: "971", phone: "", country: "United Arab Emirates", course: COURSES[0].title, requirements: "", planId: PLANS[1].id, regionId: "gulf" }); }}
           >
             <RotateCcw className="h-4 w-4" />
             New Request
@@ -118,6 +145,29 @@ export default function EnrollmentForm() {
             <Select id="ef-course" value={form.course} onChange={set("course")}>
               {COURSES.map((c) => <option key={c.slug}>{c.title}</option>)}
             </Select>
+          </div>
+          <div>
+            <label htmlFor="ef-plan" className={labelCls}>Select Plan</label>
+            <Select id="ef-plan" value={form.planId} onChange={set("planId")}>
+              {PLANS.map((p) => (
+                <option key={p.id} value={p.id}>
+                  {planLabel(p)}{p.popular ? " ★ Popular" : ""}
+                </option>
+              ))}
+            </Select>
+          </div>
+          <div>
+            <label htmlFor="ef-region" className={labelCls}>Billing Region</label>
+            <Select id="ef-region" value={form.regionId} onChange={set("regionId")}>
+              {REGIONS.map((r) => <option key={r.id} value={r.id}>{r.label} ({r.currency.trim()})</option>)}
+            </Select>
+          </div>
+          <div className="sm:col-span-2 -mt-2">
+            <p className="rounded-xl bg-brand-50 px-4 py-3 text-sm text-brand-900">
+              Selected plan: <strong>{planLabel(selectedPlan)}</strong> —{" "}
+              <strong>{selectedRegion.currency}{selectedPrice}/month</strong>
+              {selectedPlan.popular && <span className="ml-2 rounded-full bg-gold-400/30 px-2 py-0.5 text-xs font-bold text-gold-700">Most Popular</span>}
+            </p>
           </div>
           <div className="sm:col-span-2">
             <label htmlFor="ef-req" className={labelCls}>Your Requirements / Student's Age and Level</label>

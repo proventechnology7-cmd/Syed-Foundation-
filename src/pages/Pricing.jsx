@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Check, Crown, CalendarDays, Timer, Layers, Sparkles, Info } from "lucide-react";
-import { PLANS, REGIONS, convertPrice } from "../data/pricing";
+import { PLANS, REGIONS, getPrice, getWasPrice, planLabel } from "../data/pricing";
 import { SITE } from "../data/site";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../components/ui/tabs";
 import { Card, CardContent } from "../components/ui/card";
@@ -11,8 +11,8 @@ import EnrollButton from "../components/EnrollButton";
 import { cn } from "../lib/utils";
 
 function PlanCard({ plan, region }) {
-  const price = convertPrice(plan.price, region);
-  const was = convertPrice(plan.was, region);
+  const price = getPrice(plan.id, region.id);
+  const was = getWasPrice(plan.id, region.id);
   return (
     <Card
       className={cn(
@@ -33,7 +33,7 @@ function PlanCard({ plan, region }) {
           </Badge>
         </div>
 
-        <div className="mt-4 flex items-end gap-2">
+        <div className="mt-4 flex flex-wrap items-end gap-x-2 gap-y-1">
           <span className="text-4xl font-extrabold tracking-tight text-brand-800">
             {region.currency}
             {price.toLocaleString()}
@@ -67,7 +67,7 @@ function PlanCard({ plan, region }) {
           </li>
         </ul>
 
-        <EnrollButton className="mt-6 w-full" variant={plan.popular ? "gold" : "default"}>
+        <EnrollButton className="mt-6 w-full" variant={plan.popular ? "gold" : "default"} plan={plan} regionId={region.id}>
           Book Free Trial
         </EnrollButton>
       </CardContent>
@@ -87,7 +87,7 @@ export default function Pricing() {
           <SectionHeading
             eyebrow="Pricing & Plans"
             title="Empowered Tuition Packages"
-            subtitle="Choose the perfect Quran learning plan that fits your schedule and learning goals. All plans include a free trial class, live 1-on-1 instruction, and flexible Gulf & Australian time-zone scheduling."
+            subtitle="Choose the perfect Quran learning plan that fits your schedule and learning goals. All plans include a free trial class, live 1-on-1 instruction, and flexible US, Gulf & Australian time-zone scheduling."
           />
 
           <Tabs value={regionId} onValueChange={setRegionId} className="mt-10">

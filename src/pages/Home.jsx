@@ -4,6 +4,7 @@ import {
   BadgeCheck, Clock, Globe2, Star, MessageCircle, BookOpen, BookMarked, Sparkles, Heart,
   Target, HeartHandshake, ChevronRight, GraduationCap, Users, CalendarClock, UserCheck,
   Wallet, ClipboardList, ShieldCheck, Radio, Video, ArrowRight, Quote, ListChecks, PhoneCall, FileCheck2,
+  Baby, Briefcase, Award, Languages, Mic,
 } from "lucide-react";
 import { SITE } from "../data/site";
 import { COURSES } from "../data/courses";
@@ -62,7 +63,7 @@ function Counter({ target, suffix = "", duration = 1600 }) {
 const TRUST_BADGES = [
   { icon: BadgeCheck, title: "Qualified Quran Teachers", sub: "Experienced & Verified Instructors" },
   { icon: Clock, title: "Flexible 24/7 Hours", sub: "To fit your timeline" },
-  { icon: Globe2, title: "Trusted by Families Worldwide", sub: "Across the Gulf & Australia" },
+  { icon: Globe2, title: "Trusted by Families Worldwide", sub: "Across the US, Gulf & Australia" },
   { icon: Star, title: "4.9/5 Rating", sub: "Loved by parents & students" },
 ];
 
@@ -113,7 +114,7 @@ function CourseCard({ course }) {
         </div>
 
         <div className="mt-auto flex gap-2 pt-5">
-          <EnrollButton variant="outline" size="sm" className="flex-1">Book Class</EnrollButton>
+          <EnrollButton variant="outline" size="sm" className="flex-1" course={course.title}>Book Class</EnrollButton>
           <Link
             to="/courses"
             className="inline-flex h-9 flex-1 items-center justify-center gap-1.5 rounded-xl px-4 text-xs font-semibold text-brand-800 transition-colors hover:bg-brand-100"
@@ -146,7 +147,7 @@ export default function Home() {
             </p>
             <h1 className="mt-6 text-4xl font-extrabold leading-[1.12] tracking-tight text-brand-950 sm:text-5xl lg:text-6xl">
               Learn Quran Online with{" "}
-              <span className="relative whitespace-nowrap text-brand-700">
+              <span className="relative text-brand-700 sm:whitespace-nowrap">
                 Syed Foundation Academy
                 <svg viewBox="0 0 320 12" preserveAspectRatio="none" className="absolute -bottom-2 left-0 h-3 w-full text-gold-400" aria-hidden="true">
                   <path d="M4 8 C 80 2, 240 2, 316 8" stroke="currentColor" strokeWidth="5" fill="none" strokeLinecap="round" />
@@ -156,7 +157,7 @@ export default function Home() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-stone-600 sm:text-lg">
               Connect live with highly learned tutors. Experience personalized, safe, 1-on-1 sessions designed with
-              expert care for kids and adults — across the Gulf and Australia.
+              expert care for kids and adults — across the US, Gulf and Australia.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <EnrollButton size="lg" className="w-full sm:w-auto" />
@@ -229,7 +230,7 @@ export default function Home() {
             </CardContent>
           </Card>
           <p className="mt-3 text-center text-sm text-stone-500">
-            Complete personalized Tajweed alignment — tutors available across Gulf &amp; Australian time zones.
+            Complete personalized Tajweed alignment — tutors available across US, Gulf across Gulf &amp; Australian time zonesamp; Australian time zones.
           </p>
         </div>
       </section>
@@ -260,6 +261,35 @@ export default function Home() {
               <EnrollButton variant="gold" size="lg">Get Expert Proposal</EnrollButton>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      {/* ============ WHO IS THIS FOR ============ */}
+      <section className="py-14 sm:py-20">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow="Made For You"
+            title="Who Are These Classes For?"
+            subtitle="Whether you're 4 or 74, a complete beginner or polishing your Tajweed — there's a path designed around your life."
+          />
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { icon: Baby, title: "Kids Ages 4+", text: "Noorani Qaida through fun, interactive lessons that keep young minds engaged and loving the Quran." },
+              { icon: UserCheck, title: "Adult Beginners", text: "Start Tajweed from absolute zero. No Arabic background needed — we build your foundation step by step." },
+              { icon: Briefcase, title: "Busy Professionals", text: "24/7 flexible slots that fit around work, school runs, and family life — across US, Gulf & Australian time zones." },
+              { icon: Heart, title: "Sisters", text: "Learn comfortably with qualified, patient female Quran teachers in a safe one-on-one setting." },
+              { icon: BookMarked, title: "Hifz Students", text: "Structured memorization with daily revision cycles (Sabaq, Sabqi, Manzil) guided by certified Huffaz." },
+              { icon: Sparkles, title: "New Muslims", text: "A warm, judgment-free start: Salah, essential Duas, and Quran reading foundations at your own pace." },
+            ].map((a) => (
+              <Card key={a.title} className="p-6 transition hover:-translate-y-1 hover:shadow-soft">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold-400/20 text-gold-600">
+                  <a.icon className="h-6 w-6" />
+                </span>
+                <h3 className="mt-4 font-bold text-brand-950">{a.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-stone-600">{a.text}</p>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -360,6 +390,45 @@ export default function Home() {
           <p className="mx-auto mt-8 flex max-w-3xl items-start justify-center gap-2 text-center text-sm text-stone-600">
             <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />
             Rest assured: every teaching credential is audited, verified, and certified annually to guarantee perfect authenticity.
+          </p>
+        </div>
+      </section>
+
+      {/* ============ MEET OUR TEACHERS ============ */}
+      <section className="py-14 sm:py-20">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow="Learn From The Best"
+            title="Meet Your Quran Teachers"
+            subtitle="Every tutor is hand-picked, background-verified, and certified — so your family learns from teachers you can trust completely."
+          />
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { icon: Mic, role: "Qari", focus: "Tajweed & Qira'at Specialist", points: ["Ijazah-certified in Hafs recitation", "10+ years teaching experience", "Makharij & Sifaat mastery"] },
+              { icon: HeartHandshake, role: "Qaria", focus: "Kids & Sisters Specialist", points: ["Certified female Quran teacher", "Patient, child-friendly approach", "Ideal for daughters & sisters"] },
+              { icon: BookMarked, role: "Hafiz", focus: "Hifz Program Lead", points: ["Completed Quran memorization", "Structured Sabaq revision system", "Tracks every student's progress"] },
+              { icon: Languages, role: "Mentor", focus: "Islamic Foundations Guide", points: ["Salah, Duas & Seerah for kids", "Fluent English, Urdu & Arabic", "New-Muslim friendly teaching"] },
+            ].map((t) => (
+              <Card key={t.role} className="flex flex-col p-6 text-center transition hover:-translate-y-1 hover:shadow-soft">
+                <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brand-700 text-gold-400">
+                  <t.icon className="h-8 w-8" />
+                </span>
+                <p className="mt-4 text-xs font-extrabold uppercase tracking-[0.2em] text-gold-600">{t.role}</p>
+                <h3 className="mt-1 font-bold text-brand-950">{t.focus}</h3>
+                <ul className="mt-4 space-y-2 text-left">
+                  {t.points.map((p) => (
+                    <li key={p} className="flex items-start gap-2 text-xs leading-relaxed text-stone-600">
+                      <Award className="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand-600" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            ))}
+          </div>
+          <p className="mx-auto mt-8 flex max-w-2xl items-start justify-center gap-2 text-center text-sm text-stone-600">
+            <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />
+            Male or female teacher? You choose. Switch anytime — your comfort comes first.
           </p>
         </div>
       </section>
