@@ -3,12 +3,16 @@ import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import WhatsAppFloat from "./components/WhatsAppFloat";
-import Home from "./pages/Home";
-import Pricing from "./pages/Pricing";
-import Courses from "./pages/Courses";
-import Blog from "./pages/Blog";
-import BlogDetail from "./pages/BlogDetail";
-import NotFound from "./pages/NotFound";
+import StickyMobileCTA from "./components/StickyMobileCTA";
+
+// Route-based code splitting: each page loads on demand,
+// shrinking the initial bundle for faster first paint.
+const Home = React.lazy(() => import("./pages/Home"));
+const Pricing = React.lazy(() => import("./pages/Pricing"));
+const Courses = React.lazy(() => import("./pages/Courses"));
+const Blog = React.lazy(() => import("./pages/Blog"));
+const BlogDetail = React.lazy(() => import("./pages/BlogDetail"));
+const NotFound = React.lazy(() => import("./pages/NotFound"));
 
 function ScrollManager() {
   const { pathname } = useLocation();
@@ -18,6 +22,14 @@ function ScrollManager() {
   return null;
 }
 
+function PageLoader() {
+  return (
+    <div className="flex min-h-[60vh] items-center justify-center" aria-label="Loading page">
+      <span className="h-10 w-10 animate-spin rounded-full border-4 border-brand-200 border-t-brand-700" />
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <HashRouter>
@@ -25,17 +37,20 @@ export default function App() {
       <div className="flex min-h-screen flex-col">
         <Navbar />
         <div className="flex-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/courses" element={<Courses />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogDetail />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <React.Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/courses" element={<Courses />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogDetail />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </React.Suspense>
         </div>
         <Footer />
         <WhatsAppFloat />
+        <StickyMobileCTA />
       </div>
     </HashRouter>
   );
