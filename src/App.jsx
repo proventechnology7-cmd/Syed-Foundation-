@@ -6,6 +6,7 @@ import WhatsAppFloat from "./components/WhatsAppFloat";
 import StickyMobileCTA from "./components/StickyMobileCTA";
 import ScrollProgress from "./components/ScrollProgress";
 import { LeadPopupProvider } from "./components/LeadPopupContext";
+import { BookingProvider } from "./components/BookingContext";
 
 // Route-based code splitting: each page loads on demand,
 // shrinking the initial bundle for faster first paint.
@@ -38,6 +39,7 @@ export default function App() {
       <ScrollProgress />
       <ScrollManager />
       <LeadPopupProvider>
+      <BookingProvider>
       <div className="flex min-h-screen flex-col">
         <Navbar />
         <div className="flex-1">
@@ -56,6 +58,7 @@ export default function App() {
         <WhatsAppFloat />
         <StickyMobileCTA />
       </div>
+      </BookingProvider>
       </LeadPopupProvider>
     </BrowserRouter>
   );

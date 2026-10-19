@@ -296,7 +296,7 @@ export default function Home() {
                 Sign up for a risk-free 3-day class evaluation. Our advisor maps individual recitation errors and
                 proposes a specialized custom pathway.
               </p>
-              <EnrollButton variant="gold" size="lg">Get Expert Proposal</EnrollButton>
+              <EnrollButton variant="gold" size="lg" mode="lead">Get Expert Proposal</EnrollButton>
             </CardContent>
           </Card>
         </div>

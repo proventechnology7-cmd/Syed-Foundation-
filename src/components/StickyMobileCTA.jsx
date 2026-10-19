@@ -1,7 +1,8 @@
 import * as React from "react";
 import { CalendarCheck } from "lucide-react";
 import { cn } from "../lib/utils";
-import { useLeadPopup } from "./LeadPopupContext";
+import { feedback } from "../lib/sound";
+import { useBooking } from "./BookingContext";
 
 /**
  * Sticky bottom CTA bar — mobile only. Appears after scrolling past the hero,
@@ -9,7 +10,7 @@ import { useLeadPopup } from "./LeadPopupContext";
  */
 export default function StickyMobileCTA() {
   const [visible, setVisible] = React.useState(false);
-  const { openPopup } = useLeadPopup();
+  const { openBooking } = useBooking();
 
   React.useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 600);
@@ -28,7 +29,10 @@ export default function StickyMobileCTA() {
     >
       <button
         type="button"
-        onClick={() => openPopup({ source: "sticky-mobile" })}
+        onClick={() => {
+          feedback("select");
+          openBooking({ source: "sticky-mobile" });
+        }}
         tabIndex={visible ? 0 : -1}
         className="btn-cta flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-brand-700 text-sm font-bold text-white shadow"
       >
