@@ -105,7 +105,7 @@ export default function ChatWidget() {
           </div>
         </div>
         <p className="mt-2.5 text-[13px] leading-relaxed text-white/85">
-          Courses ya timings ke baare mein koi sawal? Hum se abhi chat karein.
+          Have questions about our courses or class timings? Chat with us right now — we usually reply within minutes.
         </p>
         <button
           onClick={openWhatsApp}
