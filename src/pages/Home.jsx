@@ -458,10 +458,10 @@ export default function Home() {
           </h2>
           <div className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-6 text-center lg:grid-cols-4">
             {[
-              { target: 12, suffix: "+", label: "Years Experience", sub: "Delivering exceptional Islamic and Qur'anic teaching to international students." },
-              { target: 120, suffix: "K+", label: "Classes Completed", sub: "Successful live one-on-one sessions taught by top-ranking certified tutors." },
-              { target: 98, suffix: "%", label: "Student Satisfaction", sub: "Loved and recommended by international parents, children, and adult scholars." },
-              { target: 100, suffix: "%", label: "Certified Educators", sub: "Instructors holding legitimate degrees, Hifz certificates, and verified credentials." },
+              { target: 6, suffix: "+", label: "Years Experience", sub: "Six years of dedicated Islamic and Qur'anic teaching for families across the Gulf, US and Australia." },
+              { target: 25, suffix: "K+", label: "Classes Completed", sub: "Live one-on-one sessions delivered by certified tutors — one student at a time." },
+              { target: 96, suffix: "%", label: "Student Satisfaction", sub: "Families who stay with us, renew their plans and recommend us to others." },
+              { target: 100, suffix: "%", label: "Certified Educators", sub: "Every instructor holds a legitimate degree, Hifz certificate or verified teaching credential." },
             ].map((s) => (
               <div key={s.label} className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur sm:p-6">
                 <p className="text-3xl font-extrabold text-gold-400 sm:text-4xl">
