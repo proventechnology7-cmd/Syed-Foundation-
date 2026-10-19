@@ -209,7 +209,9 @@ export default function Home() {
           aria-hidden="true"
         />
         {/* Dark gradient overlays for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-950/85 via-brand-950/60 to-brand-950/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-950/90 via-brand-950/70 to-brand-950/95" />
+        {/* Soft radial glow behind the headline to lift text off the video */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_42%,rgba(4,26,20,0.65),transparent_75%)]" />
         <div className="container-x relative flex min-h-screen flex-col justify-center py-24 sm:py-28">
           <div className="mx-auto max-w-4xl text-center">
             <p className="hero-anim font-arabic text-3xl leading-[1.9] text-gold-300 sm:text-4xl" style={{ "--hero-delay": "0s" }} dir="rtl" lang="ar">
@@ -218,7 +220,7 @@ export default function Home() {
             <p className="hero-anim mt-4 text-xs font-semibold uppercase tracking-[0.25em] text-gold-400" style={{ "--hero-delay": "0.1s" }}>
               In the name of Allah, the Most Gracious, the Most Merciful
             </p>
-            <h1 className="font-display mt-6 text-4xl font-normal leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="font-display hero-text-shadow mt-6 text-4xl font-normal leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl">
               <WordStagger text="Learn Quran Online with" base={0.25} />{" "}
               <span className="word-stagger-word" style={{ "--w-delay": "0.55s" }}>
                 <span className="text-gold-gradient sm:whitespace-nowrap">Syed Foundation Academy</span>
