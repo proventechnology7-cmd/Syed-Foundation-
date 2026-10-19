@@ -40,7 +40,7 @@ export default function Footer() {
               at home.
             </p>
             <p className="mt-4 text-xs text-brand-100/60">
-              Serving: {SITE.regions.join(" · ")}
+              Serving:&nbsp;{SITE.regions.join(" · ")}
             </p>
           </div>
 

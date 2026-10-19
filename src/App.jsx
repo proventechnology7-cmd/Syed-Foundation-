@@ -1,5 +1,5 @@
 import * as React from "react";
-import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import WhatsAppFloat from "./components/WhatsAppFloat";
@@ -33,7 +33,7 @@ function PageLoader() {
 
 export default function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <ScrollManager />
       <LeadPopupProvider>
       <div className="flex min-h-screen flex-col">
@@ -55,6 +55,6 @@ export default function App() {
         <StickyMobileCTA />
       </div>
       </LeadPopupProvider>
-    </HashRouter>
+    </BrowserRouter>
   );
 }

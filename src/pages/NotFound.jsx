@@ -10,7 +10,7 @@ export default function NotFound() {
           <Compass className="h-10 w-10" />
         </span>
         <p className="hero-anim mt-6 font-arabic text-2xl text-brand-700" dir="rtl" lang="ar" style={{ "--hero-delay": "0.1s" }}>
-          إِنَّا لِلَّٰهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ
+          اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ
         </p>
         <h1 className="hero-anim heading-hover mt-4 text-5xl font-extrabold tracking-tight text-brand-950 sm:text-6xl" style={{ "--hero-delay": "0.2s" }}>404</h1>
         <h2 className="hero-anim mt-2 text-xl font-bold text-brand-900" style={{ "--hero-delay": "0.3s" }}>This page wandered off the path</h2>

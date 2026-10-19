@@ -90,6 +90,7 @@ export default function Pricing() {
             <SectionHeading
             eyebrow="Pricing & Plans"
             title="Empowered Tuition Packages"
+            as="h1"
             subtitle="Choose the perfect Quran learning plan that fits your schedule and learning goals. All plans include a free trial class, live 1-on-1 instruction, and flexible US, Gulf & Australian time-zone scheduling."
             />
           </Reveal>

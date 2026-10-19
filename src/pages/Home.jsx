@@ -224,7 +224,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex flex-col gap-2 sm:flex-row lg:flex-col xl:flex-row">
-                <EnrollButton variant="gold">Live Preview</EnrollButton>
+                <EnrollButton variant="gold">Book Free Trial</EnrollButton>
                 <a
                   href={SITE.whatsapp}
                   target="_blank"
@@ -237,7 +237,7 @@ export default function Home() {
             </CardContent>
           </Card>
           <p className="mt-3 text-center text-sm text-stone-500">
-            Complete personalized Tajweed alignment — tutors available across US, Gulf across Gulf &amp; Australian time zonesamp; Australian time zones.
+            Live 1-on-1 Quran classes — certified tutors available across US, Gulf & Australia time zones.
           </p>
         </div>
       </section>
@@ -382,8 +382,8 @@ export default function Home() {
           <Reveal>
             <SectionHeading
             eyebrow="Learn From The Best"
-            title="Meet Your Quran Teachers"
-            subtitle="Every tutor is hand-picked, background-verified, and certified — so your family learns from teachers you can trust completely."
+            title="Learn from Certified Specialists"
+            subtitle="Every tutor is hand-picked, background-verified, and certified — here are the kinds of specialists who will teach you and your family."
             />
           </Reveal>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

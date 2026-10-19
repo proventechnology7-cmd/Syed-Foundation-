@@ -100,6 +100,7 @@ export default function Blog() {
             <SectionHeading
             eyebrow="Quranic Blog Archives"
             title="Quranic Insights"
+            as="h1"
             subtitle="Verified, authentic content on Tajweed, Hifz, phonetics and digital parenting — from our academy scholars."
             />
           </Reveal>

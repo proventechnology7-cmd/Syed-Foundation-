@@ -11,6 +11,7 @@ export default function SectionHeading({
   align = "center",
   dark = false,
   className,
+  as: Tag = "h2",
 }) {
   return (
     <div
@@ -25,14 +26,14 @@ export default function SectionHeading({
           {eyebrow}
         </Badge>
       )}
-      <h2
+      <Tag
         className={cn(
           "heading-hover font-display text-3xl font-normal tracking-tight sm:text-4xl",
           dark ? "text-white" : "text-brand-950"
         )}
       >
         {title}
-      </h2>
+      </Tag>
       {subtitle && (
         <p className={cn("mt-4 text-base leading-relaxed sm:text-lg", dark ? "text-brand-100/85" : "text-stone-600")}>
           {subtitle}

@@ -1,7 +1,7 @@
 export const TESTIMONIALS = [
   {
     quote:
-      "Both my 7-year-old and 9-year-old started Quranic learning from scratch with us. The teachers are incredibly patient, warm, and encourage children. Their Noorani Qaida sessions are interactive, and the flexible schedule matches my active calendar seamlessly.",
+      "Both my 7-year-old and 9-year-old started Quranic learning from scratch with them. The teachers are incredibly patient, warm, and encourage children. Their Noorani Qaida sessions are interactive, and the flexible schedule matches my active calendar seamlessly.",
     name: "Sarah Rahman",
     role: "Parent",
     location: "Houston, USA",
@@ -10,7 +10,7 @@ export const TESTIMONIALS = [
   },
   {
     quote:
-      "As a busy medical professional, finding time for continuous Tajweed improvement was difficult. My academy matched me with a certified, highly learned tutor. The live one-on-one session feels focused and high-yield, correcting pronunciation rules that I had struggled with for years.",
+      "As a busy medical professional, finding time for continuous Tajweed improvement was difficult. The academy matched me with a certified, highly learned tutor. The live one-on-one session feels focused and high-yield, correcting pronunciation rules that I had struggled with for years.",
     name: "Dr. Tariq Mahmood",
     role: "Adult Student",
     location: "Birmingham, UK",

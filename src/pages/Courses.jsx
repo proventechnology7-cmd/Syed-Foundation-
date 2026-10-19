@@ -20,6 +20,7 @@ export default function Courses() {
             <SectionHeading
             eyebrow="Our Programs"
             title="Quran Courses for Every Age & Level"
+            as="h1"
             subtitle="Four carefully structured programs — from a child's first Arabic letter to advanced Tajweed mastery and complete Hifz. Every course is taught live, 1-on-1, by a certified tutor."
             />
           </Reveal>
