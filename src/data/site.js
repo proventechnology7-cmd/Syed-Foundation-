@@ -13,9 +13,9 @@ export const SITE = {
   // e.g. "https://www.syedfoundationacademy.com". Empty = falls back to
   // window.location.origin (works on Vercel preview URLs too).
   url: "",
-  whatsapp: "https://wa.me/923122797208",
-  whatsappDisplay: "+92 312 2797208",
-  whatsappNumber: "923122797208",
+  whatsapp: "https://wa.me/923032546485",
+  whatsappDisplay: "+92 303 2546485",
+  whatsappNumber: "923032546485",
   email: "syedfoundation.online@gmail.com",
   hours: "24/7 (Flexible Custom Hours)",
   regions: ["UAE", "Saudi Arabia", "Qatar", "Kuwait", "Oman", "Bahrain", "Australia"],
