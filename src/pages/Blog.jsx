@@ -6,6 +6,7 @@ import { Card, CardContent } from "../components/ui/card";
 import SectionHeading from "../components/SectionHeading";
 import EnrollButton from "../components/EnrollButton";
 import Reveal from "../components/Reveal";
+import { useSeo } from "../lib/seo";
 
 function CategoryArt({ seed, className }) {
   // Unique artistic style per post, matched to content
@@ -92,6 +93,13 @@ export default function Blog() {
   const featured = POSTS.find((p) => p.featured) || POSTS[0];
   const archive = POSTS.filter((p) => p.slug !== featured.slug);
 
+  useSeo({
+    title: "Quran Learning Blog — Tajweed Tips, Hifz Guides & Parenting Advice",
+    description:
+      "Read our Quran learning blog: Tajweed tips, Hifz memorization techniques, Noorani Qaida guidance for kids and digital parenting advice from Syed Foundation Academy scholars.",
+    path: "/blog",
+  });
+
   return (
     <main>
       <section className="relative overflow-hidden bg-gradient-to-b from-brand-50 via-ivory to-ivory py-10 sm:py-14">
@@ -99,9 +107,9 @@ export default function Blog() {
           <Reveal>
             <SectionHeading
             eyebrow="Quranic Blog Archives"
-            title="Quranic Insights"
+            title="Quran Learning Blog: Tajweed, Hifz & Parenting Guides"
             as="h1"
-            subtitle="Verified, authentic content on Tajweed, Hifz, phonetics and digital parenting — from our academy scholars."
+            subtitle="Verified, authentic articles on learning Tajweed online, Quran memorization techniques and digital parenting — from our academy scholars."
             />
           </Reveal>
 

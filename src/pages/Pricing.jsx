@@ -3,6 +3,7 @@ import { Check, Crown, CalendarDays, Timer, Layers, Sparkles, Info } from "lucid
 import { PLANS, REGIONS, getPrice, getWasPrice, planLabel } from "../data/pricing";
 import { SITE } from "../data/site";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../components/ui/tabs";
+import { useSeo } from "../lib/seo";
 import { Card, CardContent } from "../components/ui/card";
 import { Badge } from "../components/ui/badge";
 import SectionHeading from "../components/SectionHeading";
@@ -82,6 +83,13 @@ export default function Pricing() {
   const [selectedPlan, setSelectedPlan] = React.useState(null);
   const region = REGIONS.find((r) => r.id === regionId) || REGIONS[0];
 
+  useSeo({
+    title: "Online Quran Class Prices & Tuition Plans",
+    description:
+      "Affordable online Quran class prices with plans for USA, UK, Canada, Australia, Europe & Gulf (AED). Monthly tuition for 1-on-1 Tajweed, Hifz & Noorani Qaida classes with certified tutors. Free trial included.",
+    path: "/pricing",
+  });
+
   return (
     <main>
       <section className="relative overflow-hidden bg-gradient-to-b from-brand-50 via-ivory to-ivory py-10 sm:py-14">
@@ -89,9 +97,9 @@ export default function Pricing() {
           <Reveal>
             <SectionHeading
             eyebrow="Pricing & Plans"
-            title="Empowered Tuition Packages"
+            title="Online Quran Class Prices & Tuition Plans"
             as="h1"
-            subtitle="Choose the perfect Quran learning plan that fits your schedule and learning goals. All plans include a free trial class, live 1-on-1 instruction, and flexible US, Gulf & Australian time-zone scheduling."
+            subtitle="Choose the perfect online Quran learning plan that fits your schedule and budget. All plans include a free trial class, live 1-on-1 Quran instruction, and flexible US, Gulf & Australian time-zone scheduling."
             />
           </Reveal>
 

@@ -8,10 +8,18 @@ import EnrollButton from "../components/EnrollButton";
 import CourseArt from "../components/CourseArt";
 import { cn } from "../lib/utils";
 import Reveal from "../components/Reveal";
+import { useSeo } from "../lib/seo";
 
 const COURSE_ICONS = { BookOpen, BookMarked, Sparkles, Heart };
 
 export default function Courses() {
+  useSeo({
+    title: "Online Quran Courses for Kids & Adults — Tajweed, Hifz, Noorani Qaida",
+    description:
+      "Explore our online Quran courses: Noorani Qaida for kids, Quran recitation, Tajweed al-Quran and Hifz memorization programs. Live 1-on-1 classes with certified Quran tutors for every age & level.",
+    path: "/courses",
+  });
+
   return (
     <main>
       <section className="relative overflow-hidden bg-gradient-to-b from-brand-50 via-ivory to-ivory py-10 sm:py-14">
@@ -19,9 +27,9 @@ export default function Courses() {
           <Reveal>
             <SectionHeading
             eyebrow="Our Programs"
-            title="Quran Courses for Every Age & Level"
+            title="Online Quran Courses for Kids & Adults"
             as="h1"
-            subtitle="Four carefully structured programs — from a child's first Arabic letter to advanced Tajweed mastery and complete Hifz. Every course is taught live, 1-on-1, by a certified tutor."
+            subtitle="Four carefully structured online Quran programs — from a child's first Arabic letter (Noorani Qaida) to advanced Tajweed mastery and complete Hifz. Every course is taught live, 1-on-1, by a certified Quran tutor."
             />
           </Reveal>
 

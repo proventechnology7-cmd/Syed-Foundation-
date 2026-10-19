@@ -6,6 +6,7 @@ import { Card, CardContent } from "../components/ui/card";
 import SectionHeading from "../components/SectionHeading";
 import EnrollButton from "../components/EnrollButton";
 import Reveal from "../components/Reveal";
+import { useSeo } from "../lib/seo";
 
 function Block({ block }) {
   if (block.type === "heading") {
@@ -28,6 +29,12 @@ export default function BlogDetail() {
   if (!post) return <Navigate to="/blog" replace />;
 
   const related = POSTS.filter((p) => p.slug !== post.slug).slice(0, 3);
+
+  useSeo({
+    title: post.title,
+    description: post.excerpt,
+    path: `/blog/${post.slug}`,
+  });
 
   return (
     <main>

@@ -20,6 +20,7 @@ import CourseArt from "../components/CourseArt";
 import EnrollmentForm, { DirectChannels } from "../components/EnrollmentForm";
 import Reveal from "../components/Reveal";
 import WordStagger from "../components/WordStagger";
+import { useSeo, JsonLd } from "../lib/seo";
 import { useLeadPopup } from "../components/LeadPopupContext";
 import { cn } from "../lib/utils";
 import gsap from "gsap";
@@ -133,6 +134,26 @@ export default function Home() {
   const filtered = TESTIMONIALS.filter((t) => tab === "all" || t.category === tab);
   const { openPopup } = useLeadPopup();
 
+  useSeo({
+    title: "Syed Foundation Academy — Learn Quran Online with Certified Teachers",
+    description:
+      "Learn Quran online with certified teachers. Live 1-on-1 online Quran classes for kids & adults — Tajweed, Hifz memorization, Noorani Qaida. Free trial class for families in UAE, Saudi Arabia, Qatar, Australia, UK & USA.",
+    path: "/",
+  });
+
+  const faqJsonLd = React.useMemo(
+    () => ({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: FAQS.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: { "@type": "Answer", text: f.answer },
+      })),
+    }),
+    []
+  );
+
   // Auto-popup: 3s after homepage load, at most once per 3 days
   React.useEffect(() => {
     const KEY = "sf-popup-last-shown";
@@ -172,6 +193,7 @@ export default function Home() {
 
   return (
     <main>
+      <JsonLd data={faqJsonLd} />
       {/* ============ HERO with video background ============ */}
       <section ref={heroRef} className="relative overflow-hidden bg-brand-950">
         {/* Background video */}
@@ -204,8 +226,8 @@ export default function Home() {
               <WordStagger text="and Master Tajweed" base={0.72} />
             </h1>
             <p className="hero-anim mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg" style={{ "--hero-delay": "0.34s" }}>
-              Connect live with highly learned tutors. Experience personalized, safe, 1-on-1 sessions designed with
-              expert care for kids and adults — across the US, Gulf and Australia.
+              Connect live with highly learned online Quran tutors. Experience personalized, safe, 1-on-1 Quran
+              sessions designed with expert care for kids and adults — across the US, Gulf and Australia.
             </p>
             <div className="hero-anim mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" style={{ "--hero-delay": "0.46s" }}>
               <EnrollButton size="lg" className="w-full sm:w-auto" />
