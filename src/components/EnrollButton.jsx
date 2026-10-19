@@ -1,6 +1,7 @@
 import { CalendarCheck } from "lucide-react";
 import { buttonVariants } from "./ui/button";
 import { cn } from "../lib/utils";
+import { feedback } from "../lib/sound";
 import { useLeadPopup } from "./LeadPopupContext";
 import { REGIONS, getPrice } from "../data/pricing";
 
@@ -10,6 +11,7 @@ export default function EnrollButton({ className, variant = "default", size = "d
   const { openPopup } = useLeadPopup();
 
   const go = () => {
+    feedback("select");
     let planLabel = "";
     let planId = "";
     if (plan) {

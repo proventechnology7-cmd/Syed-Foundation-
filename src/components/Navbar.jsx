@@ -2,6 +2,7 @@ import * as React from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "../lib/utils";
+import { feedback } from "../lib/sound";
 import { SITE, NAV_LINKS } from "../data/site";
 import EnrollButton from "./EnrollButton";
 import logo from "../assets/logo.jpg";
@@ -78,6 +79,7 @@ export default function Navbar() {
             <NavLink
               key={l.to}
               to={l.to}
+              onClick={() => feedback("tick")}
               className={({ isActive }) =>
                 cn(
                   "rounded-xl px-4 py-2 text-sm font-semibold transition-all duration-200",
@@ -125,6 +127,7 @@ export default function Navbar() {
               <NavLink
                 key={l.to}
                 to={l.to}
+                onClick={() => feedback("tick")}
                 className={({ isActive }) =>
                   cn(
                     "rounded-xl px-4 py-3 text-base font-semibold transition-all duration-200",

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "../../lib/utils";
+import { feedback } from "../../lib/sound";
 
 function Accordion({ children, className, ...props }) {
   return (
@@ -16,7 +17,10 @@ function AccordionItem({ question, children, defaultOpen = false, className }) {
     <div className={cn("px-5 sm:px-6", className)}>
       <button
         type="button"
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => {
+          feedback("tick");
+          setOpen((v) => !v);
+        }}
         aria-expanded={open}
         className="flex w-full items-center justify-between gap-4 py-4 text-left"
       >
