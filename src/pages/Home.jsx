@@ -459,7 +459,7 @@ export default function Home() {
           <div className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-6 text-center lg:grid-cols-4">
             {[
               { target: 6, suffix: "+", label: "Years Experience", sub: "Six years of dedicated Islamic and Qur'anic teaching for families across the Gulf, US and Australia." },
-              { target: 25, suffix: "K+", label: "Classes Completed", sub: "Live one-on-one sessions delivered by certified tutors — one student at a time." },
+              { target: 500, suffix: "+", label: "Classes Completed", sub: "Live one-on-one sessions delivered by certified tutors — one student at a time." },
               { target: 96, suffix: "%", label: "Student Satisfaction", sub: "Families who stay with us, renew their plans and recommend us to others." },
               { target: 100, suffix: "%", label: "Certified Educators", sub: "Every instructor holds a legitimate degree, Hifz certificate or verified teaching credential." },
             ].map((s) => (
