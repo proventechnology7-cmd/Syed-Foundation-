@@ -2,7 +2,7 @@ import * as React from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import WhatsAppFloat from "./components/WhatsAppFloat";
+import ChatWidget from "./components/ChatWidget";
 import StickyMobileCTA from "./components/StickyMobileCTA";
 import ScrollProgress from "./components/ScrollProgress";
 import { LeadPopupProvider } from "./components/LeadPopupContext";
@@ -55,7 +55,7 @@ export default function App() {
           </React.Suspense>
         </div>
         <Footer />
-        <WhatsAppFloat />
+        <ChatWidget />
         <StickyMobileCTA />
       </div>
       </BookingProvider>
