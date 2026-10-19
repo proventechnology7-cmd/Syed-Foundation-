@@ -128,11 +128,11 @@ export default function Home() {
   const filtered = TESTIMONIALS.filter((t) => tab === "all" || t.category === tab);
   const { openPopup } = useLeadPopup();
 
-  // Auto-popup: 3s after homepage load, at most once per 7 days
+  // Auto-popup: 3s after homepage load, at most once per 3 days
   React.useEffect(() => {
     const KEY = "sf-popup-last-shown";
     const last = parseInt(localStorage.getItem(KEY) || "0", 10);
-    if (Date.now() - last > 7 * 24 * 60 * 60 * 1000) {
+    if (Date.now() - last > 3 * 24 * 60 * 60 * 1000) {
       const t = setTimeout(() => {
         openPopup({ source: "auto-popup" });
         try {
