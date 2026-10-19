@@ -9,11 +9,21 @@ import logo from "../assets/logo.jpg";
 export default function Navbar() {
   const [open, setOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
+  const [hidden, setHidden] = React.useState(false);
+  const lastY = React.useRef(0);
   const location = useLocation();
   const isHome = location.pathname === "/";
 
   React.useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 12);
+      // Hide on scroll down, reveal on scroll up (keeps nav out of the way
+      // while reading, but one small upward scroll brings it back).
+      if (y > 160 && y > lastY.current + 4) setHidden(true);
+      else if (y < lastY.current - 4 || y <= 160) setHidden(false);
+      lastY.current = y;
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -31,6 +41,7 @@ export default function Navbar() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        hidden && !open && "-translate-y-full",
         transparent
           ? "bg-transparent border-b border-transparent"
           : "bg-ivory/95 shadow-card backdrop-blur-xl border-b border-brand-100"

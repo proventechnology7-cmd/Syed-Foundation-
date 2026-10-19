@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import WhatsAppFloat from "./components/WhatsAppFloat";
 import StickyMobileCTA from "./components/StickyMobileCTA";
+import ScrollProgress from "./components/ScrollProgress";
 import { LeadPopupProvider } from "./components/LeadPopupContext";
 
 // Route-based code splitting: each page loads on demand,
@@ -34,6 +35,7 @@ function PageLoader() {
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollProgress />
       <ScrollManager />
       <LeadPopupProvider>
       <div className="flex min-h-screen flex-col">

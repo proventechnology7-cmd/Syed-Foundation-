@@ -19,8 +19,13 @@ import EnrollButton from "../components/EnrollButton";
 import CourseArt from "../components/CourseArt";
 import EnrollmentForm, { DirectChannels } from "../components/EnrollmentForm";
 import Reveal from "../components/Reveal";
+import WordStagger from "../components/WordStagger";
 import { useLeadPopup } from "../components/LeadPopupContext";
 import { cn } from "../lib/utils";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const COURSE_ICONS = { BookOpen, BookMarked, Sparkles, Heart };
 
@@ -145,13 +150,34 @@ export default function Home() {
 
   // Note: hero entrance uses pure CSS (.hero-anim in index.css) — reliable on first paint.
 
+  // Subtle parallax: hero video drifts slower than the content scrolling over it.
+  const heroRef = React.useRef(null);
+  const videoRef = React.useRef(null);
+  React.useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const ctx = gsap.context(() => {
+      gsap.to(videoRef.current, {
+        yPercent: 8,
+        ease: "none",
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    });
+    return () => ctx.revert();
+  }, []);
+
   return (
     <main>
       {/* ============ HERO with video background ============ */}
-      <section className="relative overflow-hidden bg-brand-950">
+      <section ref={heroRef} className="relative overflow-hidden bg-brand-950">
         {/* Background video */}
         <video
-          className="absolute inset-0 h-full w-full object-cover"
+          ref={videoRef}
+          className="absolute inset-0 h-full w-full scale-[1.15] object-cover will-change-transform"
           src="https://assets.mixkit.co/videos/34208/34208-720.mp4"
           autoPlay
           muted
@@ -170,12 +196,15 @@ export default function Home() {
             <p className="hero-anim mt-4 text-xs font-semibold uppercase tracking-[0.25em] text-gold-400" style={{ "--hero-delay": "0.1s" }}>
               In the name of Allah, the Most Gracious, the Most Merciful
             </p>
-            <h1 className="hero-anim font-display mt-6 text-4xl font-normal leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl" style={{ "--hero-delay": "0.22s" }}>
-              Learn Quran Online with{" "}
-              <span className="text-gold-gradient sm:whitespace-nowrap">
+            <h1 className="font-display mt-6 text-4xl font-normal leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl">
+              <WordStagger text="Learn Quran Online with" base={0.25} />{" "}
+              <span
+                className="word-stagger-word text-gold-gradient sm:whitespace-nowrap"
+                style={{ "--w-delay": "0.55s" }}
+              >
                 Syed Foundation Academy
               </span>{" "}
-              and Master Tajweed
+              <WordStagger text="and Master Tajweed" base={0.72} />
             </h1>
             <p className="hero-anim mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg" style={{ "--hero-delay": "0.34s" }}>
               Connect live with highly learned tutors. Experience personalized, safe, 1-on-1 sessions designed with
@@ -252,9 +281,9 @@ export default function Home() {
             subtitle="Each course syllabus is masterfully optimized for youngsters, school children, and remote beginners — ensuring beautiful Arabic recitation with expert live focus."
             />
           </Reveal>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+          <Reveal stagger={0.09} y={44} className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
             {COURSES.map((c) => <CourseCard key={c.slug} course={c} />)}
-          </div>
+          </Reveal>
 
           {/* Expert proposal CTA */}
           <Card className="relative mt-10 overflow-hidden border-brand-200 bg-brand-50/60">

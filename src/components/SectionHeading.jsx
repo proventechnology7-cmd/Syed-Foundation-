@@ -1,8 +1,11 @@
+import * as React from "react";
 import { Badge } from "./ui/badge";
 import { cn } from "../lib/utils";
 
 /**
  * Eyebrow + title + subtitle block used across sections.
+ * The title gets a cinematic "mask reveal" (slides up from behind an
+ * overflow-hidden mask) the first time it scrolls into view.
  */
 export default function SectionHeading({
   eyebrow,
@@ -13,6 +16,29 @@ export default function SectionHeading({
   className,
   as: Tag = "h2",
 }) {
+  const titleRef = React.useRef(null);
+  const [visible, setVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    const el = titleRef.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setVisible(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <div
       className={cn(
@@ -32,7 +58,12 @@ export default function SectionHeading({
           dark ? "text-white" : "text-brand-950"
         )}
       >
-        {title}
+        <span
+          ref={titleRef}
+          className={cn("mask-wrap", visible && "is-visible")}
+        >
+          <span className="mask-inner">{title}</span>
+        </span>
       </Tag>
       {subtitle && (
         <p className={cn("mt-4 text-base leading-relaxed sm:text-lg", dark ? "text-brand-100/85" : "text-stone-600")}>
