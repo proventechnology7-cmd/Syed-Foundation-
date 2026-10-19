@@ -2,7 +2,7 @@
  * Premium UI feedback sounds + haptics, synthesized with the Web Audio API
  * (no audio files needed).
  *
- * - `feedback("tick")`   — light, crisp tick for option/tab/accordion switches
+ * - `feedback("tick")`   — deep, warm "thock" for option/tab/accordion switches
  * - `feedback("select")` — warmer two-tone confirm for primary CTAs
  *
  * Sound plays only after a real user gesture (AudioContext is created lazily
@@ -78,10 +78,10 @@ function vibrate(pattern) {
 }
 
 const SOUNDS = {
-  // Light crisp tick — tab switches, accordion toggles, nav choices.
+  // Deep, warm "thock" — the chosen tap sound for option/tab/accordion switches.
   tick() {
-    blip({ freq: 1650, freqEnd: 1050, duration: 0.055, gain: 0.11 });
-    vibrate(8);
+    blip({ freq: 300, freqEnd: 170, duration: 0.09, gain: 0.17, type: "triangle" });
+    vibrate(15);
   },
   // Warmer two-tone confirm — primary CTAs (Book Free Trial, etc.).
   select() {
