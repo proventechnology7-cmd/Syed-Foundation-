@@ -199,7 +199,7 @@ export default function Home() {
       </section>
 
       {/* ============ LIVE AVAILABILITY STRIP ============ */}
-      <section className="relative -mt-2 pb-4">
+      <section className="relative mt-8 pb-4">
         <div className="container-x">
           <Card className="relative overflow-hidden border-brand-200 bg-gradient-to-r from-brand-900 via-brand-800 to-brand-900 text-white shadow-soft">
             <CardContent className="relative flex flex-col gap-5 p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
