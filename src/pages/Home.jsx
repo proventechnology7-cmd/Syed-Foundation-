@@ -198,11 +198,8 @@ export default function Home() {
             </p>
             <h1 className="font-display mt-6 text-4xl font-normal leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl">
               <WordStagger text="Learn Quran Online with" base={0.25} />{" "}
-              <span
-                className="word-stagger-word text-gold-gradient sm:whitespace-nowrap"
-                style={{ "--w-delay": "0.55s" }}
-              >
-                Syed Foundation Academy
+              <span className="word-stagger-word" style={{ "--w-delay": "0.55s" }}>
+                <span className="text-gold-gradient sm:whitespace-nowrap">Syed Foundation Academy</span>
               </span>{" "}
               <WordStagger text="and Master Tajweed" base={0.72} />
             </h1>
