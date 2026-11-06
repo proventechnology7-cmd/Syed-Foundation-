@@ -63,12 +63,12 @@ export default function Navbar() {
           }}
         >
           <span className="relative">
-            <img src={logo} alt={SITE.name} className="h-10 w-10 rounded-xl object-cover shadow-card ring-2 ring-gold-400/60 transition-all duration-300 group-hover:scale-105 group-hover:ring-gold-400 sm:h-12 sm:w-12" width="48" height="48" />
-            <span className="absolute -inset-1 -z-10 rounded-2xl bg-gold-400/20 blur-md transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
+            <img src={logo} alt={SITE.name} className="h-10 w-10 rounded-xl object-cover shadow-card ring-2 ring-gold-300/60 transition-all duration-300 group-hover:scale-105 group-hover:ring-gold-300 sm:h-12 sm:w-12" width="48" height="48" />
+            <span className="absolute -inset-1 -z-10 rounded-2xl bg-gold-300/20 blur-md transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
           </span>
           <span className="leading-tight">
             <span className={cn("block font-display text-base font-normal sm:text-lg", transparent ? "text-white" : "text-brand-950")}>Syed Foundation</span>
-            <span className={cn("block text-[10px] font-bold uppercase tracking-[0.22em] sm:text-[11px]", transparent ? "text-gold-400" : "text-gold-600")}>
+            <span className={cn("block text-[10px] font-bold uppercase tracking-[0.22em] sm:text-[11px]", transparent ? "text-gold-300" : "text-gold-600")}>
               Academy
             </span>
           </span>
@@ -85,8 +85,8 @@ export default function Navbar() {
                   "rounded-xl px-4 py-2 text-sm font-semibold transition-all duration-200",
                   isActive
                     ? transparent
-                      ? "scale-[1.04] bg-gold-400 text-brand-950 shadow-lg"
-                      : "scale-[1.04] bg-brand-700 text-white shadow-card"
+                      ? "scale-[1.04] bg-brand-800 text-gold-400 shadow-lg"
+                      : "scale-[1.04] bg-brand-800 text-gold-400 shadow-card"
                     : transparent
                       ? "text-white/85 hover:scale-[1.02] hover:bg-white/10 hover:text-white"
                       : "text-brand-950 hover:scale-[1.02] hover:bg-brand-50 hover:text-brand-900"
@@ -133,8 +133,8 @@ export default function Navbar() {
                     "rounded-xl px-4 py-3 text-base font-semibold transition-all duration-200",
                     isActive
                       ? transparent
-                        ? "scale-[1.02] bg-gold-400 text-brand-950 shadow-lg"
-                        : "scale-[1.02] bg-brand-700 text-white shadow-card"
+                        ? "scale-[1.02] bg-brand-800 text-gold-400 shadow-lg"
+                        : "scale-[1.02] bg-brand-800 text-gold-400 shadow-card"
                       : transparent
                         ? "text-white/85 hover:bg-white/10 hover:text-white"
                         : "text-brand-950 hover:bg-brand-50 hover:text-brand-900"

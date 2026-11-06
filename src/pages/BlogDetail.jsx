@@ -84,7 +84,7 @@ export default function BlogDetail() {
                 <p className="max-w-lg text-sm text-brand-100/85">
                   Book a 3-day free assessment and practice Tajweed with a certified instructor in a live 1-on-1 session.
                 </p>
-                <EnrollButton variant="gold">Book Free Trial</EnrollButton>
+                <EnrollButton variant="royale">Book Free Trial</EnrollButton>
               </CardContent>
             </Card>
           </div>

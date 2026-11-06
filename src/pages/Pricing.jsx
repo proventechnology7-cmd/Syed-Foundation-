@@ -70,7 +70,7 @@ function PlanCard({ plan, region, selected, onSelect }) {
           </li>
         </ul>
 
-        <EnrollButton className="mt-6 w-full" variant="gold" plan={plan} regionId={region.id}>
+        <EnrollButton className="mt-6 w-full" variant="royale" plan={plan} regionId={region.id}>
           Book Free Trial
         </EnrollButton>
       </CardContent>

@@ -189,7 +189,7 @@ export default function Blog() {
                 Apply Tajweed principles live with an expert certified instructor. Access 3 assessment sessions with no
                 strings attached.
               </p>
-              <EnrollButton variant="gold" size="lg">Book Your Free Trial</EnrollButton>
+              <EnrollButton variant="royale" size="lg">Book Your Free Trial</EnrollButton>
             </CardContent>
           </Card>
         </div>

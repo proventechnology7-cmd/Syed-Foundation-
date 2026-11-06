@@ -130,9 +130,9 @@ function CourseCard({ course }) {
 
 /* ---------------- Home page ---------------- */
 
-/* Hero name — Style 1 "Letter Rise" + Bright Yellow #FFD60A (user pick 2026-11-06).
-   Letters rise one by one with a slight 3D flip via GSAP; respects reduced-motion.
-   Lives inside the word-stagger wrapper (delay 0.55s), so letters start at 0.75s. */
+/* Hero name — Style 1 "Letter Rise", Palette 5 "Emerald Royale" (user pick 2026-11-06).
+   Gold #F0C44C with gold glow; lives inside the word-stagger wrapper (delay 0.55s),
+   so letters start at 0.75s. */
 const HERO_NAME = "Syed Foundation Academy";
 function HeroName() {
   const ref = React.useRef(null);
@@ -259,7 +259,7 @@ export default function Home() {
             <p className="hero-anim font-arabic text-3xl leading-[1.9] text-gold-300 sm:text-4xl" style={{ "--hero-delay": "0s" }} dir="rtl" lang="ar">
               بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
             </p>
-            <p className="hero-anim mt-4 text-xs font-semibold uppercase tracking-[0.25em] text-gold-400" style={{ "--hero-delay": "0.1s" }}>
+            <p className="hero-anim mt-4 text-xs font-semibold uppercase tracking-[0.25em] text-gold-300" style={{ "--hero-delay": "0.1s" }}>
               In the name of Allah, the Most Gracious, the Most Merciful
             </p>
             <h1 className="font-display hero-text-shadow mt-6 text-4xl font-normal leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl">
@@ -316,7 +316,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex flex-col gap-2 sm:flex-row lg:flex-col xl:flex-row">
-                <EnrollButton variant="gold">Book Free Trial</EnrollButton>
+                <EnrollButton variant="royale">Book Free Trial</EnrollButton>
                 <a
                   href={SITE.whatsapp}
                   target="_blank"
