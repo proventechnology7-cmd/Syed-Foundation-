@@ -13,7 +13,7 @@ import { REGIONS, getPrice } from "../data/pricing";
  *   (used for non-booking CTAs like "Get Expert Proposal").
  * Pass `plan` + `regionId` to attach that plan, or `course` to pre-select it.
  */
-export default function EnrollButton({ className, variant = "default", size = "default", children, plan, regionId, course, mode }) {
+export default function EnrollButton({ className, variant = "gold", size = "default", children, plan, regionId, course, mode }) {
   const { openPopup } = useLeadPopup();
   const { openBooking } = useBooking();
 

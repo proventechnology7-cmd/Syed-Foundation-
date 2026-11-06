@@ -34,7 +34,7 @@ export default function StickyMobileCTA() {
           openBooking({ source: "sticky-mobile" });
         }}
         tabIndex={visible ? 0 : -1}
-        className="btn-cta flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-brand-700 text-sm font-bold text-white shadow"
+        className="btn-cta flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-gold-400 text-sm font-bold text-brand-950 shadow hover:bg-gold-500"
       >
         <CalendarCheck className="h-4 w-4" />
         Book Your Free Trial Class

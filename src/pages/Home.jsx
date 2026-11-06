@@ -129,6 +129,48 @@ function CourseCard({ course }) {
 }
 
 /* ---------------- Home page ---------------- */
+
+/* Hero name — Style 1 "Letter Rise" + Bright Yellow #FFD60A (user pick 2026-11-06).
+   Letters rise one by one with a slight 3D flip via GSAP; respects reduced-motion.
+   Lives inside the word-stagger wrapper (delay 0.55s), so letters start at 0.75s. */
+const HERO_NAME = "Syed Foundation Academy";
+function HeroName() {
+  const ref = React.useRef(null);
+  React.useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const letters = el.querySelectorAll(".hero-name-letter");
+    const ctx = gsap.context(() => {
+      gsap.from(letters, {
+        y: 44,
+        opacity: 0,
+        rotateX: -50,
+        transformPerspective: 500,
+        duration: 0.7,
+        ease: "back.out(1.7)",
+        stagger: 0.045,
+        delay: 0.75,
+        clearProps: "all",
+      });
+    }, el);
+    return () => ctx.revert();
+  }, []);
+  const words = HERO_NAME.split(" ");
+  return (
+    <span ref={ref} className="hero-name-bright sm:whitespace-nowrap" aria-label={HERO_NAME}>
+      {words.map((word, wi) => (
+        <span key={wi} className="hero-name-word">
+          {word.split("").map((ch, ci) => (
+            <span key={ci} className="hero-name-letter" aria-hidden="true">{ch}</span>
+          ))}
+          {wi < words.length - 1 ? "\u00A0" : ""}
+        </span>
+      ))}
+    </span>
+  );
+}
+
 export default function Home() {
   const [tab, setTab] = React.useState("all");
   const filtered = TESTIMONIALS.filter((t) => tab === "all" || t.category === tab);
@@ -223,7 +265,7 @@ export default function Home() {
             <h1 className="font-display hero-text-shadow mt-6 text-4xl font-normal leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl">
               <WordStagger text="Learn Quran Online with" base={0.25} />{" "}
               <span className="word-stagger-word" style={{ "--w-delay": "0.55s" }}>
-                <span className="text-gold-gradient sm:whitespace-nowrap">Syed Foundation Academy</span>
+                <HeroName />
               </span>{" "}
               <WordStagger text="and Master Tajweed" base={0.72} />
             </h1>

@@ -201,6 +201,27 @@ a, button {
   color: transparent;
 }
 
+/* Hero name — Style 1 "Letter Rise", Bright Yellow (user pick 2026-11-06).
+   Solid #FFD60A + soft glow so the name stays highly visible on the dark hero. */
+.hero-name-bright {
+  color: #ffd60a;
+  text-shadow: 0 0 28px rgba(255, 214, 10, 0.45), 0 2px 18px rgba(0, 0, 0, 0.35);
+}
+.hero-name-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+.hero-name-letter {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-name-letter {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
 /* Elegant italic quote styling */
 .font-quote {
   font-family: "Cormorant Garamond", serif;
