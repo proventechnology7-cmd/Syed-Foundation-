@@ -78,6 +78,8 @@ export default function LeadPopup({ open, context = {}, onClose }) {
     const chosenPlan = PLANS.find((p) => String(p.id) === String(form.planId));
     // Payload keys match the Apps Script + sheet columns exactly.
     const payload = {
+      type: "lead-popup",
+      source: context.source || "lead-popup",
       name: form.name.trim(),
       phone: form.phone.trim(),
       email: form.email.trim(),

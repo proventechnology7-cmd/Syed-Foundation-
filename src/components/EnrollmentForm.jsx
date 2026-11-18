@@ -75,6 +75,8 @@ export default function EnrollmentForm() {
     // blocked request never stops the user's flow.
     if (SITE.leadSheetUrl) {
       const payload = {
+        type: "enrollment-form",
+        source: "enrollment-form",
         name: form.name,
         phone: `+${form.dial} ${form.phone}`,
         email: form.email,
