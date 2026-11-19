@@ -245,7 +245,7 @@ export default function Home() {
           <Sparkle className="absolute left-[42%] top-56 opacity-60" size={9} />
         </div>
 
-        <div className="container-x relative z-10 grid min-h-[100svh] items-start gap-6 pb-0 pt-[104px] sm:pt-36 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-2 lg:pt-32">
+        <div className="container-x relative z-10 grid min-h-[100svh] items-start gap-6 pb-0 pt-[104px] sm:pt-36 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-2 lg:pb-16 lg:pt-28">
           {/* Left — copy (Bismillah removed from the hero on the owner's call) */}
           <div className="pb-2">
             <p className="hero-anim mt-2 text-sm font-semibold tracking-wide text-gold-300 sm:text-base" style={{ "--hero-delay": "0.08s" }}>
