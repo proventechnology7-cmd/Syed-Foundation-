@@ -16,10 +16,11 @@ import { Accordion, AccordionItem } from "../components/ui/accordion";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../components/ui/tabs";
 import SectionHeading from "../components/SectionHeading";
 import EnrollButton from "../components/EnrollButton";
+import { useBooking } from "../components/BookingContext";
+import boyCutout from "../assets/boyCutoutData";
 import CourseArt from "../components/CourseArt";
 import EnrollmentForm, { DirectChannels } from "../components/EnrollmentForm";
 import Reveal from "../components/Reveal";
-import WordStagger from "../components/WordStagger";
 import { useSeo, JsonLd } from "../lib/seo";
 import { useLeadPopup } from "../components/LeadPopupContext";
 import { cn } from "../lib/utils";
@@ -130,44 +131,44 @@ function CourseCard({ course }) {
 
 /* ---------------- Home page ---------------- */
 
-/* Hero name — Style 1 "Letter Rise", Palette 5 "Emerald Royale" (user pick 2026-11-06).
-   Gold #F0C44C with gold glow; lives inside the word-stagger wrapper (delay 0.55s),
-   so letters start at 0.75s. */
-const HERO_NAME = "Syed Foundation Academy";
-function HeroName() {
-  const ref = React.useRef(null);
-  React.useLayoutEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const letters = el.querySelectorAll(".hero-name-letter");
-    const ctx = gsap.context(() => {
-      gsap.from(letters, {
-        y: 44,
-        opacity: 0,
-        rotateX: -50,
-        transformPerspective: 500,
-        duration: 0.7,
-        ease: "back.out(1.7)",
-        stagger: 0.045,
-        delay: 0.75,
-        clearProps: "all",
-      });
-    }, el);
-    return () => ctx.revert();
-  }, []);
-  const words = HERO_NAME.split(" ");
+/* Hanging lantern (line-art, gold) for the emerald hero — sways gently. */
+function Lantern({ cord = 90, className = "", delay = "0s" }) {
   return (
-    <span ref={ref} className="hero-name-bright sm:whitespace-nowrap" aria-label={HERO_NAME}>
-      {words.map((word, wi) => (
-        <span key={wi} className="hero-name-word">
-          {word.split("").map((ch, ci) => (
-            <span key={ci} className="hero-name-letter" aria-hidden="true">{ch}</span>
-          ))}
-          {wi < words.length - 1 ? "\u00A0" : ""}
-        </span>
-      ))}
-    </span>
+    <svg
+      viewBox={`0 0 48 ${cord + 86}`}
+      className={cn("animate-sway w-9 sm:w-11", className)}
+      style={{ animationDelay: delay }}
+      fill="none"
+      stroke="rgba(240,196,76,0.75)"
+      strokeWidth="1.4"
+      aria-hidden="true"
+    >
+      <line x1="24" y1="0" x2="24" y2={cord} />
+      <circle cx="24" cy={cord + 4} r="2.4" />
+      <path d={`M14 ${cord + 12} Q24 ${cord + 2} 34 ${cord + 12} L32 ${cord + 20} H16 Z`} />
+      <path d={`M16 ${cord + 20} H32 L35 ${cord + 44} Q24 ${cord + 54} 13 ${cord + 44} Z`} />
+      <line x1="24" y1={cord + 20} x2="24" y2={cord + 46} stroke="rgba(240,196,76,0.4)" />
+      <circle cx="24" cy={cord + 34} r="3.2" fill="rgba(240,196,76,0.35)" stroke="none" />
+      <path d={`M18 ${cord + 56} H30 L24 ${cord + 66} Z`} />
+      <line x1="24" y1={cord + 66} x2="24" y2={cord + 78} />
+      <circle cx="24" cy={cord + 82} r="1.8" fill="rgba(240,196,76,0.6)" stroke="none" />
+    </svg>
+  );
+}
+
+/* Small 4-point star sparkle for the hero sky. */
+function Sparkle({ className = "", size = 12 }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+      className={className}
+      fill="rgba(253,230,160,0.85)"
+      aria-hidden="true"
+    >
+      <path d="M12 0 L14.4 9.6 L24 12 L14.4 14.4 L12 24 L9.6 14.4 L0 12 L9.6 9.6 Z" />
+    </svg>
   );
 }
 
@@ -175,6 +176,7 @@ export default function Home() {
   const [tab, setTab] = React.useState("all");
   const filtered = TESTIMONIALS.filter((t) => tab === "all" || t.category === tab);
   const { openPopup } = useLeadPopup();
+  const { openBooking } = useBooking();
 
   useSeo({
     title: "Syed Foundation Academy — Learn Quran Online with Certified Teachers",
@@ -213,80 +215,109 @@ export default function Home() {
 
   // Note: hero entrance uses pure CSS (.hero-anim in index.css) — reliable on first paint.
 
-  // Subtle parallax: hero video drifts slower than the content scrolling over it.
-  const heroRef = React.useRef(null);
-  const videoRef = React.useRef(null);
-  React.useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const ctx = gsap.context(() => {
-      gsap.to(videoRef.current, {
-        yPercent: 8,
-        ease: "none",
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-    });
-    return () => ctx.revert();
-  }, []);
-
   return (
     <main>
       <JsonLd data={faqJsonLd} />
-      {/* ============ HERO with video background ============ */}
-      <section ref={heroRef} className="relative overflow-hidden bg-brand-950">
-        {/* Background video */}
-        <video
-          ref={videoRef}
-          className="absolute inset-0 h-full w-full scale-[1.15] object-cover will-change-transform"
-          src="https://assets.mixkit.co/videos/34208/34208-720.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-        />
-        {/* Dark gradient overlays for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-950/90 via-brand-950/70 to-brand-950/95" />
-        {/* Soft radial glow behind the headline to lift text off the video */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_42%,rgba(4,26,20,0.65),transparent_75%)]" />
-        <div className="container-x relative flex min-h-screen flex-col justify-center py-24 sm:py-28">
-          <div className="mx-auto max-w-4xl text-center">
-            <p className="hero-anim font-arabic text-3xl leading-[1.9] text-gold-300 sm:text-4xl" style={{ "--hero-delay": "0s" }} dir="rtl" lang="ar">
+      {/* ============ HERO — emerald lantern design (owner pick 2026-11-19,
+           replicated from the reference academy hero he shared) ============ */}
+      <section
+        className="relative overflow-hidden"
+        style={{
+          background:
+            "radial-gradient(1100px 620px at 68% -10%, rgba(22,148,102,0.55), transparent 60%)," +
+            "radial-gradient(900px 700px at 6% 112%, rgba(12,96,66,0.5), transparent 60%)," +
+            "linear-gradient(160deg, #07503a 0%, #05402d 46%, #032a1e 100%)",
+        }}
+      >
+        {/* Thin double-line frame inset, like the reference */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-2.5 z-20 border border-white/20 sm:inset-3.5" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-[18px] z-20 border border-white/10 sm:inset-[22px]" />
+
+        {/* Hanging lanterns + sparkles (hidden on phones so they never touch the nav) */}
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 z-10 hidden md:block">
+          <Lantern cord={86} className="absolute left-[36%] top-0" />
+          <Lantern cord={148} className="absolute left-[47%] top-0" delay="1.4s" />
+          <Lantern cord={64} className="absolute left-[57%] top-0" delay="2.6s" />
+          <Sparkle className="absolute left-[31%] top-24 opacity-80" size={13} />
+          <Sparkle className="absolute left-[53%] top-16 opacity-70" size={10} />
+          <Sparkle className="absolute left-[63%] top-40 opacity-80" size={12} />
+          <Sparkle className="absolute left-[42%] top-56 opacity-60" size={9} />
+        </div>
+
+        <div className="container-x relative z-10 grid min-h-[100svh] items-center gap-6 pb-0 pt-28 sm:pt-32 lg:grid-cols-[1.05fr_0.95fr] lg:gap-2 lg:pt-24">
+          {/* Left — copy */}
+          <div className="pb-4 lg:pb-20">
+            <p className="hero-anim font-arabic text-2xl leading-[1.9] text-gold-300" style={{ "--hero-delay": "0s" }} dir="rtl" lang="ar">
               بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
             </p>
-            <p className="hero-anim mt-4 text-xs font-semibold uppercase tracking-[0.25em] text-gold-300" style={{ "--hero-delay": "0.1s" }}>
-              In the name of Allah, the Most Gracious, the Most Merciful
+            <p className="hero-anim mt-3 text-sm font-semibold tracking-wide text-gold-300 sm:text-base" style={{ "--hero-delay": "0.08s" }}>
+              May the light of the Qur'an reach every home
             </p>
-            <h1 className="font-display hero-text-shadow mt-6 text-4xl font-normal leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl">
-              <WordStagger text="Learn Quran Online with" base={0.25} />{" "}
-              <span className="word-stagger-word" style={{ "--w-delay": "0.55s" }}>
-                <HeroName />
-              </span>{" "}
-              <WordStagger text="and Master Tajweed" base={0.72} />
+            <h1 className="font-display hero-anim mt-5 text-[42px] font-semibold leading-[1.06] tracking-tight text-white sm:text-6xl xl:text-[76px]" style={{ "--hero-delay": "0.16s" }}>
+              Learn the Qur'an
+              <span className="block">Easily, and the</span>
+              <span className="block">Right Way</span>
             </h1>
-            <p className="hero-anim mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg" style={{ "--hero-delay": "0.34s" }}>
-              Connect live with highly learned online Quran tutors. Experience personalized, safe, 1-on-1 Quran
-              sessions designed with expert care for kids and adults — across the US, Gulf and Australia.
+            <p className="hero-anim mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg" style={{ "--hero-delay": "0.26s" }}>
+              Live online classes from the very beginning — Tajweed, Hifz and Islamic Studies, with experienced
+              teachers you can trust.
             </p>
-            <div className="hero-anim mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" style={{ "--hero-delay": "0.46s" }}>
-              <EnrollButton size="lg" className="w-full sm:w-auto" />
-              <a
-                href={SITE.whatsapp}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-cta inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-8 text-base font-semibold text-white shadow transition hover:brightness-95 sm:w-auto"
+            <div className="hero-anim mt-8 flex flex-wrap items-center gap-x-7 gap-y-4" style={{ "--hero-delay": "0.36s" }}>
+              <EnrollButton
+                className="h-[52px] rounded-full bg-[#f3ead3] px-8 text-base font-bold text-brand-950 shadow-xl hover:bg-[#efe2bd]"
               >
-                <MessageCircle className="h-5 w-5" />
-                Chat on WhatsApp
-              </a>
+                Enroll Now
+              </EnrollButton>
+              <button
+                type="button"
+                onClick={() => openBooking({ source: "hero-demo" })}
+                className="text-base font-semibold text-white underline decoration-gold-400 decoration-2 underline-offset-8 transition hover:text-gold-200"
+              >
+                Take a Free Demo Class
+              </button>
             </div>
+            <div className="hero-anim mt-9 flex items-center gap-3.5" style={{ "--hero-delay": "0.46s" }}>
+              <span className="flex -space-x-3">
+                {[
+                  "https://randomuser.me/api/portraits/women/44.jpg",
+                  "https://randomuser.me/api/portraits/men/32.jpg",
+                  "https://randomuser.me/api/portraits/women/68.jpg",
+                  "https://randomuser.me/api/portraits/men/75.jpg",
+                  "https://randomuser.me/api/portraits/women/12.jpg",
+                ].map((src, i) => (
+                  <img
+                    key={i}
+                    src={src}
+                    alt=""
+                    width="40"
+                    height="40"
+                    loading="lazy"
+                    className="h-10 w-10 rounded-full object-cover ring-2 ring-[#064e3b]"
+                  />
+                ))}
+              </span>
+              <p className="text-base font-bold text-white">350+ students joined</p>
+            </div>
+            <p className="hero-anim mt-4 text-sm text-white/70" style={{ "--hero-delay": "0.54s" }}>
+              Next batch starts: <span className="font-bold text-gold-400">1 December 2026</span>
+            </p>
           </div>
 
+          {/* Right — student cutout, anchored to the bottom like the reference */}
+          <div className="relative flex items-end justify-center self-end">
+            <div
+              aria-hidden="true"
+              className="absolute bottom-0 h-[72%] w-[84%] rounded-full bg-[radial-gradient(closest-side,rgba(240,196,76,0.20),transparent)] blur-2xl"
+            />
+            <img
+              src={boyCutout}
+              alt="Young student holding the Qur'an"
+              width="1024"
+              height="878"
+              className="hero-anim relative z-10 w-[76%] max-w-[400px] drop-shadow-[0_24px_44px_rgba(0,0,0,0.45)] sm:max-w-[470px] lg:w-full lg:max-w-[560px]"
+              style={{ "--hero-delay": "0.2s" }}
+            />
+          </div>
         </div>
       </section>
 

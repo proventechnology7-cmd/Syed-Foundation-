@@ -34,6 +34,26 @@
   animation: floaty 7s ease-in-out infinite;
 }
 
+/* Gentle sway for the hero's hanging lanterns */
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(2.2deg);
+  }
+  50% {
+    transform: rotate(-2.2deg);
+  }
+}
+.animate-sway {
+  animation: sway 7s ease-in-out infinite;
+  transform-origin: top center;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-sway {
+    animation: none;
+  }
+}
+
 /* Counter fade-up */
 @keyframes rise-in {
   from {
