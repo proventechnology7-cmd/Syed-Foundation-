@@ -245,25 +245,22 @@ export default function Home() {
           <Sparkle className="absolute left-[42%] top-56 opacity-60" size={9} />
         </div>
 
-        <div className="container-x relative z-10 grid min-h-[100svh] items-start gap-6 pb-0 pt-[104px] sm:pt-36 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-2 lg:pt-40">
-          {/* Left — copy */}
-          <div className="pb-4 lg:pb-24">
-            <p className="hero-anim font-arabic text-2xl leading-[1.9] text-gold-300" style={{ "--hero-delay": "0s" }} dir="rtl" lang="ar">
-              بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-            </p>
-            <p className="hero-anim mt-3 text-sm font-semibold tracking-wide text-gold-300 sm:text-base" style={{ "--hero-delay": "0.08s" }}>
+        <div className="container-x relative z-10 grid min-h-[100svh] items-start gap-6 pb-0 pt-[104px] sm:pt-36 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-2 lg:pt-32">
+          {/* Left — copy (Bismillah removed from the hero on the owner's call) */}
+          <div className="pb-2">
+            <p className="hero-anim mt-2 text-sm font-semibold tracking-wide text-gold-300 sm:text-base" style={{ "--hero-delay": "0.08s" }}>
               May the light of the Qur'an reach every home
             </p>
-            <h1 className="font-display hero-anim mt-5 text-[31px] font-semibold leading-[1.12] tracking-tight text-white min-[420px]:text-[38px] sm:text-6xl xl:text-[76px]" style={{ "--hero-delay": "0.16s" }}>
+            <h1 className="font-display hero-anim mt-5 text-[31px] font-semibold leading-[1.12] tracking-tight text-white min-[420px]:text-[38px] sm:text-6xl xl:text-[70px]" style={{ "--hero-delay": "0.16s" }}>
               Learn the Qur'an
               <span className="block">Easily, and the</span>
               <span className="block">Right Way</span>
             </h1>
-            <p className="hero-anim mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg" style={{ "--hero-delay": "0.26s" }}>
+            <p className="hero-anim mt-5 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg" style={{ "--hero-delay": "0.26s" }}>
               Live online classes from the very beginning — Tajweed, Hifz and Islamic Studies, with experienced
               teachers you can trust.
             </p>
-            <div className="hero-anim mt-8 flex flex-wrap items-center gap-x-7 gap-y-4" style={{ "--hero-delay": "0.36s" }}>
+            <div className="hero-anim mt-7 flex flex-wrap items-center gap-x-7 gap-y-4" style={{ "--hero-delay": "0.36s" }}>
               <EnrollButton
                 className="h-[52px] rounded-full bg-[#f3ead3] px-8 text-base font-bold text-brand-950 shadow-xl hover:bg-[#efe2bd]"
               >
@@ -304,18 +301,19 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Right — student cutout, anchored to the bottom like the reference */}
-          <div className="relative flex items-end justify-center self-end">
+          {/* Right — student cutout, vertically centred with the WHOLE figure
+              visible (owner: nothing may be cut off at the bottom) */}
+          <div className="relative flex items-center justify-center self-center py-6 lg:py-0">
             <div
               aria-hidden="true"
-              className="absolute bottom-0 h-[72%] w-[84%] rounded-full bg-[radial-gradient(closest-side,rgba(240,196,76,0.20),transparent)] blur-2xl"
+              className="absolute left-1/2 top-1/2 h-[80%] w-[84%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(240,196,76,0.20),transparent)] blur-2xl"
             />
             <img
               src={boyCutout}
               alt="Young student holding the Qur'an"
               width="1024"
               height="878"
-              className="hero-anim relative z-10 w-[76%] max-w-[400px] drop-shadow-[0_24px_44px_rgba(0,0,0,0.45)] sm:max-w-[470px] lg:w-full lg:max-w-[540px]"
+              className="hero-anim relative z-10 max-h-[48svh] w-[76%] max-w-[400px] object-contain drop-shadow-[0_24px_44px_rgba(0,0,0,0.45)] sm:max-w-[470px] lg:max-h-[76svh] lg:w-full lg:max-w-[500px]"
               style={{ "--hero-delay": "0.2s" }}
             />
           </div>
