@@ -274,7 +274,7 @@ export default function Home() {
               </button>
             </div>
             <div className="hero-anim mt-4 flex items-center gap-3.5 sm:mt-6" style={{ "--hero-delay": "0.46s" }}>
-              <span className="flex -space-x-3">
+              <span className="flex -space-x-2">
                 {studentAvatars.map((src, i) => (
                   <img
                     key={i}
