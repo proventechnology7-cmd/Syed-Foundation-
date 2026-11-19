@@ -231,8 +231,8 @@ export default function Home() {
       >
         {/* Thin double-line frame inset, like the reference — kept BEHIND the
             content so the frame lines never cross the student photo */}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-2.5 z-0 border border-white/20 sm:inset-3.5" />
-        <div aria-hidden="true" className="pointer-events-none absolute inset-[18px] z-0 border border-white/10 sm:inset-[22px]" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-2.5 z-0 hidden border border-white/20 sm:inset-3.5 lg:block" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-[18px] z-0 hidden border border-white/10 sm:inset-[22px] lg:block" />
 
         {/* Hanging lanterns + sparkles (hidden on phones so they never touch the nav) */}
         <div aria-hidden="true" className="absolute inset-x-0 top-0 z-10 hidden md:block">
@@ -260,16 +260,16 @@ export default function Home() {
               Live online classes from the very beginning — Tajweed, Hifz and Islamic Studies, with experienced
               teachers you can trust.
             </p>
-            <div className="hero-anim mt-5 flex flex-wrap items-center gap-x-7 gap-y-4 sm:mt-7" style={{ "--hero-delay": "0.36s" }}>
+            <div className="hero-anim mt-5 flex flex-wrap items-center gap-x-5 gap-y-3 sm:mt-7 sm:gap-x-7 sm:gap-y-4" style={{ "--hero-delay": "0.36s" }}>
               <EnrollButton
-                className="h-[52px] rounded-full bg-[#f3ead3] px-8 text-base font-bold text-brand-950 shadow-xl hover:bg-[#efe2bd]"
+                className="h-11 rounded-full bg-[#f3ead3] px-6 text-sm font-bold text-brand-950 shadow-xl hover:bg-[#efe2bd] sm:h-[52px] sm:px-8 sm:text-base"
               >
                 Enroll Now
               </EnrollButton>
               <button
                 type="button"
                 onClick={() => openBooking({ source: "hero-demo" })}
-                className="text-base font-semibold text-white underline decoration-gold-400 decoration-2 underline-offset-8 transition hover:text-gold-200"
+                className="text-sm font-semibold text-white underline decoration-gold-400 decoration-2 underline-offset-[6px] transition hover:text-gold-200 sm:text-base sm:underline-offset-8"
               >
                 Take a Free Demo Class
               </button>
@@ -290,13 +290,13 @@ export default function Home() {
                     width="40"
                     height="40"
                     loading="lazy"
-                    className="h-10 w-10 rounded-full object-cover ring-2 ring-[#064e3b]"
+                    className="h-9 w-9 rounded-full object-cover ring-2 ring-[#064e3b] sm:h-10 sm:w-10"
                   />
                 ))}
               </span>
-              <p className="text-base font-bold text-white">350+ students joined</p>
+              <p className="text-sm font-bold text-white sm:text-base">350+ students joined</p>
             </div>
-            <p className="hero-anim mt-2 text-sm text-white/70 sm:mt-3" style={{ "--hero-delay": "0.54s" }}>
+            <p className="hero-anim mt-2 text-[13px] text-white/70 sm:mt-3 sm:text-sm" style={{ "--hero-delay": "0.54s" }}>
               Next batch starts: <span className="font-bold text-gold-400">1 December 2026</span>
             </p>
           </div>
