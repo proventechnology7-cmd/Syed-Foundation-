@@ -22,7 +22,7 @@ export default function EnrollButton({ className, variant = "royale", size = "de
       let planLabel = "";
       let planId = "";
       if (plan) {
-        const region = REGIONS.find((r) => r.id === (regionId || "gulf")) || REGIONS[0];
+        const region = REGIONS.find((r) => r.id === (regionId || "usa")) || REGIONS[0];
         planLabel = `${plan.name} — ${region.label}: ${region.currency}${getPrice(plan.id, region.id)}/mo`;
         planId = String(plan.id);
       }

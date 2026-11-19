@@ -37,7 +37,7 @@ export default function EnrollmentForm() {
   const location = useLocation();
   // Plan/course pre-selected when arriving from Pricing or Courses CTA buttons.
   const incomingPlan = location.state?.plan;
-  const incomingRegionId = location.state?.regionId || "gulf";
+  const incomingRegionId = location.state?.regionId || "usa";
   const incomingCourse = location.state?.course;
 
   const [form, setForm] = React.useState({
@@ -121,7 +121,7 @@ export default function EnrollmentForm() {
           </a>
           <Button
             variant="outline"
-            onClick={() => { setDone(false); setForm({ name: "", email: "", dial: "971", phone: "", country: "United Arab Emirates", course: COURSES[0].title, requirements: "", planId: PLANS[1].id, regionId: "gulf" }); }}
+            onClick={() => { setDone(false); setForm({ name: "", email: "", dial: "971", phone: "", country: "United Arab Emirates", course: COURSES[0].title, requirements: "", planId: PLANS[1].id, regionId: "usa" }); }}
           >
             <RotateCcw className="h-4 w-4" />
             New Request

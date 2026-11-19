@@ -89,9 +89,9 @@ const REGION_PRICES = {
 };
 
 export const REGIONS = [
+  { id: "usa", label: "USA", currency: "$", code: "USD" },
   { id: "gulf", label: "Gulf", currency: "AED ", code: "AED", note: "Also billed in SAR, QAR, KWD, OMR, BHD at local equivalents." },
   { id: "australia", label: "Australia", currency: "A$", code: "AUD" },
-  { id: "usa", label: "USA", currency: "$", code: "USD" },
   { id: "uk", label: "UK", currency: "£", code: "GBP" },
   { id: "canada", label: "Canada", currency: "CA$", code: "CAD" },
   { id: "europe", label: "Europe", currency: "€", code: "EUR" },

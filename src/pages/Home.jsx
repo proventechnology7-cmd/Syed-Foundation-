@@ -303,7 +303,7 @@ export default function Home() {
 
           {/* Right — student cutout, vertically centred with the WHOLE figure
               visible (owner: nothing may be cut off at the bottom) */}
-          <div className="relative flex items-end justify-center self-end py-6 lg:py-0">
+          <div className="relative flex items-end justify-center self-end py-6 lg:self-stretch lg:py-0">
             <div
               aria-hidden="true"
               className="absolute left-1/2 top-1/2 h-[80%] w-[84%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(240,196,76,0.20),transparent)] blur-2xl"
@@ -313,7 +313,7 @@ export default function Home() {
               alt="Young student holding the Qur'an"
               width="1024"
               height="878"
-              className="hero-anim relative z-10 max-h-[54svh] w-[84%] max-w-[430px] object-contain drop-shadow-[0_24px_44px_rgba(0,0,0,0.45)] sm:max-w-[500px] lg:max-h-[84svh] lg:w-full lg:max-w-[590px]"
+              className="hero-anim relative z-10 max-h-[54svh] w-[84%] max-w-[430px] object-contain object-bottom drop-shadow-[0_24px_44px_rgba(0,0,0,0.45)] sm:max-w-[500px] lg:absolute lg:bottom-3 lg:right-[3%] lg:h-[84svh] lg:max-h-none lg:w-auto lg:max-w-[56vw]"
               style={{ "--hero-delay": "0.2s" }}
             />
           </div>

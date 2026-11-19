@@ -94,7 +94,7 @@ export default function BookingModal({ open, context = {}, onClose }) {
   };
 
   const plan = context.plan || null;
-  const region = REGIONS.find((r) => r.id === (context.regionId || "gulf")) || REGIONS[0];
+  const region = REGIONS.find((r) => r.id === (context.regionId || "usa")) || REGIONS[0];
   const planLine = plan ? `${plan.name} — ${region.label}: ${region.currency}${getPrice(plan.id, region.id)}/mo` : "";
 
   const confirm = () => {

@@ -79,7 +79,7 @@ function PlanCard({ plan, region, selected, onSelect }) {
 }
 
 export default function Pricing() {
-  const [regionId, setRegionId] = React.useState("gulf");
+  const [regionId, setRegionId] = React.useState("usa");
   const [selectedPlan, setSelectedPlan] = React.useState(null);
   const region = REGIONS.find((r) => r.id === regionId) || REGIONS[0];
 
