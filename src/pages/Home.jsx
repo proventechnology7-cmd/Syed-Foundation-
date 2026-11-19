@@ -221,7 +221,7 @@ export default function Home() {
       {/* ============ HERO — emerald lantern design (owner pick 2026-11-19,
            replicated from the reference academy hero he shared) ============ */}
       <section
-        className="relative overflow-hidden"
+        className="relative flex min-h-[100svh] flex-col overflow-hidden"
         style={{
           background:
             "radial-gradient(1100px 620px at 68% -10%, rgba(22,148,102,0.55), transparent 60%)," +
@@ -245,7 +245,7 @@ export default function Home() {
           <Sparkle className="absolute left-[42%] top-56 opacity-60" size={9} />
         </div>
 
-        <div className="container-x relative z-10 grid min-h-[100svh] items-start gap-6 pb-0 pt-[104px] sm:pt-36 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-2 lg:pb-16 lg:pt-28">
+        <div className="container-x relative z-10 grid w-full flex-1 items-start gap-6 pb-0 pt-[104px] sm:pt-36 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-2 lg:pt-28">
           {/* Left — copy (Bismillah removed from the hero on the owner's call) */}
           <div className="pb-2">
             <p className="hero-anim mt-2 text-sm font-semibold tracking-wide text-gold-300 sm:text-base" style={{ "--hero-delay": "0.08s" }}>
@@ -303,7 +303,7 @@ export default function Home() {
 
           {/* Right — student cutout, vertically centred with the WHOLE figure
               visible (owner: nothing may be cut off at the bottom) */}
-          <div className="relative flex items-center justify-center self-center py-6 lg:py-0">
+          <div className="relative flex items-end justify-center self-end py-6 lg:py-0">
             <div
               aria-hidden="true"
               className="absolute left-1/2 top-1/2 h-[80%] w-[84%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(240,196,76,0.20),transparent)] blur-2xl"
@@ -313,7 +313,7 @@ export default function Home() {
               alt="Young student holding the Qur'an"
               width="1024"
               height="878"
-              className="hero-anim relative z-10 max-h-[48svh] w-[76%] max-w-[400px] object-contain drop-shadow-[0_24px_44px_rgba(0,0,0,0.45)] sm:max-w-[470px] lg:max-h-[76svh] lg:w-full lg:max-w-[500px]"
+              className="hero-anim relative z-10 max-h-[54svh] w-[84%] max-w-[430px] object-contain drop-shadow-[0_24px_44px_rgba(0,0,0,0.45)] sm:max-w-[500px] lg:max-h-[84svh] lg:w-full lg:max-w-[590px]"
               style={{ "--hero-delay": "0.2s" }}
             />
           </div>
