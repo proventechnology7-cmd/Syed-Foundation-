@@ -245,22 +245,22 @@ export default function Home() {
           <Sparkle className="absolute left-[42%] top-56 opacity-60" size={9} />
         </div>
 
-        <div className="container-x relative z-10 grid w-full flex-1 items-start gap-6 pb-0 pt-[104px] sm:pt-36 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-2 lg:pt-28">
+        <div className="container-x relative z-10 grid w-full flex-1 items-start gap-6 pb-[36svh] pt-[92px] sm:pt-36 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-2 lg:pb-0 lg:pt-28">
           {/* Left — copy (Bismillah removed from the hero on the owner's call) */}
           <div className="pb-2">
-            <p className="hero-anim mt-2 text-sm font-semibold tracking-wide text-gold-300 sm:text-base" style={{ "--hero-delay": "0.08s" }}>
+            <p className="hero-anim mt-2 text-[13px] font-semibold tracking-wide text-gold-300 sm:text-base" style={{ "--hero-delay": "0.08s" }}>
               May the light of the Qur'an reach every home
             </p>
-            <h1 className="font-display hero-anim mt-5 text-[31px] font-semibold leading-[1.12] tracking-tight text-white min-[420px]:text-[38px] sm:text-6xl xl:text-[70px]" style={{ "--hero-delay": "0.16s" }}>
+            <h1 className="font-display hero-anim mt-3 text-[28px] font-semibold leading-[1.1] tracking-tight text-white min-[420px]:text-[36px] sm:mt-5 sm:text-6xl xl:text-[70px]" style={{ "--hero-delay": "0.16s" }}>
               Learn the Qur'an
               <span className="block">Easily, and the</span>
               <span className="block">Right Way</span>
             </h1>
-            <p className="hero-anim mt-5 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg" style={{ "--hero-delay": "0.26s" }}>
+            <p className="hero-anim mt-3 max-w-xl text-sm leading-relaxed text-white/80 sm:mt-5 sm:text-lg" style={{ "--hero-delay": "0.26s" }}>
               Live online classes from the very beginning — Tajweed, Hifz and Islamic Studies, with experienced
               teachers you can trust.
             </p>
-            <div className="hero-anim mt-7 flex flex-wrap items-center gap-x-7 gap-y-4" style={{ "--hero-delay": "0.36s" }}>
+            <div className="hero-anim mt-5 flex flex-wrap items-center gap-x-7 gap-y-4 sm:mt-7" style={{ "--hero-delay": "0.36s" }}>
               <EnrollButton
                 className="h-[52px] rounded-full bg-[#f3ead3] px-8 text-base font-bold text-brand-950 shadow-xl hover:bg-[#efe2bd]"
               >
@@ -274,7 +274,7 @@ export default function Home() {
                 Take a Free Demo Class
               </button>
             </div>
-            <div className="hero-anim mt-6 flex items-center gap-3.5" style={{ "--hero-delay": "0.46s" }}>
+            <div className="hero-anim mt-4 flex items-center gap-3.5 sm:mt-6" style={{ "--hero-delay": "0.46s" }}>
               <span className="flex -space-x-3">
                 {[
                   "https://randomuser.me/api/portraits/women/44.jpg",
@@ -296,14 +296,15 @@ export default function Home() {
               </span>
               <p className="text-base font-bold text-white">350+ students joined</p>
             </div>
-            <p className="hero-anim mt-3 text-sm text-white/70" style={{ "--hero-delay": "0.54s" }}>
+            <p className="hero-anim mt-2 text-sm text-white/70 sm:mt-3" style={{ "--hero-delay": "0.54s" }}>
               Next batch starts: <span className="font-bold text-gold-400">1 December 2026</span>
             </p>
           </div>
 
-          {/* Right — student cutout, vertically centred with the WHOLE figure
-              visible (owner: nothing may be cut off at the bottom) */}
-          <div className="relative flex items-end justify-center self-end py-6 lg:self-stretch lg:py-0">
+          {/* Student cutout — a bottom "stage" on every screen size: on phones
+              it is centred at the hero's bottom edge, on desktop it stands at
+              the right; the WHOLE figure always stays visible */}
+          <div className="absolute inset-x-0 bottom-0 flex h-[34svh] items-end justify-center lg:relative lg:inset-x-auto lg:bottom-auto lg:h-auto lg:self-stretch">
             <div
               aria-hidden="true"
               className="absolute left-1/2 top-1/2 h-[80%] w-[84%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(240,196,76,0.20),transparent)] blur-2xl"
@@ -313,7 +314,7 @@ export default function Home() {
               alt="Young student holding the Qur'an"
               width="1024"
               height="878"
-              className="hero-anim relative z-10 max-h-[54svh] w-[84%] max-w-[430px] object-contain object-bottom drop-shadow-[0_24px_44px_rgba(0,0,0,0.45)] sm:max-w-[500px] lg:absolute lg:bottom-[26px] lg:right-[3%] lg:h-[84svh] lg:max-h-none lg:w-auto lg:max-w-[50vw]"
+              className="hero-anim relative z-10 h-full w-auto max-w-[92vw] object-contain object-bottom drop-shadow-[0_24px_44px_rgba(0,0,0,0.45)] lg:absolute lg:bottom-[26px] lg:right-[3%] lg:h-[84svh] lg:max-h-none lg:max-w-[50vw]"
               style={{ "--hero-delay": "0.2s" }}
             />
           </div>
