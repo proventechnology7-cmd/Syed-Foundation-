@@ -229,10 +229,8 @@ export default function Home() {
             "linear-gradient(160deg, #07503a 0%, #05402d 46%, #032a1e 100%)",
         }}
       >
-        {/* Thin double-line frame inset, like the reference — kept BEHIND the
-            content so the frame lines never cross the student photo */}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-2.5 z-0 hidden border border-white/20 sm:inset-3.5 lg:block" />
-        <div aria-hidden="true" className="pointer-events-none absolute inset-[18px] z-0 hidden border border-white/10 sm:inset-[22px] lg:block" />
+        {/* The reference's thin double-line frame was removed on the owner's
+            call (2026-11-19) — first on phones, then on desktop too. */}
 
         {/* Hanging lanterns + sparkles (hidden on phones so they never touch the nav) */}
         <div aria-hidden="true" className="absolute inset-x-0 top-0 z-10 hidden md:block">
