@@ -8,6 +8,9 @@
   }
   body {
     @apply bg-ivory text-ink font-sans antialiased;
+    /* Safety net: nothing may ever push the page wider than the screen
+       (overflow-x: clip — unlike hidden, it does not break position: sticky) */
+    overflow-x: clip;
   }
   ::selection {
     @apply bg-brand-200 text-brand-950;

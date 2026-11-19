@@ -245,7 +245,7 @@ export default function Home() {
           <Sparkle className="absolute left-[42%] top-56 opacity-60" size={9} />
         </div>
 
-        <div className="container-x relative z-10 grid min-h-[100svh] items-center gap-6 pb-0 pt-36 sm:pt-40 lg:grid-cols-[1.05fr_0.95fr] lg:gap-2 lg:pt-40">
+        <div className="container-x relative z-10 grid min-h-[100svh] items-start gap-6 pb-0 pt-[104px] sm:pt-36 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-2 lg:pt-40">
           {/* Left — copy */}
           <div className="pb-4 lg:pb-24">
             <p className="hero-anim font-arabic text-2xl leading-[1.9] text-gold-300" style={{ "--hero-delay": "0s" }} dir="rtl" lang="ar">
@@ -254,7 +254,7 @@ export default function Home() {
             <p className="hero-anim mt-3 text-sm font-semibold tracking-wide text-gold-300 sm:text-base" style={{ "--hero-delay": "0.08s" }}>
               May the light of the Qur'an reach every home
             </p>
-            <h1 className="font-display hero-anim mt-5 text-[42px] font-semibold leading-[1.06] tracking-tight text-white sm:text-6xl xl:text-[76px]" style={{ "--hero-delay": "0.16s" }}>
+            <h1 className="font-display hero-anim mt-5 text-[31px] font-semibold leading-[1.12] tracking-tight text-white min-[420px]:text-[38px] sm:text-6xl xl:text-[76px]" style={{ "--hero-delay": "0.16s" }}>
               Learn the Qur'an
               <span className="block">Easily, and the</span>
               <span className="block">Right Way</span>
