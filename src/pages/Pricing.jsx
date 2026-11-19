@@ -121,7 +121,8 @@ export default function Pricing() {
             )}
             <TabsContent value={regionId} className="mt-8">
               <div key={regionId} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {PLANS.map((p, i) => (
+                {/* Most Popular plan first (owner, 2026-11-19); the rest keep their order */}
+                {[...PLANS].sort((a, b) => Number(b.popular || false) - Number(a.popular || false)).map((p, i) => (
                   <Reveal key={p.id} delay={Math.min(i * 0.07, 0.35)} replay={false}>
                     <PlanCard plan={p} region={region} selected={selectedPlan === p.id} onSelect={() => setSelectedPlan(p.id)} />
                   </Reveal>
