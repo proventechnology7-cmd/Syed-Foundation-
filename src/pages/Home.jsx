@@ -18,6 +18,7 @@ import SectionHeading from "../components/SectionHeading";
 import EnrollButton from "../components/EnrollButton";
 import { useBooking } from "../components/BookingContext";
 import boyCutout from "../assets/boyCutoutData";
+import { studentAvatars } from "../assets/avatarsData";
 import CourseArt from "../components/CourseArt";
 import EnrollmentForm, { DirectChannels } from "../components/EnrollmentForm";
 import Reveal from "../components/Reveal";
@@ -274,13 +275,7 @@ export default function Home() {
             </div>
             <div className="hero-anim mt-4 flex items-center gap-3.5 sm:mt-6" style={{ "--hero-delay": "0.46s" }}>
               <span className="flex -space-x-3">
-                {[
-                  "https://randomuser.me/api/portraits/women/44.jpg",
-                  "https://randomuser.me/api/portraits/men/32.jpg",
-                  "https://randomuser.me/api/portraits/women/68.jpg",
-                  "https://randomuser.me/api/portraits/men/75.jpg",
-                  "https://randomuser.me/api/portraits/women/12.jpg",
-                ].map((src, i) => (
+                {studentAvatars.map((src, i) => (
                   <img
                     key={i}
                     src={src}
