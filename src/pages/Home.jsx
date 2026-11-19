@@ -256,7 +256,7 @@ export default function Home() {
               <span className="block">Easily, and the</span>
               <span className="block">Right Way</span>
             </h1>
-            <p className="hero-anim mt-3 max-w-xl text-sm leading-relaxed text-white/80 sm:mt-5 sm:text-lg" style={{ "--hero-delay": "0.26s" }}>
+            <p className="hero-anim mt-3 max-w-xl text-sm leading-relaxed text-white/80 sm:mt-5 sm:text-lg lg:max-w-[440px]" style={{ "--hero-delay": "0.26s" }}>
               Live online classes from the very beginning — Tajweed, Hifz and Islamic Studies, with experienced
               teachers you can trust.
             </p>
@@ -314,7 +314,7 @@ export default function Home() {
               alt="Young student holding the Qur'an"
               width="1024"
               height="878"
-              className="hero-anim relative z-10 h-full w-auto max-w-[92vw] object-contain object-bottom drop-shadow-[0_24px_44px_rgba(0,0,0,0.45)] lg:absolute lg:bottom-[26px] lg:right-[3%] lg:h-[84svh] lg:max-h-none lg:max-w-[50vw]"
+              className="hero-anim relative z-10 h-full w-auto max-w-[92vw] object-contain object-bottom drop-shadow-[0_24px_44px_rgba(0,0,0,0.45)] lg:absolute lg:bottom-[26px] lg:right-[3%] lg:h-[84svh] lg:max-h-none lg:max-w-[47vw]"
               style={{ "--hero-delay": "0.2s" }}
             />
           </div>
