@@ -229,9 +229,10 @@ export default function Home() {
             "linear-gradient(160deg, #07503a 0%, #05402d 46%, #032a1e 100%)",
         }}
       >
-        {/* Thin double-line frame inset, like the reference */}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-2.5 z-20 border border-white/20 sm:inset-3.5" />
-        <div aria-hidden="true" className="pointer-events-none absolute inset-[18px] z-20 border border-white/10 sm:inset-[22px]" />
+        {/* Thin double-line frame inset, like the reference — kept BEHIND the
+            content so the frame lines never cross the student photo */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-2.5 z-0 border border-white/20 sm:inset-3.5" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-[18px] z-0 border border-white/10 sm:inset-[22px]" />
 
         {/* Hanging lanterns + sparkles (hidden on phones so they never touch the nav) */}
         <div aria-hidden="true" className="absolute inset-x-0 top-0 z-10 hidden md:block">
@@ -244,9 +245,9 @@ export default function Home() {
           <Sparkle className="absolute left-[42%] top-56 opacity-60" size={9} />
         </div>
 
-        <div className="container-x relative z-10 grid min-h-[100svh] items-center gap-6 pb-0 pt-28 sm:pt-32 lg:grid-cols-[1.05fr_0.95fr] lg:gap-2 lg:pt-24">
+        <div className="container-x relative z-10 grid min-h-[100svh] items-center gap-6 pb-0 pt-36 sm:pt-40 lg:grid-cols-[1.05fr_0.95fr] lg:gap-2 lg:pt-40">
           {/* Left — copy */}
-          <div className="pb-4 lg:pb-20">
+          <div className="pb-4 lg:pb-24">
             <p className="hero-anim font-arabic text-2xl leading-[1.9] text-gold-300" style={{ "--hero-delay": "0s" }} dir="rtl" lang="ar">
               بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
             </p>
@@ -276,7 +277,7 @@ export default function Home() {
                 Take a Free Demo Class
               </button>
             </div>
-            <div className="hero-anim mt-9 flex items-center gap-3.5" style={{ "--hero-delay": "0.46s" }}>
+            <div className="hero-anim mt-6 flex items-center gap-3.5" style={{ "--hero-delay": "0.46s" }}>
               <span className="flex -space-x-3">
                 {[
                   "https://randomuser.me/api/portraits/women/44.jpg",
@@ -298,7 +299,7 @@ export default function Home() {
               </span>
               <p className="text-base font-bold text-white">350+ students joined</p>
             </div>
-            <p className="hero-anim mt-4 text-sm text-white/70" style={{ "--hero-delay": "0.54s" }}>
+            <p className="hero-anim mt-3 text-sm text-white/70" style={{ "--hero-delay": "0.54s" }}>
               Next batch starts: <span className="font-bold text-gold-400">1 December 2026</span>
             </p>
           </div>
@@ -314,7 +315,7 @@ export default function Home() {
               alt="Young student holding the Qur'an"
               width="1024"
               height="878"
-              className="hero-anim relative z-10 w-[76%] max-w-[400px] drop-shadow-[0_24px_44px_rgba(0,0,0,0.45)] sm:max-w-[470px] lg:w-full lg:max-w-[560px]"
+              className="hero-anim relative z-10 w-[76%] max-w-[400px] drop-shadow-[0_24px_44px_rgba(0,0,0,0.45)] sm:max-w-[470px] lg:w-full lg:max-w-[540px]"
               style={{ "--hero-delay": "0.2s" }}
             />
           </div>

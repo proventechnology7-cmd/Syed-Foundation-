@@ -44,7 +44,7 @@ export default function Navbar() {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         hidden && !open && "-translate-y-full",
         transparent
-          ? "bg-transparent border-b border-transparent"
+          ? "bg-transparent border-b border-transparent pt-2.5 sm:pt-3.5"
           : "bg-ivory/95 shadow-card backdrop-blur-xl border-b border-brand-100"
       )}
     >
@@ -63,7 +63,7 @@ export default function Navbar() {
           }}
         >
           <span className="relative">
-            <img src={logo} alt={SITE.name} className="h-10 w-10 rounded-xl object-cover shadow-card ring-2 ring-gold-300/60 transition-all duration-300 group-hover:scale-105 group-hover:ring-gold-300 sm:h-12 sm:w-12" width="48" height="48" />
+            <img src={logo} alt={SITE.name} className="h-11 w-11 rounded-xl bg-white object-contain p-1 shadow-card ring-1 ring-black/5 transition-all duration-300 group-hover:scale-105 sm:h-[52px] sm:w-[52px]" width="52" height="52" />
             <span className="absolute -inset-1 -z-10 rounded-2xl bg-gold-300/20 blur-md transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
           </span>
           <span className="leading-tight">
