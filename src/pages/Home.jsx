@@ -313,7 +313,7 @@ export default function Home() {
               alt="Young student holding the Qur'an"
               width="1024"
               height="878"
-              className="hero-anim relative z-10 max-h-[54svh] w-[84%] max-w-[430px] object-contain object-bottom drop-shadow-[0_24px_44px_rgba(0,0,0,0.45)] sm:max-w-[500px] lg:absolute lg:bottom-3 lg:right-[3%] lg:h-[84svh] lg:max-h-none lg:w-auto lg:max-w-[56vw]"
+              className="hero-anim relative z-10 max-h-[54svh] w-[84%] max-w-[430px] object-contain object-bottom drop-shadow-[0_24px_44px_rgba(0,0,0,0.45)] sm:max-w-[500px] lg:absolute lg:bottom-[26px] lg:right-[3%] lg:h-[84svh] lg:max-h-none lg:w-auto lg:max-w-[50vw]"
               style={{ "--hero-delay": "0.2s" }}
             />
           </div>
